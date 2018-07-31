@@ -1,0 +1,28 @@
+function solicitorCreate() {
+  const I = this;
+  I.wait('3');
+  I.fillField('input[id="solicitorName"]', 'Arrow');
+  I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
+  I.fillField('input[id="solicitorReference"]', 'AUTO-123456789');
+  I.fillField('input[id="solicitorAddress1"]', '102 PF');
+  I.fillField('input[id="solicitorAddress4"]', 'Westminster');
+  I.fillField('input[id="solicitorAddress5"]', 'London');
+  I.fillField('input[id="solicitorEmail"]', 'vivred@mailinator.com');
+  I.checkOption('input[id="solicitorAgreeToReceiveEmails-No"]');
+  I.click('Continue');
+}
+
+function updateSolAddress() {
+  const I = this;
+  I.wait(2);
+  I.fillField('input[id="solicitorAddress1"]', '103 PF');
+  I.fillField('input[id="solicitorAddress4"]', 'stjamespark');
+  I.click('Continue');
+  I.wait(1);
+  I.fillField('input[id="field-trigger-summary"]', 'updated Address');
+  I.wait(1);
+  I.click('Submit');
+  I.wait(2);
+}
+
+module.exports = { solicitorCreate, updateSolAddress };

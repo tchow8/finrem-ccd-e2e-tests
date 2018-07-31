@@ -1,0 +1,32 @@
+const testConfig = require('test/config.js');
+
+exports.config = {
+  tests: './**/**/*.js',
+  output: `${process.cwd()}/functional-output`,
+  helpers: {
+    Puppeteer: {
+      url: testConfig.TestFrontendUrl || 'https://www-ccd.nonprod.platform.hmcts.net/',
+      waitForTimeout: 5000,
+      show: false,
+      ignoreHTTPSErrors: true,
+      headless: true,
+      chrome: {
+        ignoreHTTPSErrors: true,
+        args: [
+          '--no-sandbox',
+          '--proxy-server=proxyout.reform.hmcts.net:8080'
+        ]
+      }
+
+    }
+  },
+  include: { I: './pages/steps.js' },
+  mocha: {
+    reporterOptions: {
+      reportDir: process.env.E2E_OUTPUT_DIR || './functional-output',
+      reportName: 'FinremSolTests',
+      inlineAssets: true
+    }
+  },
+  name: 'Finrem Sol Tests'
+};
