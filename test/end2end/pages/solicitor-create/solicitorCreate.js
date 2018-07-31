@@ -1,9 +1,10 @@
-function solicitorCreate() {
+
+function solicitorCreate(reference) {
   const I = this;
   I.wait('3');
   I.fillField('input[id="solicitorName"]', 'Arrow');
   I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
-  I.fillField('input[id="solicitorReference"]', 'AUTO-123456789');
+  I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
   I.fillField('input[id="solicitorAddress1"]', '102 PF');
   I.fillField('input[id="solicitorAddress4"]', 'Westminster');
   I.fillField('input[id="solicitorAddress5"]', 'London');
