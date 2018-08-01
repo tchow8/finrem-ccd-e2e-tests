@@ -53,8 +53,34 @@ function updateCase() {
 
 }
 
-function consentOrderApproved() {
+function approveApplication() {
   const I = this;
+  I.wait(2);
+  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Approve Application');
+  I.wait(2);
+  I.click('Go');
+  I.wait(2);
+  I.selectOption('select[id=orderDirection]', 'Consent Order Accepted as drafted');
+  I.wait(2);
+  I.checkOption('input[id="orderDirectionAbsolute-No"]');
+  I.wait(2);
+  I.selectOption('select[id=orderDirectionJudge]', 'District Judge');
+  I.wait(1);
+  I.fillField('textarea[id="orderDirectionJudgeName"]', 'vivred test ');
+  I.wait(1);
+  I.fillField('input[id="orderDirectionDate-day"]', '1');
+  I.fillField('input[id="orderDirectionDate-month"]', '2');
+  I.fillField('input[id="orderDirectionDate-year"]', '2010');
+  I.wait(1);
+  I.selectOption('select[id="orderDirection"]', 'Consent Order Accepted as amended');
+  I.wait(2);
+  I.attachFile('input[id="orderDirectionOpt1"]', 'data/fileupload.txt');
+  I.wait(2);
+  I.click('Continue');
+  I.wait(2);
+  I.click('Submit');
+  I.wait(2);
 }
 
-module.exports = { searchCase, updateCase, consentOrderApproved };
+
+module.exports = { searchCase, updateCase, approveApplication};

@@ -30,12 +30,11 @@ Scenario('Verify Court Admin update case Scenario', I => {
   I.updateCase();
 });
 
-xScenario('Verify Court judge approve case', I => {
+Scenario('Verify Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.consentOrderApproved();
-  I.updateSolAddress();
-  I.see('Update Order Application');
-  I.see('Financial Remedy COURT ADMIN');
-  I.click('Solicitor');
-  I.see('103 PF');
+  I.wait(2);
+  I.selectOption('select[id=wb-case-state]', 'Awaiting Judicial Response');
+  I.searchCase(solRef);
+  I.approveApplication();
+  I.see('Approve Application');
 });
