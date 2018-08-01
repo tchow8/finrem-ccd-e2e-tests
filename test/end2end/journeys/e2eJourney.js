@@ -15,6 +15,7 @@ Scenario('Verify Solicitors Happypath Scenario', I => {
   I.authorisation();
   I.consentOrder();
   I.d81();
+  I.wait(60);
   I.optionalDocuments();
   I.paymentDetails();
   I.checkYourAnswers();
@@ -27,9 +28,7 @@ Scenario('Verify Court Admin update case Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(2);
   I.searchCase(solRef);
-  I.wait(5);
-  I.click('a div.text-16');
-  I.wait(2);
+  I.updateCase();
 });
 
 xScenario('Verify Court judge approve case', I => {
