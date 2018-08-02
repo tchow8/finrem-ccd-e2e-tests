@@ -72,10 +72,6 @@ function approveApplication() {
   I.fillField('input[id="orderDirectionDate-month"]', '2');
   I.fillField('input[id="orderDirectionDate-year"]', '2010');
   I.wait(1);
-  I.selectOption('select[id="orderDirection"]', 'Consent Order Accepted as amended');
-  I.wait(2);
-  I.attachFile('input[id="orderDirectionOpt1"]', 'data/fileupload.txt');
-  I.wait(2);
   I.click('Continue');
   I.wait(2);
   I.click('Submit');
