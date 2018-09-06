@@ -3,7 +3,7 @@
 
 ## Purpose
 
-This service is to help people to run End2End Journey Tests.
+This service is to help people to run End2End Journey Tests for Financial Remedy.
 
 
 ## Getting Started
