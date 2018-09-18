@@ -9,6 +9,7 @@ function searchCase(reference) {
   I.wait(5);
   I.click('a div.text-16');
   I.wait(3);
+
 }
 
 function updateCase() {
@@ -46,6 +47,8 @@ function updateCase() {
   I.wait(2);
   I.click('Go');
   I.wait(2);
+  I.selectOption('select[id="assignedToJudge"]', 'JUI Test Judge Financial Remedy');
+  I.wait(2);
   I.fillField('input[id="referToJudgeText"]', 'Please look into this case on urgent basis ');
   I.click('Continue');
   I.wait(2);
@@ -59,7 +62,7 @@ function approveApplication() {
   I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Approve Application');
   I.wait(2);
   I.click('Go');
-  I.wait(2);
+  I.wait(5);
   I.selectOption('select[id=orderDirection]', 'Consent Order Accepted as drafted');
   I.wait(2);
   I.checkOption('input[id="orderDirectionAbsolute-No"]');

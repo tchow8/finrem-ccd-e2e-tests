@@ -5,9 +5,12 @@ exports.config = {
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
-      url: testConfig.TestFrontendUrl || 'https://www-ccd.nonprod.platform.hmcts.net/',
+      url: testConfig.TestFrontendUrl || 'https://www.ccd.demo.platform.hmcts.net/',
       waitForTimeout: 5000,
-      show: false,
+      waitForAction: 7000,
+      getPageTimeout: 60000,
+      show: true,
+      waitForNavigation: 'networkidle0',
       ignoreHTTPSErrors: true,
       headless: true,
       chrome: {
