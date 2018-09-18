@@ -30,7 +30,7 @@ Scenario('Verify Court Admin update case Scenario', I => {
   I.updateCase();
 });
 
-Scenario('Verify Court judge approve case', I => {
+Scenario.only('Verify Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(2);
   I.selectOption('select[id=wb-case-state]', 'Awaiting Judicial Response');

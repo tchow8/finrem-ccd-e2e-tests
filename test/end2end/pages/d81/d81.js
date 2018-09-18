@@ -2,11 +2,11 @@
 
 function d81() {
   const I = this;
-  I.wait(2);
+  I.wait(5);
   I.checkOption('input[id="d81Question-Yes"]');
-  I.wait(1);
+  I.wait(3);
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
-  I.wait(1);
+  I.wait(3);
   I.click('Continue');
 }
 
