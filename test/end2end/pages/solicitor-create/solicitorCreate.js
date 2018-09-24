@@ -5,9 +5,10 @@ function solicitorCreate(reference) {
   I.fillField('input[id="solicitorName"]', 'Arrow');
   I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
-  I.fillField('input[id="solicitorAddress1"]', '102 PF');
-  I.fillField('input[id="solicitorAddress4"]', 'Westminster');
-  I.fillField('input[id="solicitorAddress5"]', 'London');
+  I.fillField('input[id="postcodeInput"]', 'TW3 1SS');
+  I.click('Find address');
+  I.wait(1);
+  I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
   I.fillField('input[id="solicitorEmail"]', 'vivred@mailinator.com');
   I.checkOption('input[id="solicitorAgreeToReceiveEmails-No"]');
   I.click('Continue');
