@@ -10,6 +10,7 @@ exports.config = {
       waitForAction: 7000,
       getPageTimeout: 60000,
       show: true,
+      windowSize: '1152x864',
       waitForNavigation: 'networkidle0',
       ignoreHTTPSErrors: true,
       headless: true,
