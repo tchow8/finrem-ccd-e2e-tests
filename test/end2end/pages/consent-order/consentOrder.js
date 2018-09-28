@@ -5,7 +5,7 @@ function consentOrder() {
   I.wait(2);
   I.attachFile('input[id="consentOrder"]', 'data/fileupload.txt');
   I.attachFile('input[id="consentOrderText"]', 'data/fileupload.txt');
-  I.wait(1);
+  I.wait(2);
   I.click('Continue');
 }
 

@@ -5,13 +5,17 @@ function respondentDetails() {
   I.wait(2);
   I.fillField('input[id="appRespondentFMName"]', 'viv');
   I.fillField('input[id="appRespondentLName"]', 'resp');
-  I.checkOption('input[id="appRespondentRep-No"]');
+  I.checkOption('input[id="appRespondentRep-Yes"]');
   I.wait(2);
-  I.fillField('input[id="respondentAddress1"]', '101 PF');
-  I.fillField('input[id="respondentAddress4"]', 'London');
-  I.fillField('input[id="respondentAddress5"]', 'SW101AJ');
+  I.fillField('input[id="rSolicitorName"]', 'MahSol');
+  I.fillField('input[id="rSolicitorFirm"]', 'MahFirm');
+  I.fillField('input[id="postcodeInput"]', 'TW3 1SS');
+  I.click('Find address');
+  I.wait(2);
+  I.selectOption('select[id="addressList"]', '75 Pears Road, Hounslow');
+  I.wait(1);
   I.fillField('input[id="respondentEmail"]', 'vivrepondent@mailinator.com');
-  I.wait(2);
+  I.wait(1);
   I.click('Continue');
 }
 
