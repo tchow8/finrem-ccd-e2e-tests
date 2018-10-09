@@ -2,7 +2,7 @@
 
 function searchCase(reference) {
   const I = this;
-  I.wait(2);
+  I.wait(3);
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
   I.wait(3);
   I.click('Apply');
@@ -35,7 +35,7 @@ function updateCase() {
   I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Issue Application');
   I.wait(2);
   I.click('Go');
-  I.wait(2);
+  I.wait(3);
   I.fillField('input[id="issueDate-day"]', '1');
   I.fillField('input[id="issueDate-month"]', '2');
   I.fillField('input[id="issueDate-year"]', '2000');
@@ -43,9 +43,11 @@ function updateCase() {
   I.wait(2);
   I.click('Submit');
   I.wait(2);
-  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Refer to Judge');
+  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Assign To Judge');
   I.wait(2);
   I.click('Go');
+  I.wait(2);
+  I.selectOption('select[id="assignedToJudgeReason"]', 'Draft consent order');
   I.wait(2);
   I.selectOption('select[id="assignedToJudge"]', 'JUI Test Judge Financial Remedy');
   I.wait(2);

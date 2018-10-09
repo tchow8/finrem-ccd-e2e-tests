@@ -25,7 +25,7 @@ Scenario('Verify Solicitors Happypath Scenario', I => {
 
 Scenario('Verify Court Admin update case Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(2);
+  I.wait(3);
   I.searchCase(solRef);
   I.updateCase();
 });

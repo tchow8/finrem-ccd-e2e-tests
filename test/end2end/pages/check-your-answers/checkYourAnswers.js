@@ -2,13 +2,12 @@
 
 function checkYourAnswers() {
   const I = this;
-  I.wait(2);
-  I.see('Solicitor Details');
-  I.see('Applicant Details');
-  I.see('div');
-  I.see('Respondent Detail');
-  I.see('resp')
-  I.wait(2);
+  I.wait(3);
+  I.see('SOLICITOR DETAILS');
+  I.see('DIVORCE DETAILS');
+  I.see('APPLICANT’S DETAILS');
+  I.see('RESPONDENT DETAILS');
+  I.wait(3);
   I.click('Submit');
   I.wait(10);
 }
