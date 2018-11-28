@@ -3,7 +3,7 @@ const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
 
-Scenario('Verify Solicitors Happypath Scenario', I => {
+Scenario.only('Verify Solicitors Happypath Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase();
   I.solicitorCreate(solRef);
@@ -17,6 +17,7 @@ Scenario('Verify Solicitors Happypath Scenario', I => {
   I.d81();
   I.optionalDocuments();
   I.paymentDetails();
+  I.informationPage();
   I.checkYourAnswers();
   I.see('Consent Order Application');
   I.see('Financial Remedy SOLICITOR');

@@ -8,6 +8,10 @@ function divorceDetails() {
   I.wait(2);
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
   I.wait(5);
+  I.fillField('input[id="divorceDecreeNisiDate-day"]', '1');
+  I.fillField('input[id="divorceDecreeNisiDate-month"]', '2');
+  I.fillField('input[id="divorceDecreeNisiDate-year"]', '2010');
+  I.wait(2)
   I.click('Continue');
 }
 
