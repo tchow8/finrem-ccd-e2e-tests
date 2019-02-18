@@ -1,7 +1,7 @@
 
 function solicitorCreate(reference) {
   const I = this;
-  I.wait('3');
+  I.wait('4');
   I.fillField('input[id="solicitorName"]', 'Arrow');
   I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
@@ -9,7 +9,7 @@ function solicitorCreate(reference) {
   I.click('Find address');
   I.wait(1);
   I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
-  I.fillField('input[id="solicitorEmail"]', 'vivred@mailinator.com');
+  I.fillField('input[id="solicitorEmail"]', 'mahesh.goduguchinta@hmcts.net');
   I.checkOption('input[id="solicitorAgreeToReceiveEmails-No"]');
   I.click('Continue');
 }
