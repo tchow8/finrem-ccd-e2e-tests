@@ -17,7 +17,7 @@ function respondentDetails() {
   I.fillField('input[id="respondentEmail"]', 'vivrepondent@mailinator.com');
   I.wait(2);
   I.click('Continue');
-  I.wait(2);
+  I.wait(5);
 }
 
 module.exports = { respondentDetails };

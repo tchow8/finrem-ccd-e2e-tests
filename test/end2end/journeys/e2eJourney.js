@@ -18,7 +18,7 @@ Scenario('Verify Solicitors Happypath Scenario', I => {
   I.informationPage();
   I.checkYourAnswers();
   I.see('Consent Order Application');
-  I.wait(5);
+  I.wait(10);
   I.optionsPage();
   I.authorisation();
   I.paymentPage();

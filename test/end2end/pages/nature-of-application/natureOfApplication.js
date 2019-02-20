@@ -12,7 +12,7 @@ function natureOfApplication() {
   I.fillField('#natureOfApplication3b', 'Halifax mortgage');
   I.wait(10);
   I.click('Continue');
-  I.wait(2);
+  I.wait(5);
 }
 
 module.exports = { natureOfApplication };

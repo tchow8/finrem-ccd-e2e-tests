@@ -11,6 +11,7 @@ function createCase() {
   I.wait(2);
   I.selectOption('select[id= cc-event]', 'Consent Order Application');
   I.click('Start');
+  I.wait(4);
 }
 
 module.exports = { createCase };
