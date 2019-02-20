@@ -2,7 +2,7 @@
 
 function authorisation() {
   const I = this;
-  I.wait(2);
+  I.wait(3);
   I.fillField('input[id="authorisationName"]', 'Vivek');
   I.fillField('input[id="authorisationFirm"]', 'Abc Org');
   I.fillField('input[id="authorisation2b"]', 'Sol Org reb');
@@ -10,6 +10,7 @@ function authorisation() {
   I.fillField('input[id="authorisation3-month"]', '1');
   I.fillField('input[id="authorisation3-year"]', '1981');
   I.click('Continue');
+  I.wait(5);
 }
 
 module.exports = { authorisation };

@@ -11,8 +11,8 @@ function natureOfApplication() {
   I.wait(10);
   I.fillField('#natureOfApplication3b', 'Halifax mortgage');
   I.wait(10);
-  // I.fillField('input[id="applicantLName"]', 'div');
   I.click('Continue');
+  I.wait(2);
 }
 
 module.exports = { natureOfApplication };

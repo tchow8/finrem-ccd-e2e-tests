@@ -15,8 +15,9 @@ function respondentDetails() {
   I.selectOption('select[id="addressList"]', '75 Pears Road, Hounslow');
   I.wait(1);
   I.fillField('input[id="respondentEmail"]', 'vivrepondent@mailinator.com');
-  I.wait(1);
+  I.wait(2);
   I.click('Continue');
+  I.wait(2);
 }
 
 module.exports = { respondentDetails };

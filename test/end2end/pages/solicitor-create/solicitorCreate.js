@@ -1,7 +1,7 @@
 
 function solicitorCreate(reference) {
   const I = this;
-  I.wait('4');
+  I.wait(4);
   I.fillField('input[id="solicitorName"]', 'Arrow');
   I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
@@ -11,7 +11,9 @@ function solicitorCreate(reference) {
   I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
   I.fillField('input[id="solicitorEmail"]', 'mahesh.goduguchinta@hmcts.net');
   I.checkOption('input[id="solicitorAgreeToReceiveEmails-No"]');
+  I.wait(2);
   I.click('Continue');
+  I.wait(5);
 }
 
 function updateSolAddress() {
@@ -24,7 +26,7 @@ function updateSolAddress() {
   I.fillField('input[id="field-trigger-summary"]', 'updated Address');
   I.wait(1);
   I.click('Submit');
-  I.wait(2);
+  I.wait(3);
 }
 
 module.exports = { solicitorCreate, updateSolAddress };

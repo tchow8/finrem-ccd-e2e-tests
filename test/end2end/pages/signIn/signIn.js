@@ -8,7 +8,7 @@ function signinIdam(username, password) {
   I.fillField('username', username);
   I.fillField('password', password);
   I.click('Sign in');
-  I.wait(10);
+  I.wait(15);
 }
 
 module.exports = { signinIdam };

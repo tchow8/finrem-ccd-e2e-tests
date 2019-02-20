@@ -8,6 +8,7 @@ function d81() {
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
   I.wait(3);
   I.click('Continue');
+  I.wait(4);
 }
 
 module.exports = { d81 };

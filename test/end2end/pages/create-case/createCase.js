@@ -2,7 +2,7 @@
 
 function createCase() {
   const I = this;
-
+  I.wait(15);
   I.click('Create new case');
   I.wait(10);
   I.selectOption('select[id=cc-jurisdiction]', 'Family Divorce');

@@ -3,43 +3,31 @@
 function searchCase(reference) {
   const I = this;
   I.wait(5);
+  I.selectOption('select[id="wb-case-type"]', 'Financial Remedy Consented');
+  I.wait(5);
+  I.selectOption('select[id="wb-case-state"]', 'Any');
+  I.wait(5);
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
   I.wait(5);
   I.click('Apply');
-  I.wait(5);
-  I.click('a div.text-16');
-  I.wait(5);
+  I.wait(50);
+  I.click({ xpath: '//*[@id="search-result"]/ccd-search-result/table/tbody/tr/td[1]/a/ccd-field-read/ccd-field-read-label/ccd-read-number-field' });
+  I.wait(10);
 
 }
 
 function optionsPage(){
   const I = this;
-  I.wait(5);
-  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Application Payment Submission');
+  I.wait(10);
+  I.selectOption('select[id="next-step"]', 'Application Payment Submission');
   I.wait(5);
   I.click('Go');
+  I.wait(5);
 }
 
 function updateCase() {
   const I = this;
-  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'HWF Payment');
   I.wait(5);
-  I.click('Go');
-  I.wait(5);
-  I.click('Submit');
-  I.wait(5);
-  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Awaiting Payment Response');
-  I.wait(5);
-  I.click('Go');
-  I.wait(5);
-  I.click('Submit');
-  I.wait(5);
-  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'HWF Application Accepted');
-  I.wait(5);
-  I.click('Go');
-  I.wait(5);
-  I.click('Submit');
-  I.wait(8);
   I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Issue Application');
   I.wait(5);
   I.click('Go');
@@ -67,12 +55,13 @@ function updateCase() {
   I.click('Continue');
   I.wait(5);
   I.click('Submit');
+  I.wait(5);
 
 }
 
 function approveApplication() {
   const I = this;
-  I.wait(2);
+  I.wait(10);
   I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Approve Application');
   I.wait(2);
   I.click('Go');

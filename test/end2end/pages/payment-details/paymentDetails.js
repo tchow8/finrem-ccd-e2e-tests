@@ -1,12 +1,13 @@
 
 function paymentDetails() {
   const I = this;
+  I.wait(3);
+  I.fillField('input[id="PBANumber"]', 'PBA0078303');
   I.wait(2);
-  I.fillField('input[id="PBANumber"]', 'PBA222');
-  I.wait(1);
   I.fillField('input[id="PBAreference"]', 'reference');
-  I.wait(1);
+  I.wait(2);
   I.click('Continue');
+  I.wait(5);
 }
 
 module.exports = { paymentDetails };

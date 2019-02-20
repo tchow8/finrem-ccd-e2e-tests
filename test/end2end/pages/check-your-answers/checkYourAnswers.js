@@ -2,7 +2,7 @@
 
 function checkYourAnswers() {
   const I = this;
-  I.wait(3);
+  I.wait(5);
   I.see('SOLICITOR DETAILS');
   I.see('DIVORCE DETAILS');
   I.see('APPLICANT DETAILS');
