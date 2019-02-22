@@ -6,7 +6,9 @@ function applicantDetails() {
   I.fillField('input[id="applicantFMName"]', 'viv');
   I.wait(3);
   I.fillField('input[id="applicantLName"]', 'div');
+  I.wait(3);
   I.click('Continue');
+  I.wait(5);
 }
 
 module.exports = { applicantDetails };

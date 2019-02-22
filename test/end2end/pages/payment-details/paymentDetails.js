@@ -2,7 +2,7 @@
 function paymentDetails() {
   const I = this;
   I.wait(3);
-  I.fillField('input[id="PBANumber"]', 'PBA0078303');
+  I.fillField('input[id="PBANumber"]', 'PBA222');
   I.wait(2);
   I.fillField('input[id="PBAreference"]', 'reference');
   I.wait(2);

@@ -19,7 +19,7 @@ function searchCase(reference) {
 function optionsPage(){
   const I = this;
   I.wait(10);
-  I.selectOption('select[id="next-step"]', 'Application Payment Submission');
+  I.selectOption('select[id="next-step"]', 'Case Submission');
   I.wait(5);
   I.click('Go');
   I.wait(5);
@@ -38,7 +38,7 @@ function updateCase() {
   I.click('Continue');
   I.wait(10);
   I.click('Submit');
-  I.wait(10);
+  I.wait(20);
   I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Assign To Judge');
   I.wait(10);
   I.click('Go');
@@ -65,21 +65,21 @@ function approveApplication() {
   I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Approve Application');
   I.wait(5);
   I.click('Go');
-  I.wait(5);
+  I.wait(10);
   I.selectOption('select[id=orderDirection]', 'Consent Order Accepted as drafted');
-  I.wait(5);
+  I.wait(10);
   I.checkOption('input[id="orderDirectionAbsolute-No"]');
-  I.wait(5);
+  I.wait(10);
   I.selectOption('select[id=orderDirectionJudge]', 'District Judge');
-  I.wait(5);
+  I.wait(10);
   I.fillField('textarea[id="orderDirectionJudgeName"]', 'vivred test ');
-  I.wait(5);
+  I.wait(10);
   I.fillField('input[id="orderDirectionDate-day"]', '1');
   I.fillField('input[id="orderDirectionDate-month"]', '2');
   I.fillField('input[id="orderDirectionDate-year"]', '2010');
-  I.wait(5);
+  I.wait(10);
   I.click('Continue');
-  I.wait(5);
+  I.wait(10);
   I.click('Submit');
   I.wait(5);
 }

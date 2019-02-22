@@ -1,7 +1,7 @@
 
 function solicitorCreate(reference) {
   const I = this;
-  I.wait(4);
+  I.wait(5);
   I.fillField('input[id="solicitorName"]', 'Arrow');
   I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
@@ -10,10 +10,10 @@ function solicitorCreate(reference) {
   I.wait(1);
   I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
   I.fillField('input[id="solicitorEmail"]', 'mahesh.goduguchinta@hmcts.net');
-  I.checkOption('input[id="solicitorAgreeToReceiveEmails-No"]');
+  I.checkOption('input[id="solicitorAgreeToReceiveEmails-Yes"]');
   I.wait(2);
   I.click('Continue');
-  I.wait(5);
+  I.wait(10);
 }
 
 function updateSolAddress() {
