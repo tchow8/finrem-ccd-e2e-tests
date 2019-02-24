@@ -2,7 +2,7 @@
 properties([
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         parameters([
-                string(name: 'RUNNING_ENV', defaultValue: 'aat', description: 'CNP Environment to Run Tests in')
+                string(name: 'RUNNING_ENV', defaultValue: '', description: 'CNP Environment to Run Tests in')
         ])
 ])
 
@@ -21,8 +21,7 @@ node {
         stage('Env Setup') {
             withSubscription('nonprod') {
                 def az = { cmd -> return sh(script: "env AZURE_CONFIG_DIR=/opt/jenkins/.azure-${env.SUBSCRIPTION_NAME} az ${cmd}", returnStdout: true).trim() }
-
-                env.TEST_E2E_URL =  az('keyvault secret show --vault-name finrem-aat --name test-e2e-url --query value -o tsv').trim()
+  
                 env.TEST_SOLS_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name fr-solicitor-username --query value -o tsv').trim()
                 env.TEST_SOLS_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name fr-solicitor-password --query value -o tsv').trim()
                 env.TEST_CASEWORKER_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name fr-caseworker-username --query value -o tsv').trim()
