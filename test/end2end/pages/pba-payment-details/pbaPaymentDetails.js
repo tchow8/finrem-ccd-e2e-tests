@@ -1,5 +1,5 @@
 
-function paymentDetails() {
+function pbaPaymentDetails() {
   const I = this;
   I.wait(3);
   I.fillField('input[id="PBANumber"]', 'PBA222');
@@ -10,4 +10,4 @@ function paymentDetails() {
   I.wait(5);
 }
 
-module.exports = { paymentDetails };
+module.exports = { pbaPaymentDetails };

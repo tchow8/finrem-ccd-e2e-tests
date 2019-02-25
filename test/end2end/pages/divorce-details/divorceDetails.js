@@ -12,7 +12,7 @@ function divorceDetails() {
   I.fillField('input[id="divorceDecreeNisiDate-day"]', '1');
   I.fillField('input[id="divorceDecreeNisiDate-month"]', '2');
   I.fillField('input[id="divorceDecreeNisiDate-year"]', '2010');
-  I.wait(2)
+  I.wait(2);
   I.click('Continue');
   I.wait(2);
 }
