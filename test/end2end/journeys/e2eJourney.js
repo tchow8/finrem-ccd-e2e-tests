@@ -37,6 +37,7 @@ Scenario('Verify Court Admin update case Scenario', I => {
   I.wait(10);
   I.searchCase(solRef);
   //I.pbaUpdateCase();
+  I.addNote();
   I.hwfUpdateCase();
 
 });
@@ -44,7 +45,6 @@ Scenario('Verify Court Admin update case Scenario', I => {
 Scenario('Verify Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(2);
-  //I.selectOption(‘select[id=wb-case-state]’, ‘Awaiting Judicial Response’);
   I.searchCase(solRef);
   I.approveApplication();
   I.see('Approve Application');
