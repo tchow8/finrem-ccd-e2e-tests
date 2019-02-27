@@ -10,9 +10,9 @@ function addNote() {
     I.wait(10);
     I.fillField('#caseNotesCollection_0_caseNoteAuthor', 'I am the author1');
     I.wait(10);
-    I.fillField('input[id="issueDate-day"]', '2');
-    I.fillField('input[id="issueDate-month"]', '2');
-    I.fillField('input[id="issueDate-year"]', '2019');
+    I.fillField('input[id="caseNotesCollection_0_caseNoteDate-day"]', '2');
+    I.fillField('input[id="caseNotesCollection_0_caseNoteDate-month"]', '2');
+    I.fillField('input[id="caseNotesCollection_0_caseNoteDate-year"]', '2019');
     I.wait(10);
     I.fillField('#caseNotesCollection_0_caseNote', 'Notes for Judge to test');
     I.wait(10);
