@@ -19,6 +19,7 @@ function addNote() {
     I.click('Continue');
     I.wait(10);
     I.click('Submit');
+    I.wait(10);
 
 
 }
