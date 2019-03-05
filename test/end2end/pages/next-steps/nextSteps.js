@@ -10,26 +10,17 @@ function searchCase(reference) {
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
   I.wait(5);
   I.click('Apply');
-  I.wait(40);
+  I.wait(20);
   I.click({ xpath: '//*[@id="search-result"]/ccd-search-result/table/tbody/tr/td[1]/a/ccd-field-read/ccd-field-read-label/ccd-read-number-field' });
   I.wait(10);
 
-}
-
-function optionsPage(){
-  const I = this;
-  I.wait(10);
-  I.selectOption('select[id="next-step"]', 'Case Submission');
-  I.wait(5);
-  I.click('Go');
-  I.wait(5);
 }
 
 
 function approveApplication() {
   const I = this;
   I.wait(10);
-  I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Approve Application');
+  I.selectOption('select[id="next-step"]', 'Approve Application');
   I.wait(5);
   I.click('Go');
   I.wait(10);
@@ -41,9 +32,9 @@ function approveApplication() {
   I.wait(10);
   I.fillField('textarea[id="orderDirectionJudgeName"]', 'vivred test ');
   I.wait(10);
-  I.fillField('input[id="orderDirectionDate-day"]', '1');
+  I.fillField('input[id="orderDirectionDate-day"]', '5');
   I.fillField('input[id="orderDirectionDate-month"]', '2');
-  I.fillField('input[id="orderDirectionDate-year"]', '2010');
+  I.fillField('input[id="orderDirectionDate-year"]', '2019');
   I.wait(10);
   I.click('Continue');
   I.wait(10);
@@ -52,4 +43,4 @@ function approveApplication() {
 }
 
 
-module.exports = { searchCase, approveApplication, optionsPage};
+module.exports = { searchCase, approveApplication };
