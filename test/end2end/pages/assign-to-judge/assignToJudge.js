@@ -9,7 +9,7 @@ function assignToJudge() {
     I.wait(10);
     I.selectOption('select[id="assignedToJudge"]', 'nasim_fr_judge@mailinator.com');
     I.wait(10);
-    I.fillField('input[id="referToJudgeDateFromRespondToOrder-day"]', '3');
+    I.fillField('input[id="referToJudgeDateFromRespondToOrder-day"]', '13');
     I.fillField('input[id="referToJudgeDateFromRespondToOrder-month"]', '2');
     I.fillField('input[id="referToJudgeDateFromRespondToOrder-year"]', '2019');
     I.wait(10);

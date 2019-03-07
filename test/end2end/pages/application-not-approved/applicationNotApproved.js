@@ -1,7 +1,7 @@
 function applicationNotApproved() {
     const I = this;
     I.wait(10);
-    I.selectOption('select.form-control.ccd-dropdown.EventTrigger-empty.ng-untouched.ng-pristine.ng-invalid', 'Application Not Approved');
+    I.selectOption('select[id="next-step"]', 'Application Not Approved');
     I.wait(10);
     I.click('Go');
     I.wait(10);

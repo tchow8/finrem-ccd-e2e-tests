@@ -11,7 +11,7 @@ function respondOrder(){
     I.wait(10);
     I.attachFile('input[type="file"]', 'data/fileupload.txt');
     I.wait(10);
-    I.fillField('input[id="respondToOrderDocuments_0_DocumentDateAdded-day"]', '2');
+    I.fillField('input[id="respondToOrderDocuments_0_DocumentDateAdded-day"]', '12');
     I.wait(2);
     I.fillField('input[id="respondToOrderDocuments_0_DocumentDateAdded-month"]', '2');
     I.wait(2);

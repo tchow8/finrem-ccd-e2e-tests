@@ -16,17 +16,5 @@ function solicitorCreate(reference) {
   I.wait(10);
 }
 
-function updateSolAddress() {
-  const I = this;
-  I.wait(5);
-  I.fillField('input[id="solicitorAddress1"]', '103 PF');
-  I.fillField('input[id="solicitorAddress4"]', 'stjamespark');
-  I.click('Continue');
-  I.wait(5);
-  I.fillField('input[id="field-trigger-summary"]', 'updated Address');
-  I.wait(5);
-  I.click('Submit');
-  I.wait(5);
-}
 
-module.exports = { solicitorCreate, updateSolAddress };
+module.exports = { solicitorCreate };
