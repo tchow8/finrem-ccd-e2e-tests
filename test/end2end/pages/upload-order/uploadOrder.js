@@ -13,7 +13,7 @@ function uploadOrder(){
     I.wait(10);
     I.attachFile('input[type="file"]', 'data/fileupload.txt');
     I.wait(10);
-    I.fillField('input[id="uploadOrder_0_DocumentDateAdded-day"]', '1');
+    I.fillField('input[id="uploadOrder_0_DocumentDateAdded-day"]', '10');
     I.wait(2);
     I.fillField('input[id="uploadOrder_0_DocumentDateAdded-month"]', '2');
     I.wait(2);

@@ -11,7 +11,7 @@ function divorceDetails() {
   I.wait(5);
   I.fillField('input[id="divorceDecreeNisiDate-day"]', '1');
   I.fillField('input[id="divorceDecreeNisiDate-month"]', '2');
-  I.fillField('input[id="divorceDecreeNisiDate-year"]', '2010');
+  I.fillField('input[id="divorceDecreeNisiDate-year"]', '2019');
   I.wait(5);
   I.click('Continue');
   I.wait(5);

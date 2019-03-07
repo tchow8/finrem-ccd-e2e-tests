@@ -32,7 +32,7 @@ function approveApplication() {
   I.wait(10);
   I.fillField('textarea[id="orderDirectionJudgeName"]', 'vivred test ');
   I.wait(10);
-  I.fillField('input[id="orderDirectionDate-day"]', '5');
+  I.fillField('input[id="orderDirectionDate-day"]', '15');
   I.fillField('input[id="orderDirectionDate-month"]', '2');
   I.fillField('input[id="orderDirectionDate-year"]', '2019');
   I.wait(10);

@@ -42,41 +42,68 @@ Scenario('Verify Court Admin update case Scenario', I => {
 
 });
 
+
+
+Scenario('Verify Court judge application not approved case', I => {
+    I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+    I.wait(10);
+    I.searchCase(solRef);
+    I.applicationNotApproved();
+    I.see('Application Not Approved');
+
+});
+
+
+
+Scenario('Verify Court Admin upload order Scenario', I => {
+    I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+    I.wait(10);
+    I.searchCase(solRef);
+    I.uploadOrder();
+    I.see('Upload Order');
+
+});
+
+
+
+Scenario('Verify Solicitors Respond to order Scenario', I => {
+    I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+    I.wait(10);
+    I.searchCase(solRef);
+    I.respondOrder();
+    I.see('Respond To Order');
+
+});
+
+
+
+Scenario('Verify Court Admin Assign to Judge Scenario for Response Received', I => {
+    I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+    I.wait(10);
+    I.searchCase(solRef);
+    I.assignToJudge();
+    I.see('Assign To Judge');
+
+});
+
+
+
 Scenario('Verify Court judge approve case', I => {
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.wait(5);
-  I.searchCase(solRef);
-  I.applicationNotApproved();
-  I.see('Application Not Approved');
-  I.wait(5);
-  I.click('#sign-out');
-  I.wait(5);
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(5);
-  I.searchCase(solRef);
-  I.uploadOrder();
-  I.see('Upload Order');
-  I.wait(5);
-  I.click('#sign-out');
-  I.wait(5);
-  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.wait(5);
-  I.searchCase(solRef);
-  I.respondOrder();
-  I.see('Respond To Order');
-  I.wait(5);
-  I.click('#sign-out');
-  I.wait(5);
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(5);
-  I.searchCase(solRef);
-  I.assignToJudge();
-  I.wait(5);
-  I.click('#sign-out');
-  I.wait(5);
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.wait(5);
-  I.searchCase(solRef);
-  I.approveApplication();
-  I.see('Approve Application');
+    I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+    I.wait(10);
+    I.searchCase(solRef);
+    I.approveApplication();
+    I.see('Approve Application');
+
+});
+
+
+
+Scenario('Verify Court Admin upload Consent order Scenario', I => {
+    I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+    I.wait(10);
+    I.searchCase(solRef);
+    I.uploadConsentOrder();
+    I.see('Upload Consent Order');
+
 });
