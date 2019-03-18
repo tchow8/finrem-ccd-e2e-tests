@@ -12,6 +12,7 @@ function setActorActions(data) {
   }
 }
 
+
 module.exports = function() {
   const stepsKeys = Object.keys(steps);
 

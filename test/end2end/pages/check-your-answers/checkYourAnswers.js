@@ -7,7 +7,7 @@ function checkYourAnswers() {
   I.see('DIVORCE DETAILS');
   I.see('APPLICANT DETAILS');
   I.see('RESPONDENT DETAILS');
-  I.wait(3);
+  I.wait(10);
   I.click('Submit');
   I.wait(10);
 }
