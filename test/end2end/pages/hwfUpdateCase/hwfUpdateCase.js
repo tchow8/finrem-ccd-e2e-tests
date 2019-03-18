@@ -17,7 +17,7 @@ function hwfUpdateCase() {
   I.click('Continue');
   I.wait(10);
   I.click('Submit');
-  I.wait(20);
+  I.wait(10);
   I.selectOption('select[id="next-step"]', 'Assign To Judge');
   I.wait(10);
   I.click('Go');
