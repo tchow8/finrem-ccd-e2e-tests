@@ -25,22 +25,10 @@ withParameterizedPipeline("nodejs", params.PRODUCT_NAME, params.APP, params.Jour
 
             stage('Journey Tests') {
                 try {
-                    if  (params.JourneyType == 'test-e2e') {
-                        sh 'yarn install'
-                        sh 'yarn test-e2e'
-                    }
-                    else if(params.JourneyType == 'e2eHwfJourney')
 
-                    {
-                        sh 'yarn install'
-                        sh 'yarn e2eHwfJourney'
-                    }
-                    else if (params.JourneyType == 'e2ePbaJourney')
+                     sh 'yarn install'
+                     sh 'yarn + '${params.journeyType}''
 
-                    {
-                        sh 'yarn install'
-                        sh 'yarn e2ePbaJourney'
-                    }
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
