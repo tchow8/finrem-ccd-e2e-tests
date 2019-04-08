@@ -13,7 +13,7 @@ def product = "finrem-ccd"
 def component = "e2e"
 
 
-withPipeline("nodejs", product, component)
+withPipeline("nodejs", PRODUCT_NAME, APP)
  {
         ws('workspace/finrem-ccd-e2e-tests') {
             stage('Checkout') {
