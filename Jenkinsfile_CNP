@@ -21,7 +21,6 @@ withPipeline("nodejs", product, component)
                     checkout scm
                 }
 
-                node('master') {
                     stage('Journey Tests') {
                         try {
 
@@ -49,4 +48,3 @@ withPipeline("nodejs", product, component)
                 deleteDir()
             }
 
-        }
