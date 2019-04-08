@@ -18,15 +18,15 @@ withPipeline("nodejs", product, component) {
 
             stage('Journey Tests') {
                 try {
-                    sh 'yarn install'
-                    sh 'yarn test-e2e'
+                    sh '''yarn install'''
+                    sh '''yarn test-e2e'''
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
                     echo "RESULT: ${currentBuild.result}"
                 } finally {
-                    sh 'ls -lart'
-                    sh 'ls -lrt ./functional-output'
+                    sh '''ls -lart'''
+                    sh '''ls -lrt ./functional-output'''
                     archiveArtifacts 'functional-output/*'
 
                 }
