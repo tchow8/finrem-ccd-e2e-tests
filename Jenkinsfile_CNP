@@ -1,5 +1,10 @@
 #!groovy
 properties([
+        parameters([
+                string(name: 'PRODUCT_NAME', defaultValue: 'finrem-ccd', description: 'Financial Remedy Application'),
+                string(name: 'APP', defaultValue: 'cos', description:  'Financial Remedy Case Orchestration Service'),
+                choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
+        ]),
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
@@ -9,7 +14,9 @@ properties([
 def product = "finrem-ccd"
 def component = "e2e"
 
-withPipeline("nodejs", product, component) {
+
+withParameterizedPipeline("nodejs", params.PRODUCT_NAME, params.APP, params.JourneyType)
+ {
         ws('workspace/finrem-ccd-e2e-tests') {
             stage('Checkout') {
                 deleteDir()
@@ -18,8 +25,10 @@ withPipeline("nodejs", product, component) {
 
             stage('Journey Tests') {
                 try {
-                    sh 'yarn install'
-                    sh 'yarn test-e2e'
+
+                     sh 'yarn install'
+                     sh 'yarn + '${params.journeyType}''
+
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
