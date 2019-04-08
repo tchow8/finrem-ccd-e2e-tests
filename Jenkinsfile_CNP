@@ -14,37 +14,39 @@ def component = "e2e"
 
 
 withPipeline("nodejs", product, component)
- {
-        ws('workspace/finrem-ccd-e2e-tests') {
-            stage('Checkout') {
+        {
+            ws('workspace/finrem-ccd-e2e-tests') {
+                stage('Checkout') {
+                    deleteDir()
+                    checkout scm
+                }
+
+                node('master') {
+                    stage('Journey Tests') {
+                        try {
+
+                            sh 'yarn install'
+                            sh 'yarn ' '' +$ { params.journeyType } + ''
+
+                        }
+                        catch (Exception err) {
+                            currentBuild.result = 'UNSTABLE'
+                            echo "RESULT: ${currentBuild.result}"
+                        } finally {
+                            sh 'ls -lart'
+                            sh 'ls -lrt ./functional-output'
+                            archiveArtifacts 'functional-output/*'
+
+                        }
+
+                    }
+
+                    stage('After run') {
+                        echo "finished"
+                    }
+
+                }
                 deleteDir()
-                checkout scm
-            }
-
-            stage('Journey Tests') {
-                try {
-
-                     sh 'yarn install'
-                     sh 'yarn e2eHwfJourney'
-
-                }
-                catch (Exception err) {
-                    currentBuild.result = 'UNSTABLE'
-                    echo "RESULT: ${currentBuild.result}"
-                } finally {
-                    sh 'ls -lart'
-                    sh 'ls -lrt ./functional-output'
-                    archiveArtifacts 'functional-output/*'
-
-                }
-
-            }
-
-            stage('After run') {
-                echo "finished"
             }
 
         }
-        deleteDir()
-}
-
