@@ -1,8 +1,6 @@
 #!groovy
 properties([
         parameters([
-                string(name: 'PRODUCT_NAME', defaultValue: 'finrem-ccd', description: 'Financial Remedy Application'),
-                string(name: 'APP', defaultValue: 'cos', description:  'Financial Remedy Case Orchestration Service'),
                 choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
         ]),
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
