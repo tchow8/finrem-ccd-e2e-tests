@@ -2,12 +2,12 @@ const testConfig = require('test/config.js');
 
 exports.config = {
 
-    if (process.env.JourneyType == "test-e2e")
-    {tests: './**/**/*.js'}
-    else if(process.env.JournetyType == "e2eHwfJourney"),
-     {tests: './**/**/e2eHwfJourney.js'}
-     else if(process.env.JournetyType == "e2ePbaJourney"),
-          {tests: './**/**/e2ePbaJourney.js'}
+//    if (process.env.JourneyType == "test-e2e")
+    tests: './**/**/*.js'
+//    else if(process.env.JournetyType == "e2eHwfJourney"),
+//     {tests: './**/**/e2eHwfJourney.js'}
+//     else if(process.env.JournetyType == "e2ePbaJourney"),
+//          {tests: './**/**/e2ePbaJourney.js'}
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
