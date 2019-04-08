@@ -15,7 +15,7 @@ def product = "finrem-ccd"
 def component = "e2e"
 
 
-withParameterizedPipeline(nodejs,params.PRODUCT_NAME, params.APP)
+withPipeline("nodejs",params.PRODUCT_NAME, params.APP,params.journeyType)
  {
         ws('workspace/finrem-ccd-e2e-tests') {
             stage('Checkout') {
