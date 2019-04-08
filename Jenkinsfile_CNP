@@ -25,7 +25,7 @@ withPipeline("nodejs", product, component)
                 try {
 
                      sh 'yarn install'
-                     sh 'yarn + '${params.journeyType}''
+                     sh 'yarn' + '' + ${params.journeyType} + ''
 
                 }
                 catch (Exception err) {
@@ -47,3 +47,4 @@ withPipeline("nodejs", product, component)
         }
         deleteDir()
 }
+
