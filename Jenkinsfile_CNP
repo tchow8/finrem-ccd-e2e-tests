@@ -1,8 +1,5 @@
 #!groovy
 properties([
-        parameters([
-                choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
-        ]),
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         pipelineTriggers([[$class: 'GitHubPushTrigger']])
 ])
@@ -12,39 +9,34 @@ properties([
 def product = "finrem-ccd"
 def component = "e2e"
 
-
-withPipeline("nodejs", product, component)
-        {
-            ws('workspace/finrem-ccd-e2e-tests') {
-                stage('Checkout') {
-                    deleteDir()
-                    checkout scm
-                }
-
-                    stage('Journey Tests') {
-                        try {
-
-                            sh '''yarn install'''
-                            sh '''yarn ''' + ${params.journeyType} + ''
-
-                        }
-                        catch (Exception err) {
-                            currentBuild.result = 'UNSTABLE'
-                            echo "RESULT: ${currentBuild.result}"
-                        } finally {
-                            sh '''ls -lart'''
-                            sh '''ls -lrt ./functional-output'''
-                            archiveArtifacts '''functional-output/*'''
-
-                        }
-
-                    }
-
-                    stage('After run') {
-                        echo "finished"
-                    }
-
-                }
+withPipeline("nodejs", product, component) {
+        ws('workspace/finrem-ccd-e2e-tests') {
+            stage('Checkout') {
                 deleteDir()
+                checkout scm
             }
 
+            stage('Journey Tests') {
+                try {
+                    sh 'yarn install'
+                    sh 'yarn test-e2e'
+                }
+                catch (Exception err) {
+                    currentBuild.result = 'UNSTABLE'
+                    echo "RESULT: ${currentBuild.result}"
+                } finally {
+                    sh 'ls -lart'
+                    sh 'ls -lrt ./functional-output'
+                    archiveArtifacts 'functional-output/*'
+
+                }
+
+            }
+
+            stage('After run') {
+                echo "finished"
+            }
+
+        }
+        deleteDir()
+}
