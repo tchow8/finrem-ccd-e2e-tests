@@ -1,6 +1,9 @@
 #!groovy
 
 properties([
+        parameters([
+                choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
+        ]),
 
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         pipelineTriggers([[$class: 'GitHubPushTrigger']])
@@ -15,9 +18,7 @@ withPipeline("nodejs", product, component) {
 
     node('cnp-jenkins-builders3d8347') {
 
-        parameters([
-                choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
-        ])
+
             ws('workspace/finrem-ccd-e2e-tests') {
 
                 stage('Checkout') {
@@ -28,7 +29,7 @@ withPipeline("nodejs", product, component) {
             stage('Journey Tests') {
                 try {
                     sh 'yarn install'
-                    sh 'yarn   ''' + ${params.journeyType} + ''
+                    sh """ yarn  ${params.journeyType} """
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
