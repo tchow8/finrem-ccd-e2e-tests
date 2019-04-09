@@ -28,8 +28,9 @@ withPipeline("nodejs", product, component) {
 
             stage('Journey Tests') {
                 try {
+                    def journey = ${params.journeyType}
                     sh 'yarn install'
-                    sh """ yarn  ${params.journeyType} """
+                    sh 'yarn ''' + journey + ''
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
