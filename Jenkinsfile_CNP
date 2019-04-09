@@ -29,7 +29,7 @@ withPipeline("nodejs", product, component) {
 
             stage('Journey Tests') {
                 try {
-                    Journey = ${params.JourneyType}
+                    def Journey = ${params.JourneyType}
                     sh 'yarn install'
                     sh 'yarn ''' + Journey + ''
                 }
