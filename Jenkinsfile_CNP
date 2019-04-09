@@ -10,7 +10,8 @@ def product = "finrem-ccd"
 def component = "e2e"
 
 withPipeline("nodejs", product, component) {
-    node('master') {
+
+    agent none
         stage('Journey Tests') {
 
         ws('workspace/finrem-ccd-e2e-tests') {
@@ -45,4 +46,3 @@ withPipeline("nodejs", product, component) {
         deleteDir()
 }
 
-}
