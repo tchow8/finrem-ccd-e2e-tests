@@ -16,7 +16,7 @@ def component = "e2e"
 
 withPipeline("nodejs", product, component) {
 
-    node('cnp-jenkins-builders335bf24') {
+    node('cnp-jenkins-builders2ac110') {
 
 
 
@@ -27,15 +27,11 @@ withPipeline("nodejs", product, component) {
                     checkout scm
                 }
 
-                stage('journey parameter')
-                        {
-                            echo "Parameter Selected : ${params.JourneyType}"
-                        }
             stage('Journey Tests') {
                 try {
-
+                    Journey = ${params.JourneyType}
                     sh 'yarn install'
-                    sh 'yarn ''' + journey + ''
+                    sh 'yarn ''' + Journey + ''
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
