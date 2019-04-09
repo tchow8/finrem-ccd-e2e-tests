@@ -12,10 +12,10 @@ def component = "e2e"
 withPipeline("nodejs", product, component) {
     stage('Journey Tests') {
 
-        ws('workspace/finrem-ccd-e2e-tests') {
+        //ws('workspace/finrem-ccd-e2e-tests') {
 
             stage('Checkout') {
-                //deleteDir()
+                deleteDir()
                 checkout scm
             }
 
@@ -42,4 +42,4 @@ withPipeline("nodejs", product, component) {
 
         }
         deleteDir()
-}
+//}
