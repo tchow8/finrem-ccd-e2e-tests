@@ -16,7 +16,7 @@ def component = "e2e"
 
 withPipeline("nodejs", product, component) {
 
-    node('cnp-jenkins-builders309c60') {
+    node('cnp-jenkins-builders166740') {
 
 
 
