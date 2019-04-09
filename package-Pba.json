@@ -1,0 +1,23 @@
+{
+  "name": "finrem",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+
+    "test-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.conf.js --steps --reporter mochawesome",
+    "eslint": "cross-env NODE_PATH=. eslint .",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "cross-env": "^5.1.3"
+  },
+  "devDependencies": {
+    "@hmcts/eslint-config": "^1.4.0",
+    "codeceptjs": "^2.0.7",
+    "eslint": "^4.19.1",
+    "eslint-plugin-mocha": "^5.0.0",
+    "mochawesome": "^3.0.2",
+    "moment": "^2.22.2",
+    "puppeteer": "^1.5.0"
+  }
+}
