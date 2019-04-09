@@ -4,7 +4,7 @@ exports.config = {
 
 //  tests: './**/**/*.js',
 
-  grep: process.env.JourneyType
+  grep: process.env.JourneyType,
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
