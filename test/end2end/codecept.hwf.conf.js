@@ -2,7 +2,7 @@ const testConfig = require('test/config.js');
 
 exports.config = {
  tests: './**/**/e2eHwfJourney.js',
-  output: '/functional-output',
+//  output: '/functional-output',
   helpers: {
     Puppeteer: {
       url: testConfig.TestFrontendUrl || 'https://www.ccd.demo.platform.hmcts.net/',
