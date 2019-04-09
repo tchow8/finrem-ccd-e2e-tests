@@ -1,20 +1,10 @@
 const testConfig = require('test/config.js');
 
 exports.config = {
-   switch (Journey) {
-     default:
-       tests: './**/**/*.js';
-       break;
-     case "test-e2e":
-       tests: './**/**/*.js';
-       break;
-     case "e2eHwfJourney":
-       tests: './**/**/e2eHwfJourney.js';
-       break;
-      case "e2eHwfJourney":
-       tests: './**/**/e2ePbaJourney.js';
-   }
 
+//  tests: './**/**/*.js',
+
+  grep: process.env.JourneyType
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
