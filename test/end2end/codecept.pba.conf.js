@@ -1,8 +1,8 @@
 const testConfig = require('test/config.js');
 
 exports.config = {
-  tests: './**/**/e2ePbaJourney.js'
-   output: `${process.cwd()}/functional-output`,
+ tests: './**/**/e2ePbaJourney.js',
+     output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
       url: testConfig.TestFrontendUrl || 'https://www.ccd.demo.platform.hmcts.net/',
