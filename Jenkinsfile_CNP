@@ -11,7 +11,7 @@ def component = "e2e"
 
 withPipeline("nodejs", product, component) {
 
-    agent none
+
         stage('Journey Tests') {
 
         ws('workspace/finrem-ccd-e2e-tests') {
