@@ -1,4 +1,3 @@
-@test-e2e @e2eHwfJourney
 Feature('finrem  e2e journeys1');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
