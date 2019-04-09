@@ -13,7 +13,7 @@ def component = "e2e"
 
 withPipeline("nodejs", product, component) {
 
-    node('cnp-jenkins-buildersb54484') {
+    node('cnp-jenkins-builders3d8347') {
 
         parameters([
                 choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
