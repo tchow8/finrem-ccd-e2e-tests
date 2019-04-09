@@ -30,7 +30,7 @@ withPipeline("nodejs", product, component) {
             stage('Journey Tests') {
                 try {
                     sh 'yarn install'
-                    sh """ yarn ${params.JourneyType} """
+                    sh """ yarn run ${params.JourneyType} """
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'

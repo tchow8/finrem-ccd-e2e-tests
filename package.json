@@ -5,6 +5,8 @@
   "scripts": {
 
     "test-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.conf.js --steps --reporter mochawesome",
+    "e2ePbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.conf.js --steps --reporter mochawesome",
+    "e2eHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.conf.js --steps --reporter mochawesome",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "lint": "eslint ."
   },
