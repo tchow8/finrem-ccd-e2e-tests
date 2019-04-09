@@ -6,6 +6,7 @@ module.exports = {
   TestCaseWorkerPassword: process.env.TEST_CASEWORKER_PASSWORD || 'London01',
   TestJudgeUserName: process.env.TEST_JUDGE_USER_NAME || 'mahesh_fr_judge@mailinator.com',
   TestJudgePassword: process.env.TEST_JUDGE_PASSWORD || 'London01',
+  Journey: process.env.JourneyType || 'test-e2e'
   links: {
     cookies: '',
     terms: '',
