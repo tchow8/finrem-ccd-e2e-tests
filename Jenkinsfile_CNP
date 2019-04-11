@@ -36,6 +36,7 @@ withPipeline("nodejs", product, component) {
                     sh 'ls -lart'
                     sh 'ls -lrt ./functional-output'
                     archiveArtifacts 'functional-output/*'
+                    rm yarn.lock
 
                 }
 
@@ -47,9 +48,6 @@ withPipeline("nodejs", product, component) {
 
         }
         deleteDir()
-        currentBuild.result = 'SUCCESS'
-        // return here instead of throwing error to keep the build "green"
-        return
     }
 
 }
