@@ -1,4 +1,4 @@
-Feature('finrem  e2e journeys2');
+Feature('finrem  e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
