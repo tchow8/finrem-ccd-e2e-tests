@@ -6,7 +6,7 @@ exports.config = {
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
-      url: testConfig.TestFrontendUrl || 'https://www.ccd.demo.platform.hmcts.net/',
+      url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
       waitForTimeout: 5000,
       waitForAction: 2000,
       getPageTimeout: 30000,

@@ -2,6 +2,8 @@ function adminResponseTabs() {
 
   const I = this;
   I.wait(10);
+  I.click('Summary');
+  I.wait(1);
   I.click('Applicant');
   I.wait(1);
   I.click('Respondent');
@@ -12,9 +14,11 @@ function adminResponseTabs() {
   I.wait(1);
   I.click('Authorisation');
   I.wait(1);
-  I.click('Application documents');
+  I.click('Case Documents');
   I.wait(1);
-  I.see('OnlineFormA.pdf');
+  I.see('OnlineForm.pdf');
+  I.wait(5);
+  I.see('Respond To Order Documents 1');
   I.wait(5);
   I.click('Payment details');
   I.wait(1);
@@ -25,10 +29,6 @@ function adminResponseTabs() {
   I.click('Orders');
   I.wait(1);
   I.see('Upload Order 1');
-  I.wait(5);
-  I.click('Solicitor Response');
-  I.wait(1);
-  I.see('Respond To Order Documents 1');
   I.wait(5);
   I.click('Notes');
   I.wait(1);

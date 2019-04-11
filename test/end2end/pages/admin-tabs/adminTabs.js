@@ -2,6 +2,8 @@ function adminTabs() {
 
   const I = this;
   I.wait(10);
+  I.click('Summary');
+  I.wait(1);
   I.click('Applicant');
   I.wait(1);
   I.click('Respondent');
@@ -12,9 +14,9 @@ function adminTabs() {
   I.wait(1);
   I.click('Authorisation');
   I.wait(1);
-  I.click('Application documents');
+  I.click('Case Documents');
   I.wait(1);
-  I.see('OnlineFormA.pdf');
+  I.see('OnlineForm.pdf');
   I.wait(5);
   I.click('Payment details');
   I.wait(1);

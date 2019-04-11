@@ -67,8 +67,8 @@ Scenario('Verify Court Admin upload order Scenario1', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
-  I.uploadOrder();
-  I.see('Upload Order');
+  I.sendOrder();
+  I.see('Send Order');
   I.adminOrderTabs();
 
 });
@@ -132,6 +132,9 @@ Scenario('Verify Court Admin upload Consent order Scenario and all Universal eve
   I.wait(5);
   I.uploadDocument();
   I.see('Upload document');
+  I.wait(5);
+  I.refund();
+  I.see('Refund');
   I.wait(5);
   I.closeCase();
   I.see('Close Case');
