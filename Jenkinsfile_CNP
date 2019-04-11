@@ -16,9 +16,6 @@ def component = "e2e"
 
 withPipeline("nodejs", product, component) {
 
-    node() {
-
-
             ws('workspace/finrem-ccd-e2e-tests') {
 
                 stage('Checkout') {
@@ -51,4 +48,3 @@ withPipeline("nodejs", product, component) {
         deleteDir()
     }
 
-}
