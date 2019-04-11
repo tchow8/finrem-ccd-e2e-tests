@@ -2,7 +2,7 @@
 
 properties([
         parameters([
-                choice(name: 'JourneyType', choices: 'test-e2e\ne2eHwfJourney\ne2ePbaJourney', description: 'Different journeys to build in')
+                choice(name: 'JourneyType', choices: 'e2eHwfJourney\ne2ePbaJourney\ntest-e2e', description: 'Different journeys to build in')
         ]),
 
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
