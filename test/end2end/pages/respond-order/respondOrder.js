@@ -1,5 +1,5 @@
 function respondOrder(){
-    const I = this;
+  const I = this;
   I.wait(10);
   I.selectOption('select[id="next-step"]', 'Respond To Order');
   I.wait(10);
