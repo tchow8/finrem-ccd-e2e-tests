@@ -16,7 +16,7 @@ def component = "e2e"
 
 withPipeline("nodejs", product, component) {
 
-    node('cnp-jenkins-builders70b2a1') {
+    node('cnp-jenkins-builders70b2a2') {
         ws('workspace/finrem-ccd-e2e-tests') {
 
             stage('Checkout') {
