@@ -27,7 +27,7 @@ withPipeline("nodejs", product, component) {
             stage('Journey Tests') {
                 try {
                     sh 'yarn install'
-                    sh """ yarn run ${params.JourneyType} """
+                    //sh """ yarn run ${params.JourneyType} """
                 }
                 catch (Exception err) {
                     currentBuild.result = 'UNSTABLE'
@@ -35,8 +35,8 @@ withPipeline("nodejs", product, component) {
                 } finally {
                     sh 'ls -lart'
                     sh 'ls -lrt ./functional-output'
-                    archiveArtifacts 'functional-output/*'
-                    sh 'rm yarn.lock'
+                    //archiveArtifacts 'functional-output/*'
+                    //sh 'rm yarn.lock'
 
                 }
 
