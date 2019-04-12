@@ -35,14 +35,14 @@ node {
         stage('Journey Tests') {
             try {
                 sh 'yarn install'
-                //sh """ yarn run ${params.JourneyType} """
+                sh """ yarn run ${params.JourneyType} """
             }
             catch (Exception err) {
                 currentBuild.result = 'UNSTABLE'
                 echo "RESULT: ${currentBuild.result}"
             } finally {
                 sh 'ls -alrt'
-                //archiveArtifacts 'functional-output/*'
+                archiveArtifacts 'functional-output/*'
             }
 
         }
