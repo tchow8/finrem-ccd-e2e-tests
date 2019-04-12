@@ -10,7 +10,7 @@ function draftValidateTabs() {
   I.wait(1);
   I.click('Nature of Application');
   I.wait(1);
-  I.click('Application documents');
+  I.click('Case Documents');
   I.wait(10);
 
 

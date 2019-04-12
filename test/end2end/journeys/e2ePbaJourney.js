@@ -1,4 +1,4 @@
-Feature('finrem  e2e journeys2');
+Feature('finrem  e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
@@ -66,6 +66,8 @@ Scenario('Verify Court Admin upload order Scenario2', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
+  I.updateOrder();
+  I.see('Update Order');
   I.uploadOrder();
   I.see('Upload Order');
   I.adminOrderTabs();
@@ -131,6 +133,9 @@ Scenario('Verify Court Admin upload Consent order Scenario and all Universal eve
   I.wait(5);
   I.uploadDocument();
   I.see('Upload document');
+  I.wait(5);
+  I.refund();
+  I.see('Refund');
   I.wait(5);
   I.closeCase();
   I.see('Close Case');

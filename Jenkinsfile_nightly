@@ -2,7 +2,8 @@
 properties([
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         parameters([
-                string(name: 'RUNNING_ENV', defaultValue: '', description: 'CNP Environment to Run Tests in')
+                string(name: 'RUNNING_ENV', defaultValue: '', description: 'CNP Environment to Run Tests in'),
+                choice(name: 'JourneyType', choices: 'e2eHwfJourney\ne2ePbaJourney\ntest-e2e', description: 'Different journeys to build in')
         ])
 ])
 
@@ -34,12 +35,13 @@ node {
         stage('Journey Tests') {
             try {
                 sh 'yarn install'
-                sh 'yarn test-e2e'
+                sh """ yarn run ${params.JourneyType} """
             }
             catch (Exception err) {
                 currentBuild.result = 'UNSTABLE'
                 echo "RESULT: ${currentBuild.result}"
             } finally {
+                sh 'ls -alrt'
                 archiveArtifacts 'functional-output/*'
             }
 
