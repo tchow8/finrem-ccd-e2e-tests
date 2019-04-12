@@ -34,7 +34,7 @@ withPipeline("nodejs", product, component) {
                     echo "RESULT: ${currentBuild.result}"
                 } finally {
                     sh 'ls -lart'
-                    sh 'ls -lrt ./functional-output'
+                    //sh 'ls -lrt ./functional-output'
                     //archiveArtifacts 'functional-output/*'
                     //sh 'rm yarn.lock'
 
