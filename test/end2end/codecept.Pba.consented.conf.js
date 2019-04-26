@@ -2,7 +2,7 @@ const testConfig = require('test/config.js');
 
 exports.config = {
 
-  tests: './**/**/e2eHwfJourney.js',
+  tests: './**/consentedJourneys/consentedE2EPbaJourney.js',
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
