@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
 
-    "test-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.conf.js --steps --reporter mochawesome",
-    "e2eHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.conf.js --steps --reporter mochawesome",
-    "e2ePbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.conf.js --steps --reporter mochawesome",
+    "consentedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js --steps --reporter mochawesome",
+    "consentedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.consented.conf.js --steps --reporter mochawesome",
+    "consentedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.consented.conf.js --steps --reporter mochawesome",
+    "contestedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.contested.conf.js --steps --reporter mochawesome",
+    "contestedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.contested.conf.js --steps --reporter mochawesome",
+    "contestedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.contested.conf.js --steps --reporter mochawesome",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "lint": "eslint ."
   },
