@@ -36,7 +36,7 @@ node {
         stage('Journey Tests') {
             try {
                 sh 'yarn install'
-                sh """ yarn run ${params.Journey} + ${params.JourneyType} """
+                sh """ yarn run ${params.Journey}${params.JourneyType} """
             }
             catch (Exception err) {
                 currentBuild.result = 'UNSTABLE'
