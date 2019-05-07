@@ -17,6 +17,8 @@ function respondOrder(){
   I.wait(2);
   I.fillField('input[id="respondToOrderDocuments_0_DocumentDateAdded-year"]', '2019');
   I.wait(10);
+  I.fillField('#respondToOrderDocuments_0_DocumentFileName', 'test file');
+  I.wait(2);
   I.click('Continue');
   I.wait(10);
   I.click('Continue');

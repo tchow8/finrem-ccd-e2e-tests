@@ -25,7 +25,8 @@ function pbaUpdateCase() {
   I.fillField('input[id="referToJudgeDate-month"]', '2');
   I.fillField('input[id="referToJudgeDate-year"]', '2019');
   I.wait(10);
-  I.fillField('input[id="referToJudgeText"]', 'Please look into this case on urgent basis ');
+  I.fillField('input[id="referToJudgeText"]', 'testing this');
+  I.wait(3);
   I.click('Continue');
   I.wait(10);
   I.click('Submit');

@@ -1,41 +1,43 @@
-Feature('finrem  e2e HWF Journey');
+Feature('finrem contested e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
 const pbaValue = false;
 
-Scenario('Verify Solicitors Happypath Scenario1', I => {
-  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.createCase();
-  I.solicitorCreate(solRef);
-  I.divorceDetails();
-  I.applicantDetails();
-  I.respondentDetails();
-  I.natureOfApplication();
-  I.orderForChildren();
-  I.consentOrder();
-  I.d81();
-  I.optionalDocuments();
-  I.informationPage();
-  I.checkYourAnswers();
-  I.see('Consent Order Application');
+Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
+  I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+  I.contestedCreateCase();
+  I.contestedSolicitorCreate(solRef);
+  I.contestedDivorceDetails();
+  I.contestedApplicantDetails();
+  I.contestedRespondentDetails();
+  I.contestedNatureOfApplication();
+  I.hwfChildrenQuestion();
+  I.hwfFastTrack();
+  I.hwfComplexityList();
+  I.hwfChooseCourt();
+  I.hwfMediationQuestion();
+  I.section4b();
+  I.hwfOtherDocuments();
+  I.contestedCYA();
+  I.see('Form A Application');
   I.wait(10);
-  I.draftValidateTabs();
-  I.optionsPage();
-  I.authorisation();
-  I.paymentPage(pbaValue);
-  I.hwfPaymentDetails();
-  I.paymentSubmission();
-  I.informationPage();
-  I.finalPaymentSubmissionPage();
-  I.finalInformationPage();
+  //I.draftValidateTabs();
+  I.contestedOptionsPage();
+  I.contestedAuthorisation();
+  I.contestedPayment(pbaValue);
+  I.contestedHwfPayment();
+  I.contestedPaymentSubmission();
+  I.contestedInformationPage();
+  I.contestedFinalPaymentPage();
+  I.contestedFinalInformation();
   I.see('Case Submission');
-  I.solicitorTabs();
+  //I.solicitorTabs();
 });
 
 
-Scenario('Verify Court Admin update case Scenario1', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+Scenario('Verify Contested HWF Court Admin update case Scenario', I => {
+  /*I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
   I.addNote();
@@ -51,7 +53,7 @@ Scenario('Verify Court Admin update case Scenario1', I => {
 
 
 
-Scenario('Verify Court judge application not approved case1', I => {
+Scenario('Verify Contested HWF Court judge application not approved case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -63,7 +65,7 @@ Scenario('Verify Court judge application not approved case1', I => {
 
 
 
-Scenario('Verify Court Admin upload order Scenario1', I => {
+Scenario('Verify Contested HWF Court Admin upload order Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -75,7 +77,7 @@ Scenario('Verify Court Admin upload order Scenario1', I => {
 
 
 
-Scenario('Verify Solicitors Respond to order Scenario1', I => {
+Scenario('Verify Contested HWF Solicitors Respond to order Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -87,7 +89,7 @@ Scenario('Verify Solicitors Respond to order Scenario1', I => {
 
 
 
-Scenario('Verify Court Admin Assign to Judge Scenario for Response Received1', I => {
+Scenario('Verify Contested HWF Court Admin Assign to Judge Scenario for Response Received', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -99,7 +101,7 @@ Scenario('Verify Court Admin Assign to Judge Scenario for Response Received1', I
 
 
 
-Scenario('Verify Court judge approve case1', I => {
+Scenario('Verify Contested HWF Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -111,7 +113,7 @@ Scenario('Verify Court judge approve case1', I => {
 
 
 
-Scenario('Verify Court Admin upload Consent order Scenario and all Universal events1', I => {
+Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -142,4 +144,4 @@ Scenario('Verify Court Admin upload Consent order Scenario and all Universal eve
   I.finalTabs();
 
 
-});
+});*/

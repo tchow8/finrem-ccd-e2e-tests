@@ -1,6 +1,6 @@
 const testConfig = require('test/config.js');
 
-function signinIdam(username, password) {
+function contestedsigninIdam(username, password) {
   const I = this;
   I.amOnPage(testConfig.TestFrontendUrl);
   I.wait(5);
@@ -11,4 +11,4 @@ function signinIdam(username, password) {
   I.wait(15);
 }
 
-module.exports = { signinIdam };
+module.exports = { contestedsigninIdam };

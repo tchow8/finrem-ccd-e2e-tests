@@ -1,11 +1,14 @@
 // const testConfig = require('test/config.js');
 
-function respondentDetails() {
+function contestedRespondentDetails() {
   const I = this;
   I.wait(5);
-  I.fillField('input[id="appRespondentFMName"]', 'kiv');
-  I.fillField('input[id="appRespondentLName"]', 'resp');
-  I.checkOption('input[id="appRespondentRep-Yes"]');
+  I.fillField('input[id="respondentFMName"]', 'Mary');
+  I.fillField('input[id="respondentLName"]', 'Whisper');
+  I.wait(5);
+  I.click('Continue');
+  I.wait(10);
+  I.checkOption('input[id="respondentRepresented-Yes"]');
   I.wait(5);
   I.fillField('input[id="rSolicitorName"]', 'MahSol');
   I.fillField('input[id="rSolicitorFirm"]', 'MahFirm');
@@ -19,11 +22,11 @@ function respondentDetails() {
   I.fillField('input[id="rSolicitorAddress__AddressLine3"]', 'Ring Road');
   I.fillField('input[id="rSolicitorAddress__County"]', 'Essex');
   I.fillField('input[id="rSolicitorPhone"]', '07889009908');
-  I.fillField('input[id="rSolicitorEmail"]', 'vivrepondent@mailinator.com');
-  I.fillField('input[id="rSolicitorDXnumber"]', '078890');
+  I.fillField('input[id="rSolicitorEmail"]', 'mary@mailinator.com');
+  I.fillField('input[id="rSolicitorDXnumber"]', '378890');
   I.wait(5);
   I.click('Continue');
   I.wait(5);
 }
 
-module.exports = { respondentDetails };
+module.exports = { contestedRespondentDetails };

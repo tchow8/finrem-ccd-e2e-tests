@@ -1,10 +1,10 @@
-Feature('finrem  e2e PBA Journey');
+Feature('finrem consented e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
 const pbaValue = true;
 
-Scenario('Verify Solicitors Happypath Scenario2', I => {
+Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase();
   I.solicitorCreate(solRef);
@@ -34,7 +34,7 @@ Scenario('Verify Solicitors Happypath Scenario2', I => {
 });
 
 
-Scenario('Verify Court Admin update case Scenario2', I => {
+Scenario('Verify Consented PBA Court Admin update case Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -50,7 +50,7 @@ Scenario('Verify Court Admin update case Scenario2', I => {
 
 
 
-Scenario('Verify Court judge application not approved case2', I => {
+Scenario('Verify Consented PBA Court judge application not approved case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -62,7 +62,7 @@ Scenario('Verify Court judge application not approved case2', I => {
 
 
 
-Scenario('Verify Court Admin upload order Scenario2', I => {
+Scenario('Verify Consented PBA Court Admin upload order Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -76,7 +76,7 @@ Scenario('Verify Court Admin upload order Scenario2', I => {
 
 
 
-Scenario('Verify Solicitors Respond to order Scenario2', I => {
+Scenario('Verify Consented PBA Solicitors Respond to order Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -88,7 +88,7 @@ Scenario('Verify Solicitors Respond to order Scenario2', I => {
 
 
 
-Scenario('Verify Court Admin Assign to Judge Scenario for Response Received2', I => {
+Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response Received', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -100,7 +100,7 @@ Scenario('Verify Court Admin Assign to Judge Scenario for Response Received2', I
 
 
 
-Scenario('Verify Court judge approve case2', I => {
+Scenario('Verify Consented PBA Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
   I.searchCase(solRef);
@@ -112,7 +112,7 @@ Scenario('Verify Court judge approve case2', I => {
 
 
 
-Scenario('Verify Court Admin upload Consent order Scenario and all Universal events2', I => {
+Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all Universal events', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.searchCase(solRef);

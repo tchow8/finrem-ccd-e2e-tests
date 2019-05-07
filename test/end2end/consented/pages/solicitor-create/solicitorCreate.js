@@ -9,9 +9,9 @@ function solicitorCreate(reference) {
   I.click('Find address');
   I.wait(5);
   I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
-  I.fillField('input[id="solicitorAddress_AddressLine2"]', 'Near Roundabout');
-  I.fillField('input[id="solicitorAddress_AddressLine3"]', 'Opposite Tesco');
-  I.fillField('input[id="solicitorAddress_County"]', 'Middlesex');
+  I.fillField('input[id="solicitorAddress__AddressLine2"]', 'Near Roundabout');
+  I.fillField('input[id="solicitorAddress__AddressLine3"]', 'Opposite Tesco');
+  I.fillField('input[id="solicitorAddress__County"]', 'Middlesex');
   I.fillField('input[id="solicitorPhone"]', '07766120098');
   I.fillField('input[id="solicitorEmail"]', 'mahesh.goduguchinta@hmcts.net');
   I.fillField('input[id="solicitorDXnumber"]', '776890');

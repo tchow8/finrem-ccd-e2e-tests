@@ -5,11 +5,11 @@ function updateContactDetails() {
   I.wait(10);
   I.click('Go');
   I.wait(10);
-  I.fillField('input[id="solicitorAddress_AddressLine1"]', '26 Riverside Gardens');
+  I.fillField('input[id="solicitorAddress__AddressLine1"]', '26 Riverside Gardens');
   I.wait(2);
-  I.fillField('input[id="solicitorAddress_PostTown"]', 'Wembley');
+  I.fillField('input[id="solicitorAddress__PostTown"]', 'Wembley');
   I.wait(2);
-  I.fillField('input[id="solicitorAddress_PostCode"]', 'HA0 1JF');
+  I.fillField('input[id="solicitorAddress__PostCode"]', 'HA0 1JF');
   I.wait(10);
   I.click('Continue');
   I.wait(10);
