@@ -1,5 +1,4 @@
 const testConfig = require('test/config.js');
-
 function signinIdam(username, password) {
   const I = this;
   I.amOnPage(testConfig.TestFrontendUrl);

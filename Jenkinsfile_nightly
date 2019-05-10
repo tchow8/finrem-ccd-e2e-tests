@@ -3,8 +3,8 @@ properties([
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         parameters([
                 string(name: 'RUNNING_ENV', defaultValue: '', description: 'CNP Environment to Run Tests in'),
-                choice(name: 'Journey', choices: 'consented\ncontested'),
-                choice(name: 'JourneyType', choices: 'E2EHwfJourney\nE2EPbaJourney\ntest-e2e', description: 'Different journeys to build in')
+                choice(name: 'Journey', choices: 'consented\ncontested\nTest'),
+                choice(name: 'JourneyType', choices: 'E2EHwfJourney\nE2EPbaJourney\ntest-e2e\ntest', description: 'Different journeys to build in')
         ])
 ])
 
@@ -24,12 +24,12 @@ node {
             withSubscription('nonprod') {
                 def az = { cmd -> return sh(script: "env AZURE_CONFIG_DIR=/opt/jenkins/.azure-${env.SUBSCRIPTION_NAME} az ${cmd}", returnStdout: true).trim() }
   
-                env.TEST_SOLS_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name fr-solicitor-username --query value -o tsv').trim()
-                env.TEST_SOLS_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name fr-solicitor-password --query value -o tsv').trim()
-                env.TEST_CASEWORKER_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name fr-caseworker-username --query value -o tsv').trim()
-                env.TEST_CASEWORKER_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name fr-caseworker-password --query value -o tsv').trim()
-                env.TEST_JUDGE_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name fr-judge-username --query value -o tsv').trim()
-                env.TEST_JUDGE_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name fr-judge-password --query value -o tsv').trim()
+                env.TEST_SOLS_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name USERNAME-SOLICITOR --query value -o tsv').trim()
+                env.TEST_SOLS_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name PASSWORD-SOLICITOR --query value -o tsv').trim()
+                env.TEST_CASEWORKER_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name USERNAME-CASEWORKER --query value -o tsv').trim()
+                env.TEST_CASEWORKER_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name PASSWORD-CASEWORKER --query value -o tsv').trim()
+                env.TEST_JUDGE_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name USERNAME-JUDGE --query value -o tsv').trim()
+                env.TEST_JUDGE_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name PASSWORD-JUDGE --query value -o tsv').trim()
             }
         }
 
