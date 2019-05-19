@@ -99,35 +99,26 @@ Scenario('Verify Contested PBA Court judge approve case', I => {
 
 
 
-/*Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', I => {
+Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', I => {
   I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
   I.contestedSearchCase(solRef);
-  I.uploadConsentOrder();
-  I.see('Upload Consent Order');
-  I.wait(5);
-  I.amendCase();
+  I.contestedAmendCase();
   I.see('Amend Case');
   I.wait(5);
-  I.amendedConsentOrder();
-  I.see('Amended Consent Order');
-  I.wait(5);
-  I.updateContactDetails();
+  I.contestedUpdateContactDetails();
   I.see('Update contact details');
   I.wait(5);
-  I.updateDueDate();
-  I.see('Update Due Date');
-  I.wait(5);
-  I.uploadDocument();
+  I.contestedUploadDocument();
   I.see('Upload document');
   I.wait(5);
-  I.refund();
+  I.contestedRefund();
   I.see('Refund');
   I.wait(5);
-  I.closeCase();
+  I.contestedCloseCase();
   I.see('Close Case');
   I.wait(2);
-  I.finalTabs();
+  //I.finalTabs();
 
 
-});*/
+});
