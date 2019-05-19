@@ -25,7 +25,7 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', I => {
   I.otherDocuments();
   I.contestedCYA();
   I.see('Form A Application');
-  I.wait(10);
+  I.wait(5);
   //I.draftValidateTabs();
   I.contestedOptionsPage();
   I.contestedAuthorisation();
@@ -41,87 +41,68 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', I => {
 
 
 Scenario('Verify Contested PBA Court Admin update case Scenario', I => {
-  /*I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.addNote();
+  I.contestedSearchCase(solRef);
+  I.contestedAddNote();
   if(pbaValue===true) {
-    I.pbaUpdateCase();
+    I.contestedPbaCase();
   }else {
-    I.hwfUpdateCase();
+    I.contestedHwfCase();
   }
-  I.adminTabs();
+  //I.adminTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Court judge application not approved case', I => {
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+Scenario('Verify Contested PBA Court judge application for Scheduling and Listing case', I => {
+  I.contestedsigninIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.applicationNotApproved();
-  I.see('Application Not Approved');
-  I.judgeTabs();
+  I.contestedSearchCase(solRef);
+  I.giveAllocationDirections();
+  //I.judgeTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Court Admin upload order Scenario', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', I => {
+  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.updateOrder();
-  I.see('Update Order');
-  I.uploadOrder();
-  I.see('Upload Order');
-  I.adminOrderTabs();
+  I.contestedSearchCase(solRef);
+  I.listForHearing();
+  //I.adminOrderTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Solicitors Respond to order Scenario', I => {
-  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+Scenario('Verify Contested PBA Solicitors upload case files Scenario', I => {
+  I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.respondOrder();
-  I.see('Respond To Order');
-  I.solResponseTabs();
+  I.contestedSearchCase(solRef);
+  I.uploadCaseFiles();
+  //I.solResponseTabs();
 
 });
-
-
-
-Scenario('Verify Contested PBA Court Admin Assign to Judge Scenario for Response Received', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(10);
-  I.searchCase(solRef);
-  I.assignToJudge();
-  I.see('Assign To Judge');
-  I.adminResponseTabs();
-
-});
-
 
 
 Scenario('Verify Contested PBA Court judge approve case', I => {
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+  I.contestedsigninIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.approveApplication();
-  I.see('Approve Application');
-  I.judgeApproveTabs();
+  I.contestedSearchCase(solRef);
+  I.see('Submit Uploaded Case Files');
+  //I.judgeApproveTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+/*Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', I => {
+  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
-  I.searchCase(solRef);
+  I.contestedSearchCase(solRef);
   I.uploadConsentOrder();
   I.see('Upload Consent Order');
   I.wait(5);

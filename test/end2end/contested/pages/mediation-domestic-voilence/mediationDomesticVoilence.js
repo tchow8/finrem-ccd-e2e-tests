@@ -2,7 +2,6 @@
 function mediationDomesticVoilence() {
   const I = this;
   I.wait(5);
-  I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_23"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_22"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_21"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_20"]');
@@ -11,7 +10,6 @@ function mediationDomesticVoilence() {
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_17"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_16"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_15"]');
-  I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_14"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_13"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_12"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_11"]');

@@ -12,6 +12,8 @@ function otherDocuments() {
   I.wait(10);
   I.click('Continue');
   I.wait(5);
+  I.click('Continue');
+  I.wait(5);
 
 }
 

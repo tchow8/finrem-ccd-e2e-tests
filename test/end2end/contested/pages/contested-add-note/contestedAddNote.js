@@ -1,4 +1,4 @@
-function addNote() {
+function contestedAddNote() {
 
   const I = this;
   I.wait(10);
@@ -24,4 +24,4 @@ function addNote() {
 
 }
 
-module.exports = { addNote };
+module.exports = { contestedAddNote };

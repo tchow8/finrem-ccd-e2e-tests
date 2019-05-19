@@ -10,6 +10,7 @@ function contestedCreateCase() {
   I.selectOption('select[id=cc-case-type]', 'FinancialRemedyContested');
   I.wait(2);
   I.selectOption('select[id= cc-event]', 'Form A Application');
+  I.wait(5);
   I.click('Start');
   I.wait(10);
   I.click('Continue');

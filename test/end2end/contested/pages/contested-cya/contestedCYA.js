@@ -10,9 +10,9 @@ function contestedCYA() {
   I.see('Is the respondent represented ?');
   I.see('Do you want to add additional property ?');
   I.see('Do you want to upload any other documents ?');
-  I.wait(10);
+  I.wait(5);
   I.click('Submit');
-  I.wait(10);
+  I.wait(12);
 }
 
 module.exports = { contestedCYA };

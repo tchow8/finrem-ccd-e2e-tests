@@ -6,6 +6,8 @@ function hwfOtherDocuments() {
   I.wait(3);
   I.click('Continue');
   I.wait(5);
+  I.click('Continue');
+  I.wait(5);
 
 }
 

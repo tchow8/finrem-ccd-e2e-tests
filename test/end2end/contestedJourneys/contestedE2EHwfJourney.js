@@ -17,13 +17,13 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.hwfComplexityList();
   I.hwfChooseCourt();
   I.hwfMediationQuestion();
-  I.section4b();
+  I.miamCertification();
   I.hwfOtherDocuments();
   I.contestedCYA();
   I.see('Form A Application');
   I.wait(10);
   //I.draftValidateTabs();
-  I.contestedOptionsPage();
+  I.contestedHwfOptionsPage();
   I.contestedAuthorisation();
   I.contestedPayment(pbaValue);
   I.contestedHwfPayment();
@@ -37,86 +37,46 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
 
 
 Scenario('Verify Contested HWF Court Admin update case Scenario', I => {
-  /*I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.addNote();
+  I.contestedSearchCase(solRef);
+  I.contestedAddNote();
   I.wait(10);
   if(pbaValue===true) {
-    I.pbaUpdateCase();
+    I.contestedPbaCase();
   }else {
-    I.hwfUpdateCase();
+    I.contestedHwfCase();
   }
-  I.adminTabs();
+  //I.adminTabs();
 
 });
 
 
-
-Scenario('Verify Contested HWF Court judge application not approved case', I => {
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+Scenario('Verify Contested HWF Solicitors upload case files Scenario', I => {
+  I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.applicationNotApproved();
-  I.see('Application Not Approved');
-  I.judgeTabs();
+  I.contestedSearchCase(solRef);
+  I.uploadCaseFiles();
+  //I.solResponseTabs();
 
 });
-
-
-
-Scenario('Verify Contested HWF Court Admin upload order Scenario', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(10);
-  I.searchCase(solRef);
-  I.sendOrder();
-  I.see('Send Order');
-  I.adminOrderTabs();
-
-});
-
-
-
-Scenario('Verify Contested HWF Solicitors Respond to order Scenario', I => {
-  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.wait(10);
-  I.searchCase(solRef);
-  I.respondOrder();
-  I.see('Respond To Order');
-  I.solResponseTabs();
-
-});
-
-
-
-Scenario('Verify Contested HWF Court Admin Assign to Judge Scenario for Response Received', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(10);
-  I.searchCase(solRef);
-  I.assignToJudge();
-  I.see('Assign To Judge');
-  I.adminResponseTabs();
-
-});
-
 
 
 Scenario('Verify Contested HWF Court judge approve case', I => {
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+  I.contestedsigninIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.wait(10);
-  I.searchCase(solRef);
-  I.approveApplication();
-  I.see('Approve Application');
-  I.judgeApproveTabs();
+  I.contestedSearchCase(solRef);
+  I.see('Submit Uploaded Case Files');
+  //I.judgeApproveTabs();
 
 });
 
 
 
-Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+/*Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', I => {
+  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.wait(10);
-  I.searchCase(solRef);
+  I.contestedSearchCase(solRef);
   I.uploadConsentOrder();
   I.see('Upload Consent Order');
   I.wait(5);

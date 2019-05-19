@@ -13,9 +13,9 @@ function contestedDivorceDetails() {
   I.fillField('input[id="dateOfSepration-month"]', '3');
   I.fillField('input[id="dateOfSepration-year"]', '2010');
   I.wait(5);
-  I.fillField('input[id="petitionIssuedDate-day"]', '3');
-  I.fillField('input[id="petitionIssuedDate-month"]', '4');
-  I.fillField('input[id="petitionIssuedDate-year"]', '2018');
+  I.fillField('input[id="divorcePetitionIssuedDate-day"]', '3');
+  I.fillField('input[id="divorcePetitionIssuedDate-month"]', '4');
+  I.fillField('input[id="divorcePetitionIssuedDate-year"]', '2018');
   I.wait(5);
   I.fillField('#nameOfCourtDivorceCentre', 'Brentford Court');
   I.wait(5);
