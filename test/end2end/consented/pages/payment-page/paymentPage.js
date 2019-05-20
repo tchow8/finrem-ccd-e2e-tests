@@ -1,6 +1,7 @@
 function paymentPage(pbaValue) {
 
   const I = this;
+  I.wait(5);
   if(pbaValue===false){
     I.checkOption('input[id="helpWithFeesQuestion-Yes"]');
   }else{

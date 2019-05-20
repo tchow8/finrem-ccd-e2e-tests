@@ -14,7 +14,7 @@ function authorisation() {
   I.fillField('input[id="authorisation3-year"]', '2019');
   I.wait(5);
   I.click('Continue');
-  I.wait(10);
+  I.wait(5);
 }
 
 module.exports = { authorisation };
