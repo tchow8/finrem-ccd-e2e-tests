@@ -4,23 +4,6 @@ const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
 const pbaValue = false;
 
-
-Scenario.only('Verify Solicitors Happypath Scenario1', I => {
-  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.createCase();
-  I.solicitorCreate(solRef);
-  I.divorceDetails();
-  I.applicantDetails();
-  I.respondentDetails();
-  I.natureOfApplication();
-  I.orderForChildren();
-  I.consentOrder();
-  I.d81();
-  I.optionalDocuments();
-  I.informationPage();
-  I.checkYourAnswers();
-  I.see('Consent Order Application');
-
 Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.contestedCreateCase();
