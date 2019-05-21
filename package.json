@@ -10,6 +10,7 @@
     "contestedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.contested.conf.js --steps --reporter mochawesome",
     "contestedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.contested.conf.js --steps --reporter mochawesome",
     "contestedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.contested.conf.js --steps --reporter mochawesome",
+    "Testtest": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.test.conf.js --steps --reporter mochawesome",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "lint": "eslint ."
   },
