@@ -24,7 +24,7 @@ exports.config = {
 
     }
   },
-  include: { I: './pages/steps.js' },
+  include: { I: './contested/pages/steps.js' },
   mocha: {
     reporterOptions: {
       reportDir: process.env.E2E_OUTPUT_DIR || './functional-output',

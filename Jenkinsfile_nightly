@@ -23,7 +23,7 @@ node {
         stage('Env Setup') {
             withSubscription('nonprod') {
                 def az = { cmd -> return sh(script: "env AZURE_CONFIG_DIR=/opt/jenkins/.azure-${env.SUBSCRIPTION_NAME} az ${cmd}", returnStdout: true).trim() }
-  
+
                 env.TEST_SOLS_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name USERNAME-SOLICITOR --query value -o tsv').trim()
                 env.TEST_SOLS_PASSWORD =  az('keyvault secret show --vault-name finrem-aat --name PASSWORD-SOLICITOR --query value -o tsv').trim()
                 env.TEST_CASEWORKER_USER_NAME =  az('keyvault secret show --vault-name finrem-aat --name USERNAME-CASEWORKER --query value -o tsv').trim()
