@@ -30,7 +30,7 @@ Scenario.only('Verify Solicitors Happypath Scenario2', I => {
   I.informationPage();
   I.finalPaymentSubmissionPage();
   I.finalInformationPage();
-=======
+
 Scenario('Verify Contested PBA Solicitors Happypath Scenario', I => {
   I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.contestedCreateCase();
@@ -62,7 +62,6 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', I => {
   I.contestedInformationPage();
   I.contestedFinalPaymentPage();
   I.contestedFinalInformation();
->>>>>>> e8adb28aca7c5f06a4cd7926ea40c94f88c8cd34
   I.see('Case Submission');
   //I.solicitorTabs();
 });

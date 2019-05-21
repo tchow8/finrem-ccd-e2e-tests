@@ -20,7 +20,7 @@ Scenario.only('Verify Solicitors Happypath Scenario1', I => {
   I.informationPage();
   I.checkYourAnswers();
   I.see('Consent Order Application');
-=======
+
 Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.contestedCreateCase();
@@ -38,7 +38,6 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.hwfOtherDocuments();
   I.contestedCYA();
   I.see('Form A Application');
->>>>>>> e8adb28aca7c5f06a4cd7926ea40c94f88c8cd34
   I.wait(10);
   //I.draftValidateTabs();
   I.contestedHwfOptionsPage();
