@@ -3,8 +3,8 @@ properties([
         [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/finrem-ccd-e2e-tests.git'],
         parameters([
                 string(name: 'RUNNING_ENV', defaultValue: '', description: 'CNP Environment to Run Tests in'),
-                choice(name: 'Journey', choices: 'consented\ncontested'),
-                choice(name: 'JourneyType', choices: 'E2EHwfJourney\nE2EPbaJourney\ntest-e2e', description: 'Different journeys to build in')
+                choice(name: 'Journey', choices: 'consented\ncontested\nTest'),
+                choice(name: 'JourneyType', choices: 'E2EHwfJourney\nE2EPbaJourney\ntest-e2e\ntest', description: 'Different journeys to build in')
         ])
 ])
 
