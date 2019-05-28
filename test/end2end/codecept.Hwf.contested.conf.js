@@ -10,7 +10,7 @@ exports.config = {
       waitForTimeout: 5000,
       waitForAction: 2000,
       getPageTimeout: 30000,
-      show: false,
+      show: true,
       waitForNavigation: 'networkidle0',
       ignoreHTTPSErrors: true,
       headless: true,
