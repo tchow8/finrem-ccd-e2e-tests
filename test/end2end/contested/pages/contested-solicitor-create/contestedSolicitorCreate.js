@@ -6,6 +6,7 @@ function contestedSolicitorCreate(reference) {
   I.fillField('input[id="applicantSolicitorFirm"]', 'MSN Firm');
   I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
   I.fillField('input[id="postcodeInput"]', 'TW3 1SS');
+  I.wait(10);
   I.click('Find address');
   I.wait(10);
   I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
