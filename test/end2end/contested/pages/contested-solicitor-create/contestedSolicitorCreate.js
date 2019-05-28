@@ -1,13 +1,13 @@
 
 function contestedSolicitorCreate(reference) {
   const I = this;
-  I.wait(10);
+  I.wait(30);
   I.fillField('input[id="applicantSolicitorName"]', 'Parrot');
   I.fillField('input[id="applicantSolicitorFirm"]', 'MSN Firm');
-  I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
-  I.fillField('input[id="postcodeInput"]', 'TW3 1SS');
+  I.fillField('//*[@id="solicitorReference"]', 'AUTO-'+reference);
+  I.fillField('//*[@id="postcodeInput"]', 'TW3 1SS');
   I.wait(10);
-  I.click('"Find address"');
+  I.click('Find address');
   I.wait(10);
   I.selectOption('select[id="addressList"]', '67 Pears Road, Hounslow');
   I.fillField('input[id="applicantSolicitorAddress__AddressLine2"]', 'Near Roundabout');
@@ -22,5 +22,5 @@ function contestedSolicitorCreate(reference) {
   I.wait(10);
 }
 
-
 module.exports = { contestedSolicitorCreate };
+
