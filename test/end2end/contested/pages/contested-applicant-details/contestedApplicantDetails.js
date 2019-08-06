@@ -7,7 +7,8 @@ function contestedApplicantDetails() {
   I.wait(5);
   I.fillField('input[id="applicantLName"]', 'Evans');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
 }
 

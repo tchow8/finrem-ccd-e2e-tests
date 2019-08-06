@@ -10,7 +10,8 @@ function chooseCourt() {
   I.wait(2);
   I.fillField('#reasonForLocalCourt', 'home court is not for testing');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

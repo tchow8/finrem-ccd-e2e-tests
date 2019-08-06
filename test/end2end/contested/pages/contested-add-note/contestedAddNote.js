@@ -16,7 +16,8 @@ function contestedAddNote() {
   I.wait(10);
   I.fillField('#caseNotesCollection_0_caseNote', 'Notes for Judge to test');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(10);

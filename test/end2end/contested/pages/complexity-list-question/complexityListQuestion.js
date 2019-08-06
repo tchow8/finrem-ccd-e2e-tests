@@ -34,7 +34,8 @@ function complexityListQuestion() {
   I.wait(2);
   I.fillField('#otherReasonForComplexityText', 'other reason for the list');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

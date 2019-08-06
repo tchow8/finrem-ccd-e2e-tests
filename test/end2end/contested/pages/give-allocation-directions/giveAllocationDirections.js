@@ -9,7 +9,8 @@ function giveAllocationDirections(){
   I.wait(5);
   I.selectOption('select[id=cfcCourtListGA]', 'FR_s_CFCList_8');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.checkOption('input[id="applicationAllocatedTo-Yes"]');
   I.wait(5);
@@ -19,7 +20,8 @@ function giveAllocationDirections(){
   I.wait(5);
   I.checkOption('input[id="judgeTimeEstimate-standardTime"]');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.click('Submit');
   I.wait(5);

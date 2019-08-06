@@ -2,13 +2,15 @@
 
 function applicantDetails() {
   const I = this;
-  I.wait(5);
+  I.waitForPage('h4','APPLICANT DETAILS');
+  I.waitForElement('input[id="applicantFMName"]');
   I.fillField('input[id="applicantFMName"]', 'viv');
-  I.wait(5);
+  // I.wait(5);
   I.fillField('input[id="applicantLName"]', 'div');
-  I.wait(10);
-  I.click('Continue');
-  I.wait(10);
+  // I.wait(10);
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
+  // I.wait(10);
 }
 
 module.exports = { applicantDetails };

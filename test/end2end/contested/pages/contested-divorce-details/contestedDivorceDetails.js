@@ -27,7 +27,8 @@ function contestedDivorceDetails() {
   I.fillField('input[id="divorceDecreeNisiDate-month"]', '2');
   I.fillField('input[id="divorceDecreeNisiDate-year"]', '2019');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 }
 

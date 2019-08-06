@@ -1,7 +1,9 @@
 function solicitorTabs() {
 
   const I = this;
-  I.wait(10);
+  // I.wait(10);
+  I.waitForPage('h2', 'History');
+
   I.click('Summary');
   I.wait(1);
   I.click('Applicant');
@@ -17,7 +19,7 @@ function solicitorTabs() {
   I.click('Case Documents');
   I.wait(1);
   I.click('Payment details');
-  I.wait(10);
+  // I.wait(10);
 
 
 }

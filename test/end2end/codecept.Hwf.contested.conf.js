@@ -10,8 +10,9 @@ exports.config = {
       waitForTimeout: 5000,
       waitForAction: 2000,
       getPageTimeout: 30000,
-      show: false,
-      waitForNavigation: 'networkidle0',
+      windowSize: '1440x700',
+      show: true,
+      waitForNavigation: ['networkidle2', 'domcontentloaded'],
       ignoreHTTPSErrors: true,
       headless: true,
       chrome: {

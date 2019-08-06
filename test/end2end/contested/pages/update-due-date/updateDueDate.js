@@ -10,7 +10,8 @@ function updateDueDate() {
   I.fillField('input[id="dueDate-month"]', '3');
   I.fillField('input[id="dueDate-year"]', '2019');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(10);

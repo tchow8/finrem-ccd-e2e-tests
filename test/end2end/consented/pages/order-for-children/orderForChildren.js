@@ -15,9 +15,10 @@ function orderForChildren() {
   I.checkOption('input[id="natureOfApplication6-Other"]');
   I.wait(2);
   I.fillField('#natureOfApplication7', 'Other Test');
-  I.wait(5);
-  I.click('Continue');
-  I.wait(5);
+  // I.wait(5);
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
+  // I.wait(5);
 }
 
 module.exports = { orderForChildren };

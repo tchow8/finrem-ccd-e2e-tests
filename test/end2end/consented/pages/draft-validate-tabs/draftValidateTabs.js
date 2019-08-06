@@ -1,7 +1,8 @@
 function draftValidateTabs() {
 
   const I = this;
-  I.wait(10);
+  // I.wait(10);
+  I.waitForPage('.EventLogTable h2', 'History');
   I.click('Applicant');
   I.wait(1);
   I.click('Respondent');
@@ -11,7 +12,7 @@ function draftValidateTabs() {
   I.click('Nature of Application');
   I.wait(1);
   I.click('Case Documents');
-  I.wait(10);
+  I.wait(1);
 
 
 }

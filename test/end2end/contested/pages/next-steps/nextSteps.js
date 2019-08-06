@@ -34,7 +34,8 @@ function approveApplication() {
   I.fillField('input[id="orderDirectionDate-month"]', '4');
   I.fillField('input[id="orderDirectionDate-year"]', '2019');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(5);

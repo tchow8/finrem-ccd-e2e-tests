@@ -6,7 +6,8 @@ function pbaPaymentDetails() {
   I.wait(2);
   I.fillField('input[id="PBAreference"]', 'reference');
   I.wait(2);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 }
 

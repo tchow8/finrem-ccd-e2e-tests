@@ -4,7 +4,8 @@ function childrenQuestion() {
   I.wait(5);
   I.checkOption('input[id="paymentForChildrenDecision-Yes"]');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.checkOption('input[id="benefitForChildrenDecision-No"]');
   I.wait(5);
@@ -14,7 +15,8 @@ function childrenQuestion() {
   I.checkOption('input[id="benefitPaymentChecklist-In addition to child support maintenance already paid under a Child Support Agency assessment"]');
   I.checkOption('input[id="benefitPaymentChecklist-Step child or step children"]');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

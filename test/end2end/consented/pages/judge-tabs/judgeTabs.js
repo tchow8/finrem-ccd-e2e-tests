@@ -1,7 +1,9 @@
 function judgeTabs() {
 
   const I = this;
-  I.wait(10);
+  // I.wait(10);
+  I.waitForPage('.EventLogTable h2', 'History');
+
   I.click('Summary');
   I.wait(1);
   I.click('Applicant');
@@ -27,11 +29,11 @@ function judgeTabs() {
   I.click('Orders');
   I.wait(1);
   I.see('GeneralOrder.pdf');
-  I.wait(5);
+  I.wait(1);
   I.click('Notes');
   I.wait(1);
   I.see('Notes 1');
-  I.wait(10);
+  // I.wait(10);
 
 
 }

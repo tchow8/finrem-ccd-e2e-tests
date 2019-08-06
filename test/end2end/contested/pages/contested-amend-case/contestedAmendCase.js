@@ -8,7 +8,8 @@ function contestedAmendCase() {
   I.wait(5);
   I.fillField('input[id="divorceCaseNumber"]', 'MR12D76543');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.click('Submit');
   I.wait(10);

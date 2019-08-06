@@ -7,7 +7,8 @@ function contestedPayment(pbaValue) {
     I.checkOption('input[id="helpWithFeesQuestion-No"]');
   }
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

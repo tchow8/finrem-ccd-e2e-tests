@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="85.656" tests="8" failures="1">
+  <testsuite name="Root Suite" timestamp="2019-07-29T21:48:25" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="finrem consented e2e HWF Journey" timestamp="2019-07-29T21:48:25" tests="8" file="/Users/sreekanth/work/moj/repos/finrem-ccd-e2e-tests/test/end2end/consentedJourneys/consentedE2EHwfJourney.js" failures="1" time="85.656">
+    <testcase name="finrem consented e2e HWF Journey: Verify Consented HWF Solicitors Happypath Scenario" time="85.656" classname="Verify Consented HWF Solicitors Happypath Scenario">
+      <failure message="element (.container-fluid a[href=&quot;/create/case&quot;]) still not present on page after 60 sec
+waiting for selector &quot;.container-fluid a[href=&quot;/create/case&quot;]&quot; failed: timeout 60000ms exceeded" type="Error"><![CDATA[element (.container-fluid a[href="/create/case"]) still not present on page after 60 sec
+waiting for selector ".container-fluid a[href="/create/case"]" failed: timeout 60000ms exceeded
+
+Scenario Steps:
+
+- I.waitForElement(".container-fluid a[href="/create/case"]", 60) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:6:5)
+- I.wait(15) at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:10:5)
+- I.click("Sign in") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:9:5)
+- I.fillField("password", "Nagoya0102") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:8:5)
+- I.fillField("username", "henry_fr_harper@yahoo.com") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:7:5)
+- I.waitForText("Email address") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:6:5)
+- I.wait(5) at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:5:5)
+- I.amOnPage("https://www-ccd.aat.platform.hmcts.net/") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:4:5)
+
+]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

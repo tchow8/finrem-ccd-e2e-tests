@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-
-    "consentedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js --steps --reporter mochawesome",
+    "consentedtest-e2e": " NODE_PATH=. codeceptjs  run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
     "consentedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.consented.conf.js --steps --reporter mochawesome",
     "consentedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.consented.conf.js --steps --reporter mochawesome",
     "contestedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.contested.conf.js --steps --reporter mochawesome",
@@ -15,15 +14,17 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "cross-env": "^5.1.3"
+    "cross-env": "^5.1.3",
+    "mocha-junit-reporter": "^1.23.1",
+    "mocha-multi": "^1.1.0"
   },
   "devDependencies": {
     "@hmcts/eslint-config": "^1.4.0",
     "codeceptjs": "^2.0.7",
     "eslint": "^4.19.1",
     "eslint-plugin-mocha": "^5.0.0",
-    "mochawesome": "^3.0.2",
+    "mochawesome": "^3.1.2",
     "moment": "^2.22.2",
-    "puppeteer": "^1.5.0"
+    "puppeteer": "^1.6.0"
   }
 }

@@ -4,7 +4,7 @@ const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
 const pbaValue = false;
 
-Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
+Scenario.only('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.contestedCreateCase();
   I.contestedSolicitorCreate(solRef);

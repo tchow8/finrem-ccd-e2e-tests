@@ -13,7 +13,8 @@ function contestedAuthorisation() {
   I.fillField('input[id="authorisation3-month"]', '2');
   I.fillField('input[id="authorisation3-year"]', '2019');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
 }
 
