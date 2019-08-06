@@ -72,4 +72,4 @@ exports.config = {
     
   },
   name: 'Finrem Sol Tests'
-}
+};

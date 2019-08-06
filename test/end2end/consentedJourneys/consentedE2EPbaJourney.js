@@ -2,7 +2,7 @@ Feature('finrem consented e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
-const pbaValue = true;
+const pbaValue = false;
 
 Scenario.only('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
