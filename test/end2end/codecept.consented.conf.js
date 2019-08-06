@@ -2,44 +2,34 @@ const testConfig = require('test/config.js');
 
 exports.config = {
 
-  tests: './**/consentedJourneys/*.js',
+  tests: './**/consentedJourneys/consentedE2EHwfJourney.js',
   output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
-      url: testConfig.TestFrontendUrl || 'https://www.ccd.demo.platform.hmcts.net/',
+      url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
       waitForTimeout: 5000,
-      // waitForAction: 2000,
+      waitForAction: 2000,
       getPageTimeout: 30000,
       show: false,
       waitForNavigation: 'networkidle0',
       ignoreHTTPSErrors: true,
-      headless: true,
+      headless: false,
       chrome: {
         ignoreHTTPSErrors: true,
         args: [
           '--no-sandbox',
           '--proxy-server=proxyout.reform.hmcts.net:8080'
-        ],
-        defaultViewport: {
-          width:1280,
-          height: 960 
-        }
+        ]
       }
 
-    },
-  plugins: {
-    screenshotOnFail: {
-      enabled: true
     }
   },
   include: { I: './consented/pages/steps.js' },
-
   mocha: {
     reporterOptions: {
       // reportDir: process.env.E2E_OUTPUT_DIR || './functional-output',
       // reportName: 'FinremSolTests',
-      // ,
-      // inlineAssets: true
+      // inlineAssets: true,
       'codeceptjs-cli-reporter': {
         stdout: '-',
         options: {
@@ -53,8 +43,7 @@ exports.config = {
           reportDir: './report1',
           reportFilename: 'report'
         }
-      }
-      ,
+      },
       'mocha-junit-reporter': {
         stdout: './report2/console.log',
         options: {
@@ -62,9 +51,7 @@ exports.config = {
         },
         attachments: true //add screenshot for a failed test
       }
-      
     }
-    
   },
   name: 'Finrem Sol Tests'
 };
