@@ -18,7 +18,8 @@ exports.config = {
         ignoreHTTPSErrors: true,
         args: [
           '--no-sandbox',
-          '--proxy-server=proxyout.reform.hmcts.net:8080'
+          '--proxy-server=proxyout.reform.hmcts.net:8080',
+          '--disable-dev-shm-usage'
         ]
       }
 
