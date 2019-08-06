@@ -8,7 +8,7 @@ exports.config = {
     Puppeteer: {
       url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
       waitForTimeout: 5000,
-      waitForAction: 2000,
+      // waitForAction: 2000,
       getPageTimeout: 30000,
       show: false,
       waitForNavigation: 'networkidle0',
