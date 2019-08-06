@@ -18,7 +18,7 @@ function createCase() {
   I.click('Start');
   I.waitForPage('h2', 'Before You Start');
   I.waitForContinueButtonEnabled();
-  I.click('Continue') ; ;
+  I.click('Continue') ;
 }
 
 module.exports = { createCase };

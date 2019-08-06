@@ -99,7 +99,7 @@ Scenario('Verify Consented HWF Solicitors Respond to order Scenario', I => {
 
 
 Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response Received', I => {
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword)
+  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);
   I.searchCase(solRef);

@@ -27,7 +27,7 @@ function optionsPage(){
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
   // I.wait(10);
-  I.waitForPage('h4', 'RESPONDENT DETAILS')
+  I.waitForPage('h4', 'RESPONDENT DETAILS');
   I.fillField('input[id="rSolicitorEmail"]', 'mahsol@mailinator.com');
   // I.wait(5);
   I.waitForContinueButtonEnabled();
@@ -39,7 +39,7 @@ function optionsPage(){
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
   // I.wait(10);
-  I.waitForPage('h4', 'ORDER FOR CHILDREN')
+  I.waitForPage('h4', 'ORDER FOR CHILDREN');
   I.checkOption('input[id="orderForChildrenQuestion1-No"]');
   // I.wait(5);
   I.waitForContinueButtonEnabled();
@@ -48,7 +48,7 @@ function optionsPage(){
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
   // I.wait(10);
-  I.waitForPage('h4', 'D81')
+  I.waitForPage('h4', 'D81');
   I.checkOption('input[id="d81Question-No"]');
   I.wait(2);
   I.attachFile('input[id="d81Applicant"]', 'data/fileupload.txt');
