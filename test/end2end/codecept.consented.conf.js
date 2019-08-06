@@ -39,16 +39,16 @@ exports.config = {
         }
       },
       mochawesome: {
-        stdout: './report1/console.log',
+        stdout: './functional-output/mochawesome/console.log',
         options: {
           reportDir: './report1',
           reportFilename: 'report'
         }
       },
       'mocha-junit-reporter': {
-        stdout: './report2/console.log',
+        stdout: './functional-output/mocha-junit-reporter/console.log',
         options: {
-          mochaFile: './report1/report2result.xml'
+          mochaFile: './report2/report2result.xml'
         },
         attachments: true //add screenshot for a failed test
       }
