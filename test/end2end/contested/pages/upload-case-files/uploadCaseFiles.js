@@ -11,7 +11,8 @@ function uploadCaseFiles(){
   I.wait(10);
   I.selectOption('select[id=uploadCaseDocument_0_caseDocumentType]', 'Letter from Applicant');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.click('Submit');
   I.wait(5);

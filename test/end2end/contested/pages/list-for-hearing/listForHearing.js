@@ -17,7 +17,8 @@ function listForHearing() {
   I.wait(3);
   I.selectOption('select[id=nottinghamCourtListSL]', 'FR_s_NottinghamList_3');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.see('Time Estimate');
   I.see('Hearing Date');

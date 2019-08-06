@@ -11,7 +11,8 @@ function contestedNatureOfApplication() {
   I.checkOption('input[value="Pension Compensation Attachment Order"]');
   I.checkOption('input[value="propertyAdjustmentOrder"]');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
   I.fillField('#propertyAddress', '26 Riverside gardens');
   I.wait(5);
@@ -19,7 +20,8 @@ function contestedNatureOfApplication() {
   I.wait(5);
   I.checkOption('input[id="additionalPropertyOrderDecision-No"]');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 }
 

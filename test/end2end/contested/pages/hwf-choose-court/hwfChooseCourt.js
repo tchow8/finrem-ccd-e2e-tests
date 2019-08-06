@@ -10,7 +10,8 @@ function hwfChooseCourt() {
   I.wait(2);
   I.fillField('#reasonForLocalCourt', 'hwf court is not for testing');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

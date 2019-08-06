@@ -2,14 +2,15 @@
 
 function checkYourAnswers() {
   const I = this;
-  I.wait(5);
+  // I.wait(5);
+  I.waitForElement('.check-your-answers',60);
   I.see('SOLICITOR DETAILS');
   I.see('DIVORCE DETAILS');
   I.see('APPLICANT DETAILS');
   I.see('RESPONDENT DETAILS');
-  I.wait(10);
+  // I.wait(10);
   I.click('Submit');
-  I.wait(10);
+  // I.wait(10);
 }
 
 module.exports = { checkYourAnswers };

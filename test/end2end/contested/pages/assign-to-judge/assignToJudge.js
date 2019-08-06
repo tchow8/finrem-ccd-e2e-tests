@@ -14,7 +14,8 @@ function assignToJudge() {
   I.fillField('input[id="referToJudgeDateFromRespondToOrder-year"]', '2019');
   I.wait(10);
   I.fillField('input[id="referToJudgeTextFromRespondToOrder"]', 'Please look into this case on urgent basis again ');
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(10);

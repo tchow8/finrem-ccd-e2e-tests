@@ -5,7 +5,8 @@ function contestedHwfPayment() {
   I.wait(3);
   I.fillField('input[id="HWFNumber"]', 'HWF27343');
   I.wait(2);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 }
 

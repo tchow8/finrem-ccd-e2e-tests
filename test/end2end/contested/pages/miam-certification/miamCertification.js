@@ -6,7 +6,8 @@ function miamCertification() {
   I.fillField('#familyMediatorServiceName', 'mediator');
   I.fillField('#soleTraderName', 'trading');
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

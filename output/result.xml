@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="122.716" tests="8" failures="1">
+  <testsuite name="Root Suite" timestamp="2019-07-29T21:42:42" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="finrem consented e2e HWF Journey" timestamp="2019-07-29T21:42:42" tests="8" file="/Users/sreekanth/work/moj/repos/finrem-ccd-e2e-tests/test/end2end/consentedJourneys/consentedE2EHwfJourney.js" failures="1" time="122.716">
+    <testcase name="finrem consented e2e HWF Journey: Verify Consented HWF Solicitors Happypath Scenario" time="122.716" classname="Verify Consented HWF Solicitors Happypath Scenario">
+      <failure message="Text &quot;APPLICANT DETAILS&quot; was not found on page after 60 sec
+waiting for function failed: timeout 60000ms exceeded" type="Error"><![CDATA[Text "APPLICANT DETAILS" was not found on page after 60 sec
+waiting for function failed: timeout 60000ms exceeded
+
+Scenario Steps:
+
+- I.waitForText("APPLICANT DETAILS", 60, "h4") at Object.waitForPage (test/end2end/consented/pages/common/common.js:76:5)
+- I.click("Continue") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:18:5)
+- I.fillField("input[id="divorceDecreeNisiDate-year"]", "2019") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:16:5)
+- I.fillField("input[id="divorceDecreeNisiDate-month"]", "2") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:15:5)
+- I.fillField("input[id="divorceDecreeNisiDate-day"]", "1") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:14:5)
+- I.attachFile("input[type="file"]", "data/fileupload.txt") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:12:5)
+- I.wait(5) at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:11:5)
+- I.selectOption("select[id="divorceStageReached"]", "Decree Nisi") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:10:5)
+- I.fillField("input[id="divorceCaseNumber"]", "LV18D81234") at Object.divorceDetails (test/end2end/consented/pages/divorce-details/divorceDetails.js:8:5)
+- I.waitForText("DIVORCE DETAILS", 60, "h4") at Object.waitForPage (test/end2end/consented/pages/common/common.js:76:5)
+- I.click("Continue") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:23:5)
+- I.checkOption("input[id="solicitorAgreeToReceiveEmails-Yes"]") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:21:5)
+- I.fillField("input[id="solicitorDXnumber"]", "776890") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:20:5)
+- I.fillField("input[id="solicitorEmail"]", "mahesh.goduguchinta@hmcts.net") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:19:5)
+- I.fillField("input[id="solicitorPhone"]", "07766120098") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:18:5)
+- I.fillField("input[id="solicitorAddress__County"]", "Middlesex") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:17:5)
+- I.fillField("input[id="solicitorAddress__AddressLine3"]", "Opposite Tesco") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:16:5)
+- I.fillField("input[id="solicitorAddress__AddressLine2"]", "Near Roundabout") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:15:5)
+- I.selectOption("Select an address", "67 Pears Road, Hounslow") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:13:5)
+- I.wait(5) at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:12:5)
+- I.click("Find address") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:11:5)
+- I.fillField("Enter a UK postcode", "TW3 1SS") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:10:5)
+- I.fillField("input[id="solicitorReference"]", "AUTO-1564436562771") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:9:5)
+- I.fillField("input[id="solicitorFirm"]", "Abc Firm") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:8:5)
+- I.fillField("input[id="solicitorName"]", "Arrow") at Object.solicitorCreate (test/end2end/consented/pages/solicitor-create/solicitorCreate.js:7:5)
+- I.waitForText("SOLICITOR DETAILS", 60, "h4") at Object.waitForPage (test/end2end/consented/pages/common/common.js:76:5)
+- I.click("Continue") at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:22:5)
+- I.wait(10) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:20:5)
+- I.click("Start") at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:19:5)
+- I.selectOption("select[id= cc-event]", "Consent Order Application") at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:18:5)
+- I.wait(2) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:17:5)
+- I.selectOption("select[id=cc-case-type]", "FinancialRemedyMVP2") at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:16:5)
+- I.wait(3) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:15:5)
+- I.selectOption("select[id=cc-jurisdiction]", "Family Divorce") at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:14:5)
+- I.wait(3) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:12:5)
+- I.waitForElement("//select[id=cc-jurisdiction]/option[text()="Family Divorce"]", 60) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:11:5)
+- I.waitForText("Create Case", 60, "h1") at Object.waitForPage (test/end2end/consented/pages/common/common.js:76:5)
+- I.click("Create new case") at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:7:5)
+- I.waitForElement(".container-fluid a[href="/create/case"]", 60) at Object.createCase (test/end2end/consented/pages/create-case/createCase.js:6:5)
+- I.wait(15) at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:10:5)
+- I.click("Sign in") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:9:5)
+- I.fillField("password", "Nagoya0102") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:8:5)
+- I.fillField("username", "henry_fr_harper@yahoo.com") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:7:5)
+- I.waitForText("Email address") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:6:5)
+- I.wait(5) at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:5:5)
+- I.amOnPage("https://www-ccd.aat.platform.hmcts.net/") at Object.signinIdam (test/end2end/consented/pages/signIn/signIn.js:4:5)
+
+]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

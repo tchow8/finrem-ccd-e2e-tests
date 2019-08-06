@@ -8,9 +8,9 @@ exports.config = {
     Puppeteer: {
       url: testConfig.TestFrontendUrl || 'https://www.ccd.demo.platform.hmcts.net/',
       waitForTimeout: 5000,
-      waitForAction: 2000,
+      // waitForAction: 2000,
       getPageTimeout: 30000,
-      show: false,
+      show: true,
       waitForNavigation: 'networkidle0',
       ignoreHTTPSErrors: true,
       headless: true,
@@ -19,7 +19,11 @@ exports.config = {
         args: [
           '--no-sandbox',
           '--proxy-server=proxyout.reform.hmcts.net:8080'
-        ]
+        ],
+        defaultViewport: {
+          width: 1280,
+          height: 960
+        }
       }
 
     }

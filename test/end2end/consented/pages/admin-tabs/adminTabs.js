@@ -1,7 +1,9 @@
 function adminTabs() {
 
   const I = this;
-  I.wait(10);
+  // I.wait(10);
+  I.waitForPage('.EventLogTable h2', 'History');
+
   I.click('Summary');
   I.wait(1);
   I.click('Applicant');
@@ -17,7 +19,7 @@ function adminTabs() {
   I.click('Case Documents');
   I.wait(1);
   I.see('OnlineForm.pdf');
-  I.wait(5);
+  I.wait(1);
   I.click('Payment details');
   I.wait(1);
   I.click('Admin Notes');
@@ -25,7 +27,7 @@ function adminTabs() {
   I.click('Notes');
   I.wait(1);
   I.see('Notes 1');
-  I.wait(10);
+  // I.wait(10);
 
 
 }

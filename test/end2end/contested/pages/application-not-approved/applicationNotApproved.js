@@ -49,7 +49,8 @@ function applicationNotApproved() {
   I.wait(5);
   I.fillField('#orderRefusalCollection_0_orderRefusalAddComments', 'Please justify for FR');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(10);

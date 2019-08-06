@@ -7,7 +7,8 @@ function mediationExemptions() {
   I.checkOption('input[id="MIAMExemptionsChecklist-urgency"]');
   I.checkOption('input[id*="MIAMExemptionsChecklist-domesticViolence"]');
   I.wait(2);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

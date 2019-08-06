@@ -13,7 +13,8 @@ function contestedCreateCase() {
   I.wait(5);
   I.click('Start');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
 }
 

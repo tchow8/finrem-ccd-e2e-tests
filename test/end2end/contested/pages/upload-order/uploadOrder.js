@@ -19,7 +19,8 @@ function uploadOrder(){
   I.wait(2);
   I.fillField('input[id="uploadOrder_0_DocumentDateAdded-year"]', '2019');
   I.wait(10);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(10);

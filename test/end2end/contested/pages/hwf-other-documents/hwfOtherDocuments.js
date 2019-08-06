@@ -4,9 +4,11 @@ function hwfOtherDocuments() {
   I.wait(5);
   I.checkOption('input[id="promptForAnyDocument-No"]');
   I.wait(3);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

@@ -10,7 +10,8 @@ function contestedPbaCase() {
   I.fillField('input[id="issueDate-month"]', '5');
   I.fillField('input[id="issueDate-year"]', '2019');
   I.wait(2);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(10);
   I.click('Submit');
   I.wait(10);

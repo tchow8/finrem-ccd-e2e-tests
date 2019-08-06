@@ -8,7 +8,8 @@ function mediationQuestion() {
   I.wait(2);
   I.checkOption('input[id="familyMediatorMIAM-No"]');
   I.wait(2);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }

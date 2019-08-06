@@ -24,7 +24,8 @@ function mediationDomesticVoilence() {
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_2"]');
   I.checkOption('input[id="MIAMDomesticViolenceChecklist-FR_ms_MIAMDomesticViolenceChecklist_Value_1"]');
   I.wait(3);
-  I.click('Continue');
+  I.waitForContinueButtonEnabled();
+  I.click('Continue') ;
   I.wait(5);
 
 }
