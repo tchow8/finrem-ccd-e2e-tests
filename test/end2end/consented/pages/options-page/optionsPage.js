@@ -1,7 +1,7 @@
 function optionsPage(){
   const I = this;
   // I.wait(10);
-  I.waitForPage('.EventLogTable h2', 'History');
+  I.waitForElement('.tabs', 30);
   I.selectOption('select[id="next-step"]', 'Amend Application Details');
   I.wait(2);
   I.click('Go');
