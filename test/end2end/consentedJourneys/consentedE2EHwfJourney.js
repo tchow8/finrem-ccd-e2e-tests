@@ -2,7 +2,7 @@ Feature('finrem consented e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
-// const solRef = '1565164640087';
+// const solRef = '1565167881575';
 const pbaValue = false;
 
 Scenario('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
@@ -131,18 +131,19 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
 
   // I.wait(10);
   I.searchCase(solRef);
-  // I.uploadConsentOrder();
-  // I.waitForPage('.EventLogTable h2', 'History'); 
-  // I.see('Upload Consent Order');
-  // I.wait(5);
-  // I.amendCase();
-  // I.waitForPage('.EventLogTable h2', 'History');  
-  // I.see('Amend Case');
-  // I.wait(5);
+  I.uploadConsentOrder();
+  I.waitForPage('.EventLogTable h2', 'History'); 
+  I.see('Upload Consent Order');
+  I.wait(5);
+  I.amendCase();
+  I.waitForPage('.EventLogTable h2', 'History');  
+  I.see('Amend Case');
+  I.wait(5);
   I.amendedConsentOrder();
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Amended Consent Order');
-  // I.wait(5);
+  I.wait(5);
+  // pause ();
   I.updateContactDetails();
 
   I.waitForPage('.EventLogTable h2', 'History');  

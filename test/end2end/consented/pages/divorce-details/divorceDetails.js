@@ -10,7 +10,8 @@ function divorceDetails() {
   I.selectOption('select[id="divorceStageReached"]', 'Decree Nisi');
   I.wait(5);
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
-  // I.wait(5);
+
+  I.wait(5);
   I.fillField('input[id="divorceDecreeNisiDate-day"]', '1');
   I.fillField('input[id="divorceDecreeNisiDate-month"]', '2');
   I.fillField('input[id="divorceDecreeNisiDate-year"]', '2019');
