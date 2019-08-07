@@ -2,7 +2,7 @@ function finalTabs() {
 
   const I = this;
   I.wait(10);
-  I.click('Summary');
+  I.click('Judge');
   I.wait(1);
   I.click('Applicant');
   I.wait(1);

@@ -7,7 +7,7 @@ async function contestedSolicitorCreate(reference) {
   I.fillField('//*[@id="solicitorReference"]', 'AUTO-'+reference);
   I.fillField('Enter a UK postcode', 'TW3 1SS');
 
-  pause();
+  //pause();
 
   // eslint-disable-next-line no-undef
   await document.querySelector('').click();

@@ -2,7 +2,7 @@ Feature('finrem consented e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
-// const solRef = '1565016548836';
+// const solRef = '1565164640087';
 const pbaValue = false;
 
 Scenario('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
@@ -48,6 +48,7 @@ Scenario('Verify Consented HWF Court Admin update case Scenario', I => {
   }else {
     I.hwfUpdateCase();
   }
+  //pause ();
   I.adminTabs();
 
 });
