@@ -4,8 +4,8 @@ function adminTabs() {
   // I.wait(10);
   I.waitForPage('.EventLogTable h2', 'History');
 
-  I.click('Summary');
-  I.wait(1);
+  // I.click('Summary');
+  // I.wait(1);
   I.click('Applicant');
   I.wait(1);
   I.click('Respondent');
