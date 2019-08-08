@@ -91,14 +91,14 @@ exports.config = {
       mochawesome: {
         stdout: './functional-output/mochawesome/console.log',
         options: {
-          reportDir: './report1',
+          reportDir: './functional-output/mochawesome',
           reportFilename: 'report'
         }
       },
       'mocha-junit-reporter': {
         stdout: './functional-output/mocha-junit-reporter/console.log',
         options: {
-          mochaFile: './report2/report2result.xml'
+          mochaFile: './functional-output/mocha-junit-reporter/report2result.xml'
         },
         attachments: true //add screenshot for a failed test
       }
