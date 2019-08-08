@@ -37,6 +37,13 @@ exports.config = {
         script: 60000,
         'page load': 10000
       },
+      args: [
+        '--no-sandbox',
+        '--proxy-server=proxyout.reform.hmcts.net:8080',
+        '--disable-dev-shm-usage',
+        '--headless'
+      ],
+        
       desiredCapabilities:{
         proxy:{
           proxyType: 'manual',
@@ -61,7 +68,7 @@ exports.config = {
           chrome: {
             version: '74.0.3729.6',
             arch: process.arch,
-            baseURL: 'https://chromedriver.storage.googleapis.com',
+            baseURL: 'https://chromedriver.storage.googleapis.com'
           }
         }
       }
