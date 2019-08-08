@@ -37,6 +37,7 @@ node {
             try {
                 sh 'yarn install'
                 sh './node_modules/.bin/selenium-standalone install'
+                sh './node_modules/.bin/selenium-standalone start'
                 sh """ yarn run ${params.Journey}${params.JourneyType} """
             }
             catch (Exception err) {
