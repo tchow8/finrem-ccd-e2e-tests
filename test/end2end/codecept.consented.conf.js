@@ -52,7 +52,8 @@ exports.config = {
   plugins: {
     wdio: {
       enabled: true,
-      services: ['selenium-standalone'],
+      services: ['selenium-standalone']
+      ,
       seleniumInstallArgs: {
         version: '3.141.5',
         baseURL: 'https://selenium-release.storage.googleapis.com',
