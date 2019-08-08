@@ -37,14 +37,17 @@ exports.config = {
         script: 60000,
         'page load': 10000
       },
-      args: [
-        '--no-sandbox',
-        '--proxy-server=proxyout.reform.hmcts.net:8080',
-        '--disable-dev-shm-usage',
-        '--headless'
-      ],
+      
         
       desiredCapabilities:{
+        chromeOptions: {
+          args: [
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--proxy-server=proxyout.reform.hmcts.net:8080',
+            '--headless'
+          ]
+        },
         proxy:{
           proxyType: 'manual',
           httpProxy: 'proxyout.reform.hmcts.net:8080'
