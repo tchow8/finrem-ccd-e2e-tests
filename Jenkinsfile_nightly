@@ -44,7 +44,7 @@ node {
                 echo "RESULT: ${currentBuild.result}"
             } finally {
                 sh 'ls -alrt'
-                archiveArtifacts 'functional-output/*'
+                archiveArtifacts 'functional-output/**'
             }
 
         }
