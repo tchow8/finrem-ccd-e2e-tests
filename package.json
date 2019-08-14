@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "consentedtest-e2e": " NODE_PATH=. codeceptjs  run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
+    "consentedtest-e2e": "  NODE_PATH=. codeceptjs  run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
     "consentedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.consented.conf.js --steps --reporter mochawesome",
     "consentedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.consented.conf.js --steps --reporter mochawesome",
     "contestedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.contested.conf.js --steps --reporter mochawesome",

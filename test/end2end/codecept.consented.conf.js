@@ -1,8 +1,12 @@
 const testConfig = require('test/config.js');
 
+
+// eslint-disable-next-line no-console
+console.log('Custom env param : '+process.env.TEST);
+
 exports.config = {
 
-  tests: './**/consentedJourneys/consentedE2EHwfJourney.js',
+  tests: './**/consentedJourneys/*.js',
   output: `${process.cwd()}/functional-output`,
   helpers: {
     // Puppeteer: {
