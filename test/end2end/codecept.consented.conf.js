@@ -77,7 +77,7 @@ exports.config = {
             '--no-sandbox',
             '--disable-dev-shm-usage',
             '--proxy-server=proxyout.reform.hmcts.net:8080'
-            // '--headless'
+            '--headless'
           ]
         }
         // ,
