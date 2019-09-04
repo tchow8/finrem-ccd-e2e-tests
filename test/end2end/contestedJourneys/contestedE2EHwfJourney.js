@@ -3,10 +3,11 @@ const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
 const pbaValue = false;
+const searchCaseType = 'Contested Financial Remedy';
 
-Scenario.only('Verify Contested HWF Solicitors Happypath Scenario', I => {
-  I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.contestedCreateCase();
+Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
+  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+  I.createCase('FinancialRemedyContested', 'Form A Application');
   I.contestedSolicitorCreate(solRef);
   I.contestedDivorceDetails();
   I.contestedApplicantDetails();
@@ -21,27 +22,25 @@ Scenario.only('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.hwfOtherDocuments();
   I.contestedCYA();
   I.see('Form A Application');
-  I.wait(10);
   //I.draftValidateTabs();
   I.contestedHwfOptionsPage();
   I.contestedAuthorisation();
-  I.contestedPayment(pbaValue);
-  I.contestedHwfPayment();
-  I.contestedPaymentSubmission();
-  I.contestedInformationPage();
-  I.contestedFinalPaymentPage();
-  I.contestedFinalInformation();
+  I.paymentPage(pbaValue);
+  I.hwfPaymentDetails();
+  I.paymentSubmission();
+  I.informationPage();
+  I.finalPaymentSubmissionPage();
+  I.finalInformationPage();
   I.see('Case Submission');
   //I.solicitorTabs();
 });
 
 
 Scenario('Verify Contested HWF Court Admin update case Scenario', I => {
-  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(10);
-  I.contestedSearchCase(solRef);
-  I.contestedAddNote();
-  I.wait(10);
+  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+  I.searchCase(solRef, searchCaseType);
+
+  I.addNote();
   if(pbaValue===true) {
     I.contestedPbaCase();
   }else {
@@ -53,9 +52,8 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', I => {
 
 
 Scenario('Verify Contested HWF Solicitors upload case files Scenario', I => {
-  I.contestedsigninIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.wait(10);
-  I.contestedSearchCase(solRef);
+  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+  I.searchCase(solRef, searchCaseType);
   I.uploadCaseFiles();
   //I.solResponseTabs();
 
@@ -63,9 +61,9 @@ Scenario('Verify Contested HWF Solicitors upload case files Scenario', I => {
 
 
 Scenario('Verify Contested HWF Court judge approve case', I => {
-  I.contestedsigninIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.wait(10);
-  I.contestedSearchCase(solRef);
+  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+  I.searchCase(solRef, searchCaseType);
+  I.waitForPage('.tabs-list');
   I.see('Submit Uploaded Case Files');
   //I.judgeApproveTabs();
 
@@ -74,24 +72,31 @@ Scenario('Verify Contested HWF Court judge approve case', I => {
 
 
 Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', I => {
-  I.contestedsigninIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.wait(10);
-  I.contestedSearchCase(solRef);
+  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+  I.searchCase(solRef, searchCaseType);
+
   I.contestedAmendCase();
+
+  I.waitForPage('.tabs-list');
   I.see('Amend Case');
-  I.wait(5);
+
   I.contestedUpdateContactDetails();
+
+  I.waitForPage('.tabs-list');
   I.see('Update contact details');
-  I.wait(5);
+  
   I.contestedUploadDocument();
+
+  I.waitForPage('.tabs-list');
   I.see('Upload document');
-  I.wait(5);
   I.contestedRefund();
+
+  I.waitForPage('.tabs-list');
   I.see('Refund');
-  I.wait(5);
   I.contestedCloseCase();
+
+  I.waitForPage('.tabs-list');
   I.see('Close Case');
-  I.wait(2);
   //I.finalTabs();
 
 

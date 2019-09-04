@@ -1,13 +1,43 @@
 const testConfig = require('test/config.js');
 
 
-// eslint-disable-next-line no-console
-console.log('Custom env param : '+process.env.TEST);
+
+const journeyType = process.env.JOURNEYTYPE;
+const journey = process.env.JOURNEY;
+
+function getTests() {
+  let tests = './**/';
+
+  if (journeyType === 'all'){
+    tests = tests + '*Journeys/*.js';
+    return tests;
+  }
+  else{
+    tests = tests + journeyType + 'Journeys/';
+  }
+
+  if(journey === 'all'){
+    tests = tests + journeyType+'E2E*.js';
+  }else{
+    tests = tests + journeyType + 'E2E'+journey+'Journey.js'; 
+  }
+  // eslint-disable-next-line no-console
+  console.log('tests : ' + tests);
+  return tests;
+}
 
 exports.config = {
+  tests: getTests(),
+  // tests: './../consentedJourneys/consentedE2E*.js',
 
-  tests: './**/consentedJourneys/*.js',
+  // tests: './**/consentedJourneys/*.js',
   output: `${process.cwd()}/functional-output`,
+  multiple: {
+    parallel : {
+      chunks: 2,
+      browser: ['chrome']
+    }
+  },
   helpers: {
     // Puppeteer: {
     //   url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
@@ -46,8 +76,8 @@ exports.config = {
           args: [
             '--no-sandbox',
             '--disable-dev-shm-usage',
-            '--proxy-server=proxyout.reform.hmcts.net:8080',
-            '--headless'
+            '--proxy-server=proxyout.reform.hmcts.net:8080'
+            // '--headless'
           ]
         }
         // ,
@@ -61,23 +91,11 @@ exports.config = {
     
   
   },
-  include: { I: './consented/pages/steps.js' },
+  include: { I: './pages/steps.js' },
   plugins: {
     wdio: {
       enabled: true,
       services: ['selenium-standalone']
-      // ,
-      // seleniumInstallArgs: {
-      //   version: '3.141.5',
-      //   baseURL: 'https://selenium-release.storage.googleapis.com',
-      //   drivers: {
-      //     chrome: {
-      //       version: '74.0.3729.6',
-      //       arch: process.arch,
-      //       baseURL: 'https://chromedriver.storage.googleapis.com'
-      //     }
-      //   }
-      // }
     }
   },
   mocha: {
@@ -110,3 +128,4 @@ exports.config = {
   },
   name: 'Finrem Sol Tests'
 };
+

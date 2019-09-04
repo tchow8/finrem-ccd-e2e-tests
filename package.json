@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "consentedtest-e2e": "  NODE_PATH=. codeceptjs  run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
-    "consentedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.consented.conf.js --steps --reporter mochawesome",
-    "consentedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.consented.conf.js --steps --reporter mochawesome",
-    "contestedtest-e2e": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.contested.conf.js --steps --reporter mochawesome",
-    "contestedE2EHwfJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Hwf.contested.conf.js --steps --reporter mochawesome",
-    "contestedE2EPbaJourney": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.Pba.contested.conf.js --steps --reporter mochawesome",
+    "consentedtest-e2e": "JOURNEYTYPE=consented JOURNEY=all  NODE_PATH=. codeceptjs  run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
+    "consentedE2EHwfJourney": "JOURNEYTYPE=consented JOURNEY=Hwf NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
+    "consentedE2EPbaJourney": "JOURNEYTYPE=consented JOURNEY=Pba NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
+    "contestedtest-e2e": "JOURNEYTYPE=contested JOURNEY=all NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
+    "contestedE2EHwfJourney": "JOURNEYTYPE=contested JOURNEY=Hwf NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
+    "contestedE2EPbaJourney": "JOURNEYTYPE=contested JOURNEY=Pba NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
     "Testtest": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.test.conf.js --steps --reporter mochawesome",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "lint": "eslint ."
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@hmcts/eslint-config": "^1.4.0",
     "@wdio/selenium-standalone-service": "^5.11.2",
+    "axios": "^0.19.0",
     "codeceptjs": "^2.0.7",
     "eslint": "^4.19.1",
     "eslint-plugin-mocha": "^5.0.0",

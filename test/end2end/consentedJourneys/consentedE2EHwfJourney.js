@@ -5,13 +5,15 @@ const solRef = dateUtil.createSolicitorReference();
 // const solRef = '1565167881575';
 const pbaValue = false;
 
+const searchCaseType = 'Financial Remedy Consented';
+
 Scenario('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.createCase();
+  I.createCase('FinancialRemedyMVP2','Consent Order Application');
   I.solicitorCreate(solRef);
   I.divorceDetails();
-  I.applicantDetails();
-  I.respondentDetails();
+  I.consentedApplicatDetails();
+  I.consentedRespondentDetails();
   I.natureOfApplication();
   I.orderForChildren();
   I.consentOrder();
@@ -40,7 +42,7 @@ Scenario('Verify Consented HWF Court Admin update case Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.addNote();
   // I.wait(10);
   if(pbaValue===true) {
@@ -60,7 +62,7 @@ Scenario('Verify Consented HWF Court judge application not approved case', I => 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
 
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.applicationNotApproved();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
@@ -75,7 +77,7 @@ Scenario('Verify Consented HWF Court Admin upload order Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.sendOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Send Order');
@@ -89,7 +91,7 @@ Scenario('Verify Consented HWF Solicitors Respond to order Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
 
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.respondOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
@@ -103,7 +105,7 @@ Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.assignToJudge();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
@@ -116,7 +118,7 @@ Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response
 Scenario('Verify Consented HWF Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
 
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.approveApplication();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
@@ -130,7 +132,7 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.uploadConsentOrder();
   I.waitForPage('.EventLogTable h2', 'History'); 
   I.see('Upload Consent Order');

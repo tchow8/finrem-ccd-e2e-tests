@@ -2,20 +2,22 @@ Feature('finrem consented e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = dateUtil.createSolicitorReference();
-const pbaValue = false;
+const pbaValue = true;
+const searchCaseType = 'Financial Remedy Consented';
 
-Scenario.only('Verify Consented PBA Solicitors Happypath Scenario', I => {
+Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.createCase();
+  I.createCase('FinancialRemedyMVP2', 'Consent Order Application');
   I.solicitorCreate(solRef);
   I.divorceDetails();
-  I.applicantDetails();
-  I.respondentDetails();
+  I.consentedApplicatDetails();
+  I.consentedRespondentDetails();
   I.natureOfApplication();
   I.orderForChildren();
   I.consentOrder();
   I.d81();
   I.optionalDocuments();
+  I.otherDocuments();
   I.informationPage();
   I.checkYourAnswers();
   I.see('Consent Order Application');
@@ -53,7 +55,7 @@ Scenario('Verify Consented PBA Court Admin update case Scenario', I => {
 Scenario('Verify Consented PBA Court judge application not approved case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.applicationNotApproved();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
@@ -66,7 +68,7 @@ Scenario('Verify Consented PBA Court judge application not approved case', I => 
 Scenario('Verify Consented PBA Court Admin upload order Scenario', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.updateOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update Order');
@@ -82,7 +84,7 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', I => {
 Scenario('Verify Consented PBA Solicitors Respond to order Scenario', I => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.respondOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
@@ -95,7 +97,7 @@ Scenario('Verify Consented PBA Solicitors Respond to order Scenario', I => {
 Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response Received', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.assignToJudge();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
@@ -108,7 +110,7 @@ Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response
 Scenario('Verify Consented PBA Court judge approve case', I => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.approveApplication();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
@@ -121,7 +123,7 @@ Scenario('Verify Consented PBA Court judge approve case', I => {
 Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all Universal events', I => {
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
-  I.searchCase(solRef);
+  I.searchCase(solRef, searchCaseType);
   I.uploadConsentOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload Consent Order');
