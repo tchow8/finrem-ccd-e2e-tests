@@ -79,8 +79,8 @@ exports.config = {
           args: [
             '--no-sandbox',
             '--disable-dev-shm-usage',
-            '--proxy-server=proxyout.reform.hmcts.net:8080',
-            '--headless'
+            '--proxy-server=proxyout.reform.hmcts.net:8080'
+            // '--headless'
           ]
         }
         // ,
@@ -90,6 +90,9 @@ exports.config = {
         // }
         
       }
+    },
+    CustomHelpers: {
+      require : './helpers/CustomWebDriverHelper.js'
     }
     
   

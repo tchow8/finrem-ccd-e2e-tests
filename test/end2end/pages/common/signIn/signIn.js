@@ -6,8 +6,6 @@ async function signinIdam(username, password) {
   I.fillField('username', username);
   I.fillField('password', password);
   I.click('Sign in');
-
-
   I.wait(15);
 }
 
