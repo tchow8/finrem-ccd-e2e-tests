@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 async function  waitForPage(header,headerText) {
   const I = this;
@@ -39,7 +40,6 @@ async function waitForContinueButtonEnabled(){
   const I = this;
   await I.waitForElement('button[type = "submit"]:not(:disabled)',30);
 }
-
 
 
 module.exports = { waitForPage, waitForContinueButtonEnabled, getElementsCount, log };

@@ -1,4 +1,4 @@
-function contestedOptionsPage(){
+async function contestedOptionsPage(){
   const I = this;
 
   I.waitForPage('.tabs-list');
@@ -69,7 +69,6 @@ function contestedOptionsPage(){
   // I.waitForContinueButtonEnabled();
   // I.click('Continue') ;
 
-
   I.waitForPage('#fastTrackDecisionLabel');
 
   // I.checkOption('input[id="fastTrackDecisionReason-reason_3"]');
@@ -101,6 +100,8 @@ function contestedOptionsPage(){
 
 
   I.waitForContinueButtonEnabled();
+  I.saveScreenshot('ammend_MIAMExemptionsChecklist.png');
+
   I.click('body');
   I.click('Continue') ;
 
