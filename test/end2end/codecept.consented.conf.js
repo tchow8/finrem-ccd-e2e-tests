@@ -39,6 +39,9 @@ exports.config = {
     }
   },
   helpers: {
+    // 'Mochawesome': {
+    //   uniqueScreenshotNames: true
+    // },
     // Puppeteer: {
     //   url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
     //   waitForTimeout: 5000,
@@ -76,8 +79,8 @@ exports.config = {
           args: [
             '--no-sandbox',
             '--disable-dev-shm-usage',
-            '--proxy-server=proxyout.reform.hmcts.net:8080',
-            '--headless'
+            '--proxy-server=proxyout.reform.hmcts.net:8080'
+            // '--headless'
           ]
         }
         // ,
@@ -100,7 +103,7 @@ exports.config = {
   },
   mocha: {
     reporterOptions: {
-      // reportDir: process.env.E2E_OUTPUT_DIR || './functional-output',
+      // reportDir:  './functional-output',
       // reportName: 'FinremSolTests',
       // inlineAssets: true,
       'codeceptjs-cli-reporter': {
@@ -113,16 +116,23 @@ exports.config = {
       mochawesome: {
         stdout: './functional-output/mochawesome/console.log',
         options: {
+          includeScreenshots: true,
           reportDir: './functional-output/mochawesome',
-          reportFilename: 'report'
-        }
+          reportFilename: 'FineRem-E2E',
+          inline: true,
+          html:true,
+          json: true
+
+        },
+        attachments: true //add screenshot for a failed test
+
       },
       'mocha-junit-reporter': {
+        
         stdout: './functional-output/mocha-junit-reporter/console.log',
         options: {
           mochaFile: './functional-output/mocha-junit-reporter/report2result.xml'
-        },
-        attachments: true //add screenshot for a failed test
+        }
       }
     }
   },
