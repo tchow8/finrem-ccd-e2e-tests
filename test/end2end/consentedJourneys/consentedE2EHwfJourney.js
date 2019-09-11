@@ -7,7 +7,7 @@ const pbaValue = false;
 
 const searchCaseType = 'Financial Remedy Consented';
 
-Scenario('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
+Scenario.only('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyMVP2','Consent Order Application');
   I.solicitorCreate(solRef);
@@ -17,9 +17,9 @@ Scenario('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
   I.natureOfApplication();
   I.orderForChildren();
   I.consentOrder();
-  I.d81();
+  I.deightyone();
   I.optionalDocuments();
-  I.otherDocuments();
+  I.consentedOtherDocuments();
   I.informationPage();
   I.checkYourAnswers();
   I.see('Consent Order Application');

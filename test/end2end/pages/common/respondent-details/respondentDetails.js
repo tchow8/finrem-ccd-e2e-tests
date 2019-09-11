@@ -2,6 +2,7 @@
 
 function respondentSolicitorDetailsDetails(I) {
   // I.wait(5);
+  // const I = this;
  
   I.fillField('input[id="rSolicitorName"]', 'MahSol');
   I.fillField('input[id="rSolicitorFirm"]', 'MahFirm');
@@ -32,7 +33,7 @@ function consentedRespondentDetails(){
   I.fillField('input[id="appRespondentLName"]', 'resp');
   I.checkOption('input[id="appRespondentRep-Yes"]');
   I.wait(2);
-  respondentSolicitorDetailsDetails();
+  respondentSolicitorDetailsDetails(I);
 
 }
 

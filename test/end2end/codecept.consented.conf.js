@@ -1,5 +1,5 @@
 const testConfig = require('test/config.js');
-
+const debugReporter = require('./helpers/debugReporter.js');
 
 
 const journeyType = process.env.JOURNEYTYPE;
@@ -27,6 +27,9 @@ function getTests() {
 }
 
 exports.config = {
+  teardown: function (done) {
+    debugReporter(done);
+  },
   tests: getTests(),
   // tests: './../consentedJourneys/consentedE2E*.js',
 
@@ -79,8 +82,8 @@ exports.config = {
           args: [
             '--no-sandbox',
             '--disable-dev-shm-usage',
-            '--proxy-server=proxyout.reform.hmcts.net:8080',
-            '--headless'
+            '--proxy-server=proxyout.reform.hmcts.net:8080'
+            // '--headless'
           ]
         }
         // ,
@@ -105,7 +108,10 @@ exports.config = {
     }
   },
   mocha: {
+    reporterEnabled: 'mocha-junit-reporters, mochawesome,codeceptjs-cli-reporter',
+
     reporterOptions: {
+
       // reportDir:  './functional-output',
       // reportName: 'FinremSolTests',
       // inlineAssets: true,
@@ -126,9 +132,7 @@ exports.config = {
           html:true,
           json: true
 
-        },
-        attachments: true //add screenshot for a failed test
-
+        }
       },
       'mocha-junit-reporter': {
         
@@ -139,6 +143,6 @@ exports.config = {
       }
     }
   },
-  name: 'Finrem Sol Tests'
+  name: 'Finrem E2E Tests'
 };
 

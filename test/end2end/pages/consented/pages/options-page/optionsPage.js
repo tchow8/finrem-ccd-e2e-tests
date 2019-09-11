@@ -5,8 +5,7 @@ function optionsPage(){
   I.selectOption('select[id="next-step"]', 'Amend Application Details');
   I.wait(2);
   I.click('Go');
-  // I.waitForPage('h2', 'Before You Start');
-  I.wait(10);
+  I.waitForPage('h2', 'Before You Start');
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
 
