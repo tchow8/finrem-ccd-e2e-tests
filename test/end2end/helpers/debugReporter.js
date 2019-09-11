@@ -8,7 +8,7 @@ function debugReport(done){
     
   var fs = require('fs');
 
-  fs.copyFile('./test/reportTemplate/jquery-3.4.1.min.js', debugReportDir + '/jquery-3.4.1.min,js', (err) => {
+  fs.copyFile('./test/reportTemplate/jquery-3.4.1.min.js', debugReportDir + '/jquery-3.4.1.min.js', (err) => {
     if (err) throw err;
 
   });
