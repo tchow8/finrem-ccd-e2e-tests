@@ -1,6 +1,6 @@
 // const testConfig = require('test/config.js');
 
-function otherDocuments() {
+function consentedOtherDocuments() {
   const I = this;
   //   I.wait(5);
   I.waitForPage('h4', 'OTHER DOCUMENTS');
@@ -16,4 +16,4 @@ function otherDocuments() {
   I.click('Continue') ;
 }
 
-module.exports = { otherDocuments };
+module.exports = { consentedOtherDocuments };

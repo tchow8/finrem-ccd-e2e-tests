@@ -16,6 +16,7 @@ function searchCase(reference,caseType) {
   // I.click('.display-left button:not(.button-secondary)');
   // I.wait(20);
   I.waitForPage('.search-result-column-cell:nth-of-type(2) span', 'AUTO-' + reference);
+  I.takeScreenShot();
 
 
   I.click('.search-result-column-cell:nth-of-type(1) a');

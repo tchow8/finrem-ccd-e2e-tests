@@ -2,14 +2,21 @@
 
 async function  waitForPage(header,headerText) {
   const I = this;
+ 
+  try{
+    if (headerText === undefined) {
+      await I.waitForElement(header, 60);
+    }
+    else {
+      await I.waitForText(headerText, 60, header);
 
-  if (headerText === undefined){
-    await I.waitForElement(header, 60 );
-  } 
-  else{
-    await I.waitForText(headerText, 60, header);
-
+    }
   }
+  catch(err){
+    I.takeScreenShot();
+    throw err;
+  }
+  // I.takeScreenShot();
 
 }
 
@@ -41,7 +48,7 @@ async function waitForContinueButtonEnabled(){
 
 
   I.waitForElement('button[type = "submit"]:not(:disabled)',30);
-  I.takeScreenShot();
+  // I.takeScreenShot();
 
 }
 
