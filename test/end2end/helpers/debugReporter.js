@@ -8,6 +8,12 @@ function debugReport(done){
     
   var fs = require('fs');
 
+  fs.copyFile('./test/reportTemplate/jquery-3.4.1.min.js', debugReportDir + '/jquery-3.4.1.min,js', (err) => {
+    if (err) throw err;
+
+  });
+
+
   // destination.txt will be created or overwritten by default.
   fs.copyFile('./test/reportTemplate/DebugReportTemplate.html', debugReportDir +'/DebugReportTemplate.html', (err) => {
     if (err) throw err;
