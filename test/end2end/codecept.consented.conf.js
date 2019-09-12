@@ -1,5 +1,6 @@
 const testConfig = require('test/config.js');
 const debugReporter = require('./helpers/debugReporter.js');
+const {testNameSetter} = require('./helpers/customHooks.js');
 
 
 const journeyType = process.env.JOURNEYTYPE;
@@ -27,6 +28,9 @@ function getTests() {
 }
 
 exports.config = {
+  // bootstrap : function(){
+  //   testNameSetter();
+  // },
   teardown: function (done) {
     debugReporter(done);
   },

@@ -24,7 +24,7 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.wait(10);
   I.draftValidateTabs();
   I.optionsPage();
-  I.authorisation();
+  I.consentedAuthorisation();
   I.paymentPage(pbaValue);
   I.pbaPaymentDetails();
   I.paymentSubmission();

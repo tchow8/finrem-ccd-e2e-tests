@@ -5,7 +5,6 @@ async function signinIdam(username, password) {
   I.waitForPage('input[name="username"]');
   I.fillField('username', username);
   I.fillField('password', password);
-  I.takeScreenShot();
   I.click('Sign in');
   I.wait(15);
 }

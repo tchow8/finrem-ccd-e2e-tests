@@ -7,7 +7,7 @@ const pbaValue = false;
 
 const searchCaseType = 'Financial Remedy Consented';
 
-Scenario.only('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
+Scenario('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyMVP2','Consent Order Application');
   I.solicitorCreate(solRef);
@@ -26,7 +26,7 @@ Scenario.only('Verify Consented HWF Solicitors Happypath Scenario', I =>   {
   // I.wait(10);
   I.draftValidateTabs();
   I.optionsPage();
-  I.authorisation();
+  I.consentedAuthorisation();
   I.paymentPage(pbaValue);
   I.hwfPaymentDetails();
   I.paymentSubmission();
