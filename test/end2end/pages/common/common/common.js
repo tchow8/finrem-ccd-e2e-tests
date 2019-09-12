@@ -5,10 +5,10 @@ async function  waitForPage(header,headerText) {
  
   try{
     if (headerText === undefined) {
-      await I.waitForElement(header, 60);
+      await I.waitForElement(header, 6);
     }
     else {
-      await I.waitForText(headerText, 60, header);
+      await I.waitForText(headerText, 6, header);
 
     }
   }
