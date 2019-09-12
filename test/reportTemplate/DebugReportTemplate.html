@@ -9,14 +9,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <style>
-        body {
-            display: table;
-            height: 100vh;
-        }
-
-        .content {
-            display: table-row
-        }
+      
 
         .sideBar {
             display: table-cell;
@@ -75,25 +68,108 @@
             padding: 4px;
             background-color: lightgray;
         }
+
+.scenarioNode{
+    border-style: groove;
+}
+
+        .scenarioNode.passed div , .headerItem.passed {
+           background-color: green; 
+        }
+
+        .scenarioNode.failed div, .headerItem.failed {
+           background-color: red; 
+        }
+
+        .scenarioNode.undefined div, .headerItem.undefined {
+           background-color: yellowgreen; 
+        }
+
+        ul.show{
+            display: block
+        }
+
+        ul:not(.show){
+            display: none;
+        }
+
+        .scenarioName{
+            padding: 4px;
+        }
+
+        .headerItem{
+            display: inline-block;
+            border-style: groove;
+            border-radius: 5px;
+            padding:5px;
+            font-weight: bolder;
+            /* float: right; */
+        }
+
+        .header{
+            padding: 5px;
+            border-style: groove;
+            width: 100%;
+            margin:2px;
+            background-color: lightgray
+        }
+
+    }
+
     </style>
 
     <script src="jquery-3.4.1.min.js"></script>
 
     <script>
         var jsondata = replacejsoncontent;
-        function sideBarGenerator(nodeName) {
+        
+        function sideBarGenerator() {
             let nodes = Object.keys(jsondata);
-            $('ul').remove();
-            $('.sideBar').append('<ul>');
+            
 
             for (var i = 0; i < nodes.length; i++) {
-                let selectedClass = nodeName === nodes[i] ? 'selected' : '';
-                $('.sideBar ul').append('<li id=' + nodes[i] + ' class= ' + selectedClass + ' >' + nodes[i] + '</li>')
+                $('.sideBar').append('<div id=' + (i+1) + ' class="scenarioNode   ' + jsondata[nodes[i]]['status'] + '" ><div class="scenarioName">' + nodes[i] + '</div></div>');
+                
 
+                $('.sideBar div#'+(i+1)).append('<ul>');
+                
+                let stepsKeys = Object.keys(jsondata[nodes[i]]['steps']); 
+                
+                for(var step = 0; step < stepsKeys.length; step++){
+                   $('.sideBar div#' + (i + 1)+' ul').append('<li id='+ stepsKeys[step]+'  scrCtr ='+ i+' class="scenarioStep" >'+  stepsKeys[step]+' </li>'); 
+                }
             }
         }
 
+        function setHeaderData(){
+                     let nodes = Object.keys(jsondata);
+                let passed = 0;
+                let failed = 0;
+                let unknown = 0;
+
+            for (var i = 0; i < nodes.length; i++) {
+                switch(jsondata[nodes[i]]['status']){
+                    case 'passed':
+                        passed = passed + 1;
+                        break;
+                    case 'failed':
+                        failed = failed + 1;
+                        break;
+                    default:
+                        unknown = unknown +1;
+                }
+            }
+           $('.passed').text('Passed : '+ passed);
+            $('.failed').text('Failed : '+failed); 
+
+        $('.undefined').text('Unknown : '+unknown); 
+
+            
+        }
+
         $(document).ready(function () {
+            setHeaderData();
+
 
             var playInterval = null;
 
@@ -102,9 +178,11 @@
             $('li').click(function (event) {
                 // alert(""+event.target.id);
                 // sideBarGenerator(event.target.id);
+                let scrNodes = Object.keys(jsondata);
+
                 $('li').removeClass('selected');
                 $(event.target).addClass('selected');
-                let node = jsondata[event.target.id];
+                let node = jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['steps'][event.target.id];
                 $('.showImage div.screenShotUrl').text('URL | ' + node['url']);
                 $('.showImage img').attr('src', node['image']);
             })
@@ -126,12 +204,29 @@
                 clearInterval(playInterval);
             });
 
+            $('.scenarioNode>div').click(function(event){
+
+                console.log('scr clicked');
+               $('.scenarioNode ul').removeClass('show');
+               $(event.target).next('ul').addClass('show');
+                $(event.target).next('ul').children('li:first-child').click(); 
+ 
+            });
+
 
         });
     </script>
 </head>
 
 <body>
+    <div class='header'> 
+
+        <div class="passed headerItem"></div>
+        <div class="failed headerItem"></div>
+
+        <div class="undefined headerItem"></div>
+
+    </div>
     <div class='content'>
         <div class='sideBar'></div>
         <div class='showImage'>

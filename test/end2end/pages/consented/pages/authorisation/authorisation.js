@@ -1,6 +1,6 @@
 // const testConfig = require('test/config.js');
 
-function authorisation() {
+function consentedAuthorisation() {
   const I = this;
   // I.wait(10);
   I.waitForPage('h4', 'AUTHORISATION');
@@ -19,4 +19,4 @@ function authorisation() {
   // I.wait(5);
 }
 
-module.exports = { authorisation };
+module.exports = { consentedAuthorisation };

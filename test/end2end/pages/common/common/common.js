@@ -13,10 +13,9 @@ async function  waitForPage(header,headerText) {
     }
   }
   catch(err){
-    I.takeScreenShot();
+    I.takeScreenShot('waitFailed');
     throw err;
   }
-  // I.takeScreenShot();
 
 }
 
