@@ -185,6 +185,13 @@
                 let node = jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['steps'][event.target.id];
                 $('.showImage div.screenShotUrl').text('URL | ' + node['url']);
                 $('.showImage img').attr('src', node['image']);
+
+                if(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['failureReason']){
+                    $('.showImage .failureReason').text(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['failureReason']);
+                }
+
+
+                
             })
 
             $('.prev').click(function (event) {
@@ -237,6 +244,7 @@
                 <button class='controls playButton'>Play</button>
                 <button class='controls pauseButton'>Pause</button>
             </div>
+            <div class='failureReason'></div>
 
             <img src='' />
         </div>

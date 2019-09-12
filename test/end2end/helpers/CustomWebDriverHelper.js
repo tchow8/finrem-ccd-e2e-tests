@@ -33,12 +33,17 @@ class CustomHelper extends Helper{
     }
   }
 
+  async  _afterStep(step) {
+    if (step.status === 'failed') {
+      debugReportJson[currentScenario]['failure'] = step.name+'  '+step.args;
+    }
+  }
+
   async  _failed(test) {
     console.log('************* Test Failed');
     this.takeScreenShot('testFailed');
     debugReportJson[currentScenario]['status'] = 'failed';
-
-
+    debugReportJson[currentScenario]['failureReason'] = test.err;
   }
 
   async takeScreenShot(status){
@@ -63,6 +68,7 @@ class CustomHelper extends Helper{
     console.log('****************** ' + url);
     let screenShotUrlPath = urlArray[urlArray.length - 1] === '' ? 'home' : urlArray[urlArray.length - 1];
     screenShotUrlPath = screenShotUrlPath.split('?')[0];
+    screenShotUrlPath = screenShotUrlPath.replace('#','_');
 
     let failedIdentifier = status ? '_'+status + '_'  : '';  
     let screenShotName = screenShotCtr + '_' + failedIdentifier + screenShotUrlPath;
@@ -81,7 +87,7 @@ class CustomHelper extends Helper{
     }
     catch(err){
       console.log('Test Failed screenshot error : ' + screenShotName);
-      throw err;
+    //   throw err;
     }
   }
 }
