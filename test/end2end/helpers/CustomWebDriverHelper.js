@@ -43,7 +43,14 @@ class CustomHelper extends Helper{
     console.log('************* Test Failed');
     this.takeScreenShot('testFailed');
     debugReportJson[currentScenario]['status'] = 'failed';
-    debugReportJson[currentScenario]['failureReason'] = test.err;
+
+    debugReportJson[currentScenario]['FailureReason']=test.err.stack;
+    
+
+    console.log('****************** failed test obj : '+test.err);
+
+
+
   }
 
   async takeScreenShot(status){
