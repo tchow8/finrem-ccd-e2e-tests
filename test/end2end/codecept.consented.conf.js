@@ -77,6 +77,7 @@ exports.config = {
       // windowSize:'maximize',
       ignoreHTTPSErrors: true,
       remoteFileUpload:false,
+      fullPageScreenshots:true,
       timeouts:{
         script: 60000,
         'page load': 10000

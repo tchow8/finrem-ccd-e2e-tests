@@ -36,6 +36,7 @@ class CustomHelper extends Helper{
   async  _afterStep(step) {
     if (step.status === 'failed') {
       debugReportJson[currentScenario]['failure'] = step.name+'  '+step.args;
+
     }
   }
 
@@ -48,6 +49,7 @@ class CustomHelper extends Helper{
     
 
     console.log('****************** failed test obj : '+test.err);
+    await this.takeScreenShot();
 
 
 
@@ -89,7 +91,7 @@ class CustomHelper extends Helper{
     scenarioSteps[screenShotName]['url'] = url;
     scenarioSteps[screenShotName]['image'] = './screenshots/' + screenShotName+'.png';
     try{
-      browser.saveScreenshot(screenShotsPath + screenShotName + '.png'); 
+      await browser.saveScreenshot(screenShotsPath + screenShotName + '.png'); 
 
     }
     catch(err){
