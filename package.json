@@ -28,6 +28,7 @@
     "mochawesome": "^3.1.2",
     "moment": "^2.22.2",
     "puppeteer": "^1.12.2",
+    "wdio-screenshot": "^0.6.0",
     "webdriverio": "^5.11.13"
   }
 }

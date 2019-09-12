@@ -204,9 +204,9 @@
 
                 if (jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']) {
                     $('.showImage .failureReason').text(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']);
+                }else{
+                   $('.showImage .failureReason').text('Scenario Passed'); 
                 }
-
-
 
             })
 
