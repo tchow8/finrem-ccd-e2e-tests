@@ -9,6 +9,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <style>
+        body {
+            height: 100vh;
+        }
+
         .failureStack {
             border-style: groove;
         }
@@ -98,12 +102,14 @@
         }
 
         ul.show,
-        pre.show {
+        pre.show,
+        .stepDetails.show {
             display: block
         }
 
         ul:not(.show),
-        pre:not(.show) {
+        pre:not(.show),
+        .stepDetails:not(.show) {
             display: none;
         }
 
@@ -128,15 +134,24 @@
             background-color: lightgray
         }
 
+        .stepDetails div {
+            display: inline-block;
+            padding: 2px;
+            background-color: skyblue
+        }
+
+        .stepDetails {
+            padding: 2px;
+            border-style: groove;
+            margin-top: 5px;
+            background-color: white;
         }
     </style>
 
     <script src="jquery-3.4.1.min.js"></script>
 
     <script>
-
         var jsondata = replacejsoncontent;
-
 
 
         function sideBarGenerator() {
@@ -204,8 +219,21 @@
 
                 if (jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']) {
                     $('.showImage .failureReason').text(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']);
-                }else{
-                   $('.showImage .failureReason').text('Scenario Passed'); 
+                } else {
+                    $('.showImage .failureReason').text('Scenario Passed');
+                }
+                if (node['stepDetails']) {
+                    $('.stepDetails').addClass('show');
+                    $('.stepDetails .method').text(node['stepDetails']['method']);
+                    $('.stepDetails .methodArgs').text(node['stepDetails']['methodArgs']);
+                    $('.stepDetails .stepLine').text(node['stepDetails']['stepLine']);
+
+                }
+                else {
+                    $('.stepDetails').removeClass('show');
+                    $('.stepDetails .method').text('');
+                    $('.stepDetails .methodArgs').text('');
+                    $('.stepDetails .stepLine').text('');
                 }
 
             })
@@ -258,19 +286,27 @@
     <div class='content'>
         <div class='sideBar'></div>
         <div class='showImage'>
+            <div class='failureStack'>
+                <button>Toggle Exception display</button>
+                <pre>
+                        <code class='failureReason'></code>
+                    </pre>
+            </div>
+
+
             <div class='controlsContainer'>
                 <div class='screenShotUrl'></div>
                 <button class='controls prev'>Prev</button>
                 <button class='controls next'>Next</button>
                 <button class='controls playButton'>Play</button>
                 <button class='controls pauseButton'>Pause</button>
-            </div>
 
-            <div class='failureStack'>
-                <button>Toggle Exception display</button>
-                <pre>
-                <code class='failureReason'></code>
-            </pre>
+                <div class='stepDetails'>
+                    About to
+                    <div class='method'></div>
+                    <div class='methodArgs'></div>
+                    Script at: <div class='stepLine'></div>
+                </div>
             </div>
 
 
