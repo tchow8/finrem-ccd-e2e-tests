@@ -100,9 +100,6 @@ async function contestedOptionsPage(){
 
 
   I.waitForContinueButtonEnabled();
-  I.saveScreenshot('ammend_MIAMExemptionsChecklist.png');
-
-  I.click('body');
   I.click('Continue') ;
 
   I.waitForPage('#MIAMDomesticViolenceChecklist');
