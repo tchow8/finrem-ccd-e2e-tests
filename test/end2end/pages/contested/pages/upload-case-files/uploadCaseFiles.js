@@ -6,6 +6,8 @@ function uploadCaseFiles(){
   I.selectOption('select[id="next-step"]', 'Upload Case Files');
   I.click('Go');
 
+  I.waitForPage('h1', 'Upload Case Files');
+ 
   I.click('Add new');
   I.waitForPage('input[type="file"]');
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
