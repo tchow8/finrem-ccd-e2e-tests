@@ -6,8 +6,8 @@ function uploadCaseFiles(){
   I.selectOption('select[id="next-step"]', 'Upload Case Files');
   I.click('Go');
 
-  I.waitForPage('input[type="file"]');
   I.click('Add new');
+  I.waitForPage('input[type="file"]');
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
   
   I.selectOption('select[id=uploadCaseDocument_0_caseDocumentType]', 'Letter from Applicant');
