@@ -27,35 +27,36 @@ class CustomHelper extends Helper{
   }
 
 
-  async  _beforeStep(step) {
-    if (step.name === 'click') {
-      this.takeScreenShot();
+  async _beforeStep(step) {
+    if (step.name === 'click'){ 
+      let stepDetails = {};
+      stepDetails['method'] = step.helperMethod;
+
+      stepDetails['methodArgs'] = JSON.stringify(step.args);
+      stepDetails['stepLine'] = step.line(); 
+
+      this.takeScreenShot(null, stepDetails);
     }
   }
 
-  async  _afterStep(step) {
-    if (step.status === 'failed') {
-      debugReportJson[currentScenario]['failure'] = step.name+'  '+step.args;
 
-    }
+  async _passed(test) {
+    console.log('************* Test Failed');
+    await this.takeScreenShot('testPassed');
+    debugReportJson[currentScenario]['status'] = 'passed';
+
   }
 
   async  _failed(test) {
     console.log('************* Test Failed');
-    this.takeScreenShot('testFailed');
+    await this.takeScreenShot('testFailed');
     debugReportJson[currentScenario]['status'] = 'failed';
 
     debugReportJson[currentScenario]['FailureReason']=test.err.stack;
-    
-
     console.log('****************** failed test obj : '+test.err);
-    await this.takeScreenShot();
-
-
-
   }
 
-  async takeScreenShot(status){
+  async takeScreenShot(status,stepdetails){
 
     console.log('Screen shot for status : '+status ? status :  'Passed');
     const screenShotsPath = reportDirPath + '/screenshots/';
@@ -90,6 +91,11 @@ class CustomHelper extends Helper{
 
     scenarioSteps[screenShotName]['url'] = url;
     scenarioSteps[screenShotName]['image'] = './screenshots/' + screenShotName+'.png';
+
+    if (stepdetails){
+      scenarioSteps[screenShotName]['stepDetails'] = stepdetails; 
+    }
+
     try{
       await browser.saveScreenshot(screenShotsPath + screenShotName + '.png'); 
 

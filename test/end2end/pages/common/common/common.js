@@ -9,11 +9,10 @@ async function  waitForPage(header,headerText) {
     }
     else {
       await I.waitForText(headerText, 60, header);
-
     }
   }
   catch(err){
-    I.takeScreenShot('waitFailed');
+    await I.takeScreenShot('waitFailed');
     throw err;
   }
 
