@@ -1,59 +1,43 @@
 function applicationNotApproved() {
   const I = this;
-  I.wait(10);
+
+  I.waitForPage('select[id="next-step"]'); 
   I.selectOption('select[id="next-step"]', 'Application Not Approved');
-  I.wait(10);
   I.click('Go');
-  I.wait(10);
   I.click('Add new');
-  I.wait(10);
-  I.fillField('#orderRefusalCollection_0_orderRefusalAfterText', 'Test for And After text box');
-  I.wait(5);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Insufficient information provided – A"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Insufficient information provided – B"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Insufficient information provided – C"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Insufficient information provided – D"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Insufficient information provided – E"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Pension annex"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Respondent – independent legal advice"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-The D81 incomplete"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Hearing fixed for first available date"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Transferred to Applicant’s home Court"]');
-  I.wait(2);
-  I.checkOption('input[value="Transferred to Applicant\'s home Court"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Order does not appear fair"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Provide pension values/property"]');
-  I.wait(2);
-  I.checkOption('input[id="orderRefusalCollection_0_orderRefusal-Other (please specify)"]');
-  I.wait(10);
-  I.fillField('#orderRefusalCollection_0_orderRefusalOther', 'Fill with black ink');
-  I.wait(10);
-  I.selectOption('select[id="orderRefusalCollection_0_orderRefusalJudge"]', 'District Judge');
-  I.wait(5);
-  I.fillField('#orderRefusalCollection_0_orderRefusalJudgeName', 'santha');
-  I.wait(5);
-  I.fillField('input[id="orderRefusalCollection_0_orderRefusalDate-day"]', '3');
-  I.fillField('input[id="orderRefusalCollection_0_orderRefusalDate-month"]', '4');
-  I.fillField('input[id="orderRefusalCollection_0_orderRefusalDate-year"]', '2019');
-  I.wait(5);
-  I.fillField('#orderRefusalCollection_0_orderRefusalAddComments', 'Please justify for FR');
-  I.wait(10);
+
+  I.waitForPage('#orderRefusalCollectionNew_0_orderRefusalAfterText');
+  I.fillField('#orderRefusalCollectionNew_0_orderRefusalAfterText', 'Test for And After text box');
+  I.checkOption('fieldset > div:nth-of-type(1) input');
+  I.checkOption('fieldset > div:nth-of-type(2) input');
+  I.checkOption('fieldset > div:nth-of-type(3) input');
+  I.checkOption('fieldset > div:nth-of-type(4) input');
+  I.checkOption('fieldset > div:nth-of-type(5) input');
+  I.checkOption('fieldset > div:nth-of-type(6) input');
+  I.checkOption('fieldset > div:nth-of-type(7) input');
+  I.checkOption('fieldset > div:nth-of-type(8) input');
+  I.checkOption('fieldset > div:nth-of-type(9) input');
+  I.checkOption('fieldset > div:nth-of-type(10) input');
+  I.checkOption('fieldset > div:nth-of-type(11) input');
+  I.checkOption('fieldset > div:nth-of-type(12) input');
+  I.checkOption('fieldset > div:nth-of-type(13) input');
+  I.checkOption('fieldset > div:nth-of-type(14) input');
+
+
+  I.fillField('#orderRefusalCollectionNew_0_orderRefusalOther', 'Fill with black ink');
+
+  I.selectOption('select[id="orderRefusalCollectionNew_0_orderRefusalJudge"]', 'District Judge');
+
+  I.fillField('#orderRefusalCollectionNew_0_orderRefusalJudgeName', 'santha');
+  I.fillField('input[id="orderRefusalCollectionNew_0_orderRefusalDate-day"]', '3');
+  I.fillField('input[id="orderRefusalCollectionNew_0_orderRefusalDate-month"]', '4');
+  I.fillField('input[id="orderRefusalCollectionNew_0_orderRefusalDate-year"]', '2019');
+  I.fillField('#orderRefusalCollectionNew_0_orderRefusalAddComments', 'Please justify for FR');
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
-  I.wait(10);
+
+
   I.click('Submit');
-  I.wait(10);
 }
 
 
