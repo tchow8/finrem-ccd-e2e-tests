@@ -41,24 +41,20 @@ class CustomHelper extends Helper{
 
 
   async _passed(test) {
-    console.log('************* Test Failed');
     await this.takeScreenShot('testPassed');
     debugReportJson[currentScenario]['status'] = 'passed';
 
   }
 
   async  _failed(test) {
-    console.log('************* Test Failed');
     await this.takeScreenShot('testFailed');
     debugReportJson[currentScenario]['status'] = 'failed';
 
     debugReportJson[currentScenario]['FailureReason']=test.err.stack;
-    console.log('****************** failed test obj : '+test.err);
   }
 
   async takeScreenShot(status,stepdetails){
 
-    console.log('Screen shot for status : '+status ? status :  'Passed');
     const screenShotsPath = reportDirPath + '/screenshots/';
     debugReportDir = reportDirPath; 
 
@@ -75,7 +71,6 @@ class CustomHelper extends Helper{
     // eslint-disable-next-line no-console
     let urlArray = url.split('/');
     // eslint-disable-next-line no-console
-    console.log('****************** ' + url);
     let screenShotUrlPath = urlArray[urlArray.length - 1] === '' ? 'home' : urlArray[urlArray.length - 1];
     screenShotUrlPath = screenShotUrlPath.split('?')[0];
     screenShotUrlPath = screenShotUrlPath.replace('#','_');
@@ -84,7 +79,6 @@ class CustomHelper extends Helper{
     let screenShotName = screenShotCtr + '_' + failedIdentifier + screenShotUrlPath;
     screenShotCtr = screenShotCtr + 1;
     // eslint-disable-next-line no-console
-    console.log('****************** ' + screenShotName);
 
     let scenarioSteps =  debugReportJson[currentScenario]['steps'];
     scenarioSteps[screenShotName] = {};

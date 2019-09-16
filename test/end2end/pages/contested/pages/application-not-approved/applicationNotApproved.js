@@ -4,6 +4,8 @@ function applicationNotApproved() {
   I.waitForPage('select[id="next-step"]'); 
   I.selectOption('select[id="next-step"]', 'Application Not Approved');
   I.click('Go');
+
+  I.waitForPage('#orderRefusalCollectionNew');
   I.click('Add new');
 
   I.waitForPage('#orderRefusalCollectionNew_0_orderRefusalAfterText');
@@ -36,6 +38,7 @@ function applicationNotApproved() {
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
 
+  I.waitForPage('#field-trigger-summary');
 
   I.click('Submit');
 }
