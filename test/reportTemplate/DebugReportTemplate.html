@@ -65,6 +65,7 @@
             padding: 2px;
             background-color: white;
             width: 100%;
+            height: 40px;
         }
 
         .controls {
@@ -151,125 +152,161 @@
 
     <script>
         var jsondata = replacejsoncontent;
+    
+    function sideBarGenerator() {
+        let nodes = Object.keys(jsondata);
 
 
-        function sideBarGenerator() {
-            let nodes = Object.keys(jsondata);
+        for (var i = 0; i < nodes.length; i++) {
+            $('.sideBar').append('<div id=' + (i + 1) + ' class="scenarioNode   ' + jsondata[nodes[i]]['status'] + '" ><div class="scenarioName">' + nodes[i] + '</div></div>');
 
 
-            for (var i = 0; i < nodes.length; i++) {
-                $('.sideBar').append('<div id=' + (i + 1) + ' class="scenarioNode   ' + jsondata[nodes[i]]['status'] + '" ><div class="scenarioName">' + nodes[i] + '</div></div>');
+            $('.sideBar div#' + (i + 1)).append('<ul>');
 
+            let stepsKeys = Object.keys(jsondata[nodes[i]]['steps']);
 
-                $('.sideBar div#' + (i + 1)).append('<ul>');
-
-                let stepsKeys = Object.keys(jsondata[nodes[i]]['steps']);
-
-                for (var step = 0; step < stepsKeys.length; step++) {
-                    $('.sideBar div#' + (i + 1) + ' ul').append('<li id=' + stepsKeys[step] + '  scrCtr =' + i + ' class="scenarioStep" >' + stepsKeys[step] + ' </li>');
-                }
+            for (var step = 0; step < stepsKeys.length; step++) {
+                $('.sideBar div#' + (i + 1) + ' ul').append('<li id=' + stepsKeys[step] + '  scrCtr =' + i + ' class="scenarioStep" >' + stepsKeys[step] + ' </li>');
             }
         }
+    }
 
-        function setHeaderData() {
-            let nodes = Object.keys(jsondata);
-            let passed = 0;
-            let failed = 0;
-            let unknown = 0;
+    function setHeaderData() {
+        let nodes = Object.keys(jsondata);
+        let passed = 0;
+        let failed = 0;
+        let unknown = 0;
 
-            for (var i = 0; i < nodes.length; i++) {
-                switch (jsondata[nodes[i]]['status']) {
-                    case 'passed':
-                        passed = passed + 1;
-                        break;
-                    case 'failed':
-                        failed = failed + 1;
-                        break;
-                    default:
-                        unknown = unknown + 1;
-                }
+        for (var i = 0; i < nodes.length; i++) {
+            switch (jsondata[nodes[i]]['status']) {
+                case 'passed':
+                    passed = passed + 1;
+                    break;
+                case 'failed':
+                    failed = failed + 1;
+                    break;
+                default:
+                    unknown = unknown + 1;
             }
-            $('.passed').text('Passed : ' + passed);
-            $('.failed').text('Failed : ' + failed);
-
-            $('.undefined').text('Unknown : ' + unknown);
-
-
         }
+        $('.passed').text('Passed : ' + passed);
+        $('.failed').text('Failed : ' + failed);
 
-        $(document).ready(function () {
-            setHeaderData();
+        $('.undefined').text('Unknown : ' + unknown);
 
 
-            var playInterval = null;
+    }
 
-            sideBarGenerator('');
+    $(document).ready(function () {
+        setHeaderData();
 
-            $('li').click(function (event) {
-                // alert(""+event.target.id);
-                // sideBarGenerator(event.target.id);
-                let scrNodes = Object.keys(jsondata);
 
-                $('li').removeClass('selected');
-                $(event.target).addClass('selected');
-                let node = jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['steps'][event.target.id];
-                $('.showImage div.screenShotUrl').text('URL | ' + node['url']);
-                $('.showImage img').attr('src', node['image']);
+        var playInterval = null;
 
-                if (jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']) {
-                    $('.showImage .failureReason').text(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']);
-                } else {
-                    $('.showImage .failureReason').text('Scenario Passed');
-                }
-                if (node['stepDetails']) {
-                    $('.stepDetails').addClass('show');
-                    $('.stepDetails .method').text(node['stepDetails']['method']);
-                    $('.stepDetails .methodArgs').text(node['stepDetails']['methodArgs']);
-                    $('.stepDetails .stepLine').text(node['stepDetails']['stepLine']);
+        sideBarGenerator('');
 
-                }
-                else {
-                    $('.stepDetails').removeClass('show');
-                    $('.stepDetails .method').text('');
-                    $('.stepDetails .methodArgs').text('');
-                    $('.stepDetails .stepLine').text('');
-                }
+        $('.rangeValue').text(1 / ($('.rangeItem').val() / 1000));
 
-            })
 
-            $('.prev').click(function (event) {
-                $('.selected').prev().click();
-            });
+        $('li').click(function (event) {
+            // alert(""+event.target.id);
+            // sideBarGenerator(event.target.id);
+            let scrNodes = Object.keys(jsondata);
 
-            $('.next').click(function (event) {
+            $('li').removeClass('selected');
+            $(event.target).addClass('selected');
+            let node = jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['steps'][event.target.id];
+            $('.showImage div.screenShotUrl').text('URL | ' + node['url']);
+            $('.showImage img').attr('src', node['image']);
+
+            if (jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']) {
+                $('.showImage .failureReason').text(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']);
+            } else {
+                $('.showImage .failureReason').text('Scenario Passed');
+            }
+            if (node['stepDetails']) {
+                $('.stepDetails').addClass('show');
+                $('.stepDetails .method').text(node['stepDetails']['method']);
+                $('.stepDetails .methodArgs').text(node['stepDetails']['methodArgs']);
+                $('.stepDetails .stepLine').text(node['stepDetails']['stepLine']);
+
+            }
+            else {
+                $('.stepDetails').removeClass('show');
+                $('.stepDetails .method').text('');
+                $('.stepDetails .methodArgs').text('');
+                $('.stepDetails .stepLine').text('');
+            }
+
+        })
+
+        $('.prev').click(function (event) {
+            $('.selected').prev().click();
+        });
+
+        $('.next').click(function (event) {
+            $('.selected').next().click();
+        });
+
+
+        function playNextScreenshot() {
+            if ($('.selected').next()[0] == undefined) {
+                selectFirstScreenShotInScenario();
+            }
+            else {
+                console.log('is next present : ' + $('.selected').next()[0]);
+
                 $('.selected').next().click();
-            });
+            }
 
-            $('.playButton').click(function (event) {
-                playInterval = setInterval(() => $('.selected').next().click(), 1000);
-            });
 
-            $('.pauseButton').click(function (event) {
+        }
+        async function startPlay() {
+                        await clearInterval(playInterval);
+            playInterval = setInterval(() =>  playNextScreenshot(), $('.rangeItem').val());
+        }
 
-                clearInterval(playInterval);
-            });
+        async function pausePlay() {
+            await clearInterval(playInterval);
+        }
 
-            $('.scenarioNode>div').click(function (event) {
+        function selectFirstScreenShotInScenario() {
+            $('.scenarioNode ul.show li:nth-of-type(1)').click();
 
-                console.log('scr clicked');
-                $('.scenarioNode ul').removeClass('show');
-                $(event.target).next('ul').addClass('show');
-                $(event.target).next('ul').children('li:first-child').click();
+        }
 
-            });
+        $('.playButton').click(async function (event) {
+            await startPlay();
+        });
 
-            $('.failureStack button').click(function (event) {
-                $('.failureStack pre').toggleClass('show');
+        $('.pauseButton').click(function (event) {
+            pausePlay();
+        });
 
-            });
+        $('.scenarioNode>div').click(function (event) {
 
+            console.log('scr clicked');
+            $('.scenarioNode ul').removeClass('show');
+            $(event.target).next('ul').addClass('show');
+            selectFirstScreenShotInScenario();
+        });
+
+        $('.failureStack button').click(function (event) {
+            $('.failureStack pre').toggleClass('show');
 
         });
+
+        $('.rangeItem').on('change', async function (event) {
+
+            console.log('Range chnaged');
+            $('.rangeValue').text(1/($(this).val()/1000));
+            await pausePlay();
+            await startPlay();
+
+        });
+
+
+    });
     </script>
 </head>
 
@@ -299,7 +336,8 @@
                 <button class='controls next'>Next</button>
                 <button class='controls playButton'>Play</button>
                 <button class='controls pauseButton'>Pause</button>
-
+                <input class='controls rangeItem' type="range" id="start" name="volume" min="200" max="2000" />
+                Screenhots/sec : <div class="controls rangeValue">...</div>
                 <div class='stepDetails'>
                     About to
                     <div class='method'></div>
