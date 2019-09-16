@@ -26,7 +26,7 @@
         .sideBar {
             display: table-cell;
             vertical-align: top;
-            /* width: 40%; */
+            width: 30%;
         }
 
         .sideBar ul {
@@ -152,7 +152,8 @@
 
     <script>
         var jsondata = replacejsoncontent;
-    
+        
+
     function sideBarGenerator() {
         let nodes = Object.keys(jsondata);
 
@@ -205,8 +206,12 @@
 
         sideBarGenerator('');
 
-        $('.rangeValue').text(1 / ($('.rangeItem').val() / 1000));
+        setScreenShotsDisplayedPerSecValue();
 
+        function setScreenShotsDisplayedPerSecValue(){
+                   $('.rangeValue').text($('.rangeItem').val()+'***'+1 / ((2001 - $('.rangeItem').val()) / 1000));
+ 
+        }
 
         $('li').click(function (event) {
             // alert(""+event.target.id);
@@ -263,7 +268,7 @@
         }
         async function startPlay() {
                         await clearInterval(playInterval);
-            playInterval = setInterval(() =>  playNextScreenshot(), $('.rangeItem').val());
+            playInterval = setInterval(() =>  playNextScreenshot(), 2000-$('.rangeItem').val());
         }
 
         async function pausePlay() {
@@ -299,7 +304,7 @@
         $('.rangeItem').on('change', async function (event) {
 
             console.log('Range chnaged');
-            $('.rangeValue').text(1/($(this).val()/1000));
+            setScreenShotsDisplayedPerSecValue();
             await pausePlay();
             await startPlay();
 
@@ -336,7 +341,7 @@
                 <button class='controls next'>Next</button>
                 <button class='controls playButton'>Play</button>
                 <button class='controls pauseButton'>Pause</button>
-                <input class='controls rangeItem' type="range" id="start" name="volume" min="200" max="2000" />
+                Play Speed: Slow<input class='controls rangeItem' type="range" id="start" name="volume" min="200" max="1999" />fast
                 Screenhots/sec : <div class="controls rangeValue">...</div>
                 <div class='stepDetails'>
                     About to
