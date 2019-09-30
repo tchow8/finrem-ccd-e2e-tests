@@ -46,7 +46,7 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPag
 
 Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Application Drafted', scenarioSolRef);
+  await getContestedScenarioState('Awaiting Payment Response', scenarioSolRef);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
@@ -64,7 +64,7 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, Tabs
 
 Scenario('Verify Contested HWF Solicitors upload case files Scenario', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Application Submitted', scenarioSolRef);
+  await getContestedScenarioState('Prepare for Hearing', scenarioSolRef);
 
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
@@ -76,7 +76,7 @@ Scenario('Verify Contested HWF Solicitors upload case files Scenario', async (I,
 
 Scenario('Verify Contested HWF Court judge approve case', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Application Submitted', scenarioSolRef);
+  await getContestedScenarioState('Prepare for Hearing', scenarioSolRef);
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
