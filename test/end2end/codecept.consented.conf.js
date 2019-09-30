@@ -1,6 +1,6 @@
 const testConfig = require('test/config.js');
 const debugReporter = require('./helpers/debugReporter.js');
-const {testNameSetter} = require('./helpers/customHooks.js');
+// const {testNameSetter} = require('./helpers/customHooks.js');
 
 
 const journeyType = process.env.JOURNEYTYPE;
@@ -100,7 +100,7 @@ exports.config = {
     
   
   },
-  include: { I: './pages/steps.js' },
+  include: { I: './pages/steps.js',TabsPage: './helpers/tabValidation/tabValidationsHelper.js' },
   plugins: {
     wdio: {
       enabled: true,

@@ -6,7 +6,7 @@ function solicitorCreate(reference) {
 
   I.fillField('input[id="solicitorName"]', 'Arrow');
   I.fillField('input[id="solicitorFirm"]', 'Abc Firm');
-  I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
+  I.fillField('input[id="solicitorReference"]', +reference);
   I.fillField('#solicitorAddress_solicitorAddress_postcodeInput', 'TW3 1SS');
   I.click('#solicitorAddress_solicitorAddress #postcodeLookup button');
   I.waitForElement('#selectAddress',30);

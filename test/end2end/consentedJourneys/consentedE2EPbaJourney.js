@@ -1,7 +1,7 @@
 Feature('finrem consented e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
-const solRef = dateUtil.createSolicitorReference();
+const solRef = 'AUTO-' + dateUtil.createSolicitorReference();
 const pbaValue = true;
 const searchCaseType = 'Financial Remedy Consented';
 

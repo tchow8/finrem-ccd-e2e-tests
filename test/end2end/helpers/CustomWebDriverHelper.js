@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
+const axios = require('axios');
+
 const Helper = codecept_helper;
 let screenShotCtr = 1;
-
 const fs = require('fs');
 const reportDirPath = './functional-output/debugReport-' + new Date().getTime();
 
@@ -54,7 +55,6 @@ class CustomHelper extends Helper{
   }
 
   async takeScreenShot(status,stepdetails){
-
     const screenShotsPath = reportDirPath + '/screenshots/';
     debugReportDir = reportDirPath; 
 
@@ -64,7 +64,7 @@ class CustomHelper extends Helper{
  
     }
 
-    let browser = this.helpers['WebDriverIO'].browser;
+    let browser = this.getBrowser();
 
     // eslint-disable-next-line indent
       let url = await browser.getUrl();
@@ -98,6 +98,34 @@ class CustomHelper extends Helper{
       console.log('Test Failed screenshot error : ' + screenShotName);
     //   throw err;
     }
+  }
+
+
+  async getBrowserCookies(){
+    let browser = this.getBrowser();
+    let cookies = await browser.getCookies();
+
+    let cookiesObj = {};
+    for (let cookieCtr = 0; cookieCtr < cookies.length; cookieCtr++){
+      cookiesObj[cookies[cookieCtr]['name']] = cookies[cookieCtr]['value']; 
+    }
+
+    let res = null;
+
+    try{
+         res = await axios.get('https://idam-web-public.aat.platform.hmcts.net/login?response_type=code&client_id=ccd_gateway&redirect_uri=https%3A%2F%2Fwww-ccd.aat.platform.hmcts.net%2Foauth2redirect');
+
+    }catch(err){
+      console.log(err);
+    }
+    console.log(res);
+
+    console.log(JSON.stringify(cookies));
+  }
+
+  getBrowser(){
+    return   this.helpers['WebDriverIO'].browser;
+
   }
 }
 

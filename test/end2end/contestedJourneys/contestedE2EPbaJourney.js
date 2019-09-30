@@ -1,13 +1,16 @@
+var { getContestedScenarioState } = require('../dataSetup/scenarios/scenarioState');
+
+
 Feature('finrem contested e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
-const solRef = dateUtil.createSolicitorReference();
+const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 // const solRef = '1567504044468';
 const pbaValue = true;
 const searchCaseType = 'Contested Financial Remedy';
 
 
-Scenario('Verify Contested PBA Solicitors Happypath Scenario', I => {
+Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyContested', 'Form A Application');
   I.contestedSolicitorCreate(solRef);
@@ -38,69 +41,92 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', I => {
   I.contestedFinalPaymentPage();
   I.contestedFinalInformation();
   I.see('Case Submission');
-  //I.solicitorTabs();
+  TabsPage.validateTabs();
 });
 
 
-Scenario('Verify Contested PBA Court Admin update case Scenario', I => {
+Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, TabsPage) => {
 
-  // getAccesToken(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Drafted', scenarioSolRef);
+
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedAddNote();
   if(pbaValue===true) {
     I.contestedPbaCase();
   }else {
     I.contestedHwfCase();
   }
-  //I.adminTabs();
+  TabsPage.validateTabs();
 
 });
 
 
+Scenario('Verify Contested PBA Court judge application for Scheduling and Listing case', async (I, TabsPage) => {
 
-Scenario('Verify Contested PBA Court judge application for Scheduling and Listing case', I => {
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Gate Keeping & Allocations', scenarioSolRef);
+
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.giveAllocationDirections();
-  //I.judgeTabs();
+  TabsPage.validateTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', I => {
+Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', async (I, TabsPage) => {
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Scheduling and Hearing', scenarioSolRef);
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.listForHearing();
-  //I.adminOrderTabs();
+  TabsPage.validateTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Solicitors upload case files Scenario', I => {
+Scenario('Verify Contested PBA Solicitors upload case files Scenario', async (I, TabsPage) => {
+
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Prepare for Hearing', scenarioSolRef);
+
+
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.uploadCaseFiles();
   //I.solResponseTabs();
 
 });
 
 
-Scenario('Verify Contested PBA Court judge approve case', I => {
+Scenario('Verify Contested PBA Court judge approve case', async (I, TabsPage) => {
+
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Submit for Hearing', scenarioSolRef);
+
+
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.waitForPage('.tabs-list');
   I.see('Submit Uploaded Case Files');
-  //I.judgeApproveTabs();
+  TabsPage.validateTabs();
 
 });
 
 
 
-Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', I => {
+Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', async (I, TabsPage) => {
+
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Issued', scenarioSolRef);
+
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(solRef, searchCaseType);
   I.contestedAmendCase();
@@ -118,7 +144,8 @@ Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all
   I.contestedCloseCase();
   I.waitForPage('.tabs-list');
   I.see('Close Case');
-  //I.finalTabs();
+
+  TabsPage.validateTabs();
 
 
 });

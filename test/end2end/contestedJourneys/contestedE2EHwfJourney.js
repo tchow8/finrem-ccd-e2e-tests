@@ -1,11 +1,15 @@
+var {getContestedScenarioState} = require('../dataSetup/scenarios/scenarioState');
+
+
+
 Feature('finrem contested e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
-const solRef = dateUtil.createSolicitorReference();
+const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 const pbaValue = false;
 const searchCaseType = 'Contested Financial Remedy';
 
-Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
+Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyContested', 'Form A Application');
   I.contestedSolicitorCreate(solRef);
@@ -33,12 +37,19 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', I => {
   I.finalInformationPage();
   I.see('Case Submission');
   //I.solicitorTabs();
+  TabsPage.validateTabs();
+
 });
 
 
-Scenario('Verify Contested HWF Court Admin update case Scenario', I => {
+
+
+Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, TabsPage) => {
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Drafted', scenarioSolRef);
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
 
   I.addNote();
   if(pbaValue===true) {
@@ -46,34 +57,45 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', I => {
   }else {
     I.contestedHwfCase();
   }
-  //I.adminTabs();
+  TabsPage.validateTabs();
 
 });
 
 
-Scenario('Verify Contested HWF Solicitors upload case files Scenario', I => {
+Scenario('Verify Contested HWF Solicitors upload case files Scenario', async (I, TabsPage) => {
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Submitted', scenarioSolRef);
+
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.uploadCaseFiles();
-  //I.solResponseTabs();
+  TabsPage.validateTabs();
 
 });
 
 
-Scenario('Verify Contested HWF Court judge approve case', I => {
+Scenario('Verify Contested HWF Court judge approve case', async (I, TabsPage) => {
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Submitted', scenarioSolRef);
+
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.waitForPage('.tabs-list');
   I.see('Submit Uploaded Case Files');
-  //I.judgeApproveTabs();
+  TabsPage.validateTabs();
 
 });
 
 
 
-Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', I => {
+Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', async (I, TabsPage) => {
+
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Submitted', scenarioSolRef);
+
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
 
   I.contestedAmendCase();
 
@@ -97,7 +119,7 @@ Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all
 
   I.waitForPage('.tabs-list');
   I.see('Close Case');
-  //I.finalTabs();
+  TabsPage.validateTabs();
 
 
 });

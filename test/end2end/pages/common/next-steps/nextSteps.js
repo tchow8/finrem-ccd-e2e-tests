@@ -9,13 +9,13 @@ function searchCase(reference,caseType) {
   I.wait(1);
   I.selectOption('select[id="wb-case-state"]', 'Any');
   I.waitForElement('input[id="solicitorReference"]',30);
-  I.fillField('input[id="solicitorReference"]', 'AUTO-'+reference);
+  I.fillField('input[id="solicitorReference"]', reference);
   I.waitForPage('.display-left button:not(.button-secondary)');
   I.click('body');
   I.click('Apply'); 
   // I.click('.display-left button:not(.button-secondary)');
   // I.wait(20);
-  I.waitForPage('.search-result-column-cell:nth-of-type(2) span', 'AUTO-' + reference);
+  I.waitForPage('.search-result-column-cell:nth-of-type(2) span', reference);
 
   I.click('.search-result-column-cell:nth-of-type(1) a');
  

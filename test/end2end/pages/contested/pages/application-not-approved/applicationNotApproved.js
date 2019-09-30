@@ -1,4 +1,4 @@
-function applicationNotApproved() {
+function contestedApplicationNotApproved() {
   const I = this;
 
   I.waitForPage('select[id="next-step"]'); 
@@ -44,4 +44,4 @@ function applicationNotApproved() {
 }
 
 
-module.exports = { applicationNotApproved };
+module.exports = { contestedApplicationNotApproved };
