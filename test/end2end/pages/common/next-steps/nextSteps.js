@@ -53,4 +53,17 @@ function approveApplication() {
 }
 
 
-module.exports = { searchCase, approveApplication };
+function performNextStep(step){
+
+  switch(step){
+    case 'some step':
+      break;
+      default:
+      I.waitForElement('#field-trigger-summary', 30);
+      I.click('Submit'); 
+  }
+
+}
+
+
+module.exports = { searchCase, approveApplication, performNextStep};
