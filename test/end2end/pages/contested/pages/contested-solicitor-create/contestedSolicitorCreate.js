@@ -4,7 +4,7 @@ async function contestedSolicitorCreate(reference) {
   I.waitForPage('#applicantSolicitorDetailLabel h2','Solicitor Details');
   I.fillField('input[id="applicantSolicitorName"]', 'Parrot');
   I.fillField('input[id="applicantSolicitorFirm"]', 'MSN Firm');
-  I.fillField('//*[@id="solicitorReference"]', 'AUTO-'+reference);
+  I.fillField('//*[@id="solicitorReference"]', +reference);
   I.fillField('#applicantSolicitorAddress_applicantSolicitorAddress_postcodeInput', 'TW3 1SS');
 
   I.click('#applicantSolicitorAddress_applicantSolicitorAddress #postcodeLookup button');

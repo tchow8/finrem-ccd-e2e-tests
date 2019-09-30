@@ -1,6 +1,6 @@
 const testConfig = require('test/config.js');
 const debugReporter = require('./helpers/debugReporter.js');
-const {testNameSetter} = require('./helpers/customHooks.js');
+// const {testNameSetter} = require('./helpers/customHooks.js');
 
 
 const journeyType = process.env.JOURNEYTYPE;
@@ -87,8 +87,8 @@ exports.config = {
           args: [
             '--no-sandbox',
             '--disable-dev-shm-usage',
-            '--proxy-server=proxyout.reform.hmcts.net:8080',
-            '--headless'
+            '--proxy-server=proxyout.reform.hmcts.net:8080'
+            // '--headless'
           ]
         }
   
@@ -100,7 +100,7 @@ exports.config = {
     
   
   },
-  include: { I: './pages/steps.js' },
+  include: { I: './pages/steps.js',TabsPage: './helpers/tabValidation/tabValidationsHelper.js' },
   plugins: {
     wdio: {
       enabled: true,
