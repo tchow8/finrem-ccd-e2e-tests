@@ -2,7 +2,6 @@ Feature('finrem consented e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 
-const {test} = require('test/end2end/dataSetup/ccdApi.js');
 
 const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 // const solRef = '1565167881575';
@@ -11,7 +10,6 @@ const pbaValue = false;
 const searchCaseType = 'Financial Remedy Consented';
 
 Scenario.only('Verify Consented HWF Solicitors Happypath Scenario',async ( I) =>   {
-  await test();
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyMVP2','Consent Order Application');
   I.solicitorCreate(solRef);

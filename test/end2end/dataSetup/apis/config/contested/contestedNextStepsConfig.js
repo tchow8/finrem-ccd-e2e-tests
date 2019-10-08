@@ -156,13 +156,15 @@ const contestedNextSteps = {
     'Give Allocation Directions':{
       id: 'FR_giveAllocationDirections',
       data: {
-        'allocatedCourtListGA': 'cfc',
-        'cfcCourtListGA': 'FR_s_CFCList_11',
-        'applicationAllocatedTo': 'Yes',
+        'allocatedCourtListGA': {
+          'region': 'london',
+          'londonList': 'cfc',
+          'cfcCourtList': 'FR_s_CFCList_16'
+        },
+        'applicationAllocatedTo': 'No',
         'caseAllocatedTo': 'Yes',
-        'judgeAllocated': 'FR_judgeAllocatedList_3',
-        'judgeTimeEstimate': 'additionalTime',
-        'judgeTimeEstimateTextArea': 'test state'
+        'judgeAllocated': ['FR_judgeAllocatedList_3'],
+        'judgeTimeEstimate': 'standardTime'
       }
     },
     'Solicitor To Draft Order':{

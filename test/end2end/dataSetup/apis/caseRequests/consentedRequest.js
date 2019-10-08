@@ -1,6 +1,7 @@
 
 var caseRequest = {
   'data': {
+    'applicantRepresented':'Yes',
     'isAdmin': 'No',
     'solicitorName': 'Callum Key',
     'solicitorFirm': 'Wayne Compton',

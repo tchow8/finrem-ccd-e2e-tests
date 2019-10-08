@@ -33,9 +33,6 @@ function debugReport(done){
 
   });
 
-  // eslint-disable-next-line no-console
-  console.log(JSON.stringify(debugReportJson));
-
   done();
 
 }

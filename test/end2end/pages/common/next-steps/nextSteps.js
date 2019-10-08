@@ -11,13 +11,17 @@ function searchCase(reference,caseType) {
   I.waitForElement('input[id="solicitorReference"]',30);
   I.fillField('input[id="solicitorReference"]', reference);
   I.waitForPage('.display-left button:not(.button-secondary)');
-  I.click('body');
-  I.click('Apply'); 
+  I.waitForVisible('.display-left button:not(.button-secondary)',30);
+
+  I.scrollTo('.display-left button:not(.button-secondary)');
+  I.click('.display-left button:not(.button-secondary)'); 
   // I.click('.display-left button:not(.button-secondary)');
   // I.wait(20);
   I.waitForPage('.search-result-column-cell:nth-of-type(2) span', reference);
+  I.scrollTo('.search-result-column-cell:nth-of-type(2) span');
 
   I.click('.search-result-column-cell:nth-of-type(1) a');
+  I.waitForPage('.tabs-list');
  
   // I.wait(10);
 
@@ -52,18 +56,4 @@ function approveApplication() {
   // I.wait(5);
 }
 
-
-function performNextStep(step){
-
-  switch(step){
-    case 'some step':
-      break;
-      default:
-      I.waitForElement('#field-trigger-summary', 30);
-      I.click('Submit'); 
-  }
-
-}
-
-
-module.exports = { searchCase, approveApplication, performNextStep};
+module.exports = { searchCase, approveApplication};
