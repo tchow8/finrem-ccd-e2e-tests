@@ -14,28 +14,39 @@ var eventDataRequest = {
 
 async function submitNextStep(caseId, stepConfig) {
   try {
-    let eventToken = await getEventToken(caseId, stepConfig.id);
-    eventDataRequest.event_token = eventToken;
-    eventDataRequest.event.id = stepConfig.id;
-    eventDataRequest.event.summary = stepConfig.id;
-    eventDataRequest.event.description = new Date()+' : Event Details : ' + JSON.stringify(stepConfig.data).replace(/[{}]/g, '').replace(/["']/g, '');
-    eventDataRequest.data = stepConfig.data;
-
-    let res = await http({
-      method: 'post',
-      url: 'https://gateway-ccd.aat.platform.hmcts.net/data/cases/' + caseId + '/events',
-      data: eventDataRequest,
-      headers: { 'Content-Type': 'application/json', experimental: true }
-    });
-    return res.data.id;
+    return await httpSubmit(caseId,stepConfig); 
   } catch (err) {
     // eslint-disable-next-line no-console
     // console.log('Error occured Submiting  step is ' + stepConfig.id,err.response.data  );
-    console.error('Event Data : ', eventDataRequest);
-    console.trace(err);
-    throw err;
-  }
 
+    try{
+      console.log(new Date()+' : Retry on faulure '+err);
+      return await httpSubmit(caseId, stepConfig); 
+    }
+    catch(err1){
+      console.error('Event Data : ', eventDataRequest);
+      console.trace(err);
+      throw err1;
+    } 
+  }
+}
+
+
+async function httpSubmit(caseId, stepConfig) {
+  let eventToken = await getEventToken(caseId, stepConfig.id);
+  eventDataRequest.event_token = eventToken;
+  eventDataRequest.event.id = stepConfig.id;
+  eventDataRequest.event.summary = stepConfig.id;
+  eventDataRequest.event.description = new Date() + ' : Event Details : ' + JSON.stringify(stepConfig.data).replace(/[{}]/g, '').replace(/["']/g, '');
+  eventDataRequest.data = stepConfig.data;
+
+  let res = await http({
+    method: 'post',
+    url: 'https://gateway-ccd.aat.platform.hmcts.net/data/cases/' + caseId + '/events',
+    data: eventDataRequest,
+    headers: { 'Content-Type': 'application/json', experimental: true }
+  });
+  return res.data.id;
 }
 
 

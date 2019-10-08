@@ -74,13 +74,13 @@ async function getScenarioState(scenarioConfig){
 
     try{
       switch (prevStateUser) {
-        case 'solicitor':
-          return await solicitorNextSteps(caseid, step);
-        case 'caseWorker':
-          return await caseWorkerNextSteps(caseid, step);
-        case 'judge':
-          return await judgeNextSteps(caseid, step);
-        default:
+      case 'solicitor':
+        return await solicitorNextSteps(caseid, step);
+      case 'caseWorker':
+        return await caseWorkerNextSteps(caseid, step);
+      case 'judge':
+        return await judgeNextSteps(caseid, step);
+      default:
 
       } 
     }catch(err){
