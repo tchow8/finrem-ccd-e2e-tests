@@ -84,7 +84,7 @@ async function getScenarioState(scenarioConfig){
 
       } 
     }catch(err){
-      err.message = prevStateUser + ' : Error executing step ' + step; 
+      err.message = prevStateUser + ' : Error executing step ' + step+' :'+err.message; 
       throw err;
     }
   

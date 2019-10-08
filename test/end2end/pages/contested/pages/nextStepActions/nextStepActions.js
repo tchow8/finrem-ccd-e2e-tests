@@ -56,9 +56,44 @@ function contestedNextStep(step) {
     I.click('Continue');
     fillAndSubmitEventDetails(I); 
     break;
+  case 'Submit Uploaded Case Files':
+    I.waitForPage('h1','Submit Uploaded Case Files');
+    I.click('Submit');
+    break;
   case 'Assign To Judge':
   case 'Give Allocation Directions':
-     break; 
+    I.waitForPage('#chooseCourtLabelGA');
+    I.selectOption('#allocatedCourtListGA_region','London');
+    I.wait(1);
+    I.selectOption('#allocatedCourtListGA_londonList', 'London FRC');
+    I.wait(1);
+
+    I.selectOption('##allocatedCourtListGA_cfcCourtList', 'CENTRAL FAMILY COURT');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+
+    I.waitForPage('#applicationAllocatedTo-Yes');
+    I.click('#applicationAllocatedTo-Yes');
+    I.click('#caseAllocatedTo-Yes');
+    I.click('#judgeAllocated-FR_judgeAllocatedList_3');
+    I.click('#judgeTimeEstimate-standardTime');
+
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    fillAndSubmitEventDetails(I);
+
+    break; 
+  case 'Upload Case Files':
+    I.waitForPage('#uploadCaseDocumentLabel');
+    I.click('Add new');
+    I.wait(1);
+    I.attachFile('#uploadCaseDocument_0_caseDocuments', 'data/dummy.pdf');
+    I.selectOption('#uploadCaseDocument_0_caseDocumentType','Other');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    I.waitForPageWithText('Check your answers');
+    I.click('Submit');
+    break;
   case 'Solicitor To Draft Order':
   case 'Judge To Draft Order':
   case 'General Order':

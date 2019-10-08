@@ -120,11 +120,12 @@ const contestedNextSteps = {
     'List for Hearing':{
       id: 'FR_addSchedulingListingInfo',
       data: {
-        'timeEstimate': '2 hours',
-        'hearingDate': '2019-10-10',
-        'hearingTime': '10:00',
-        'allocatedCourtListSL': 'cfc',
-        'cfcCourtListSL': 'FR_s_CFCList_11'
+        'timeEstimate': '10',
+        'hearingDate': '2019-12-10',
+        'hearingTime': '10',
+        'regionListSL': 'london',
+        'londonFRCListSL': 'cfc',
+        'cfcCourtListSL': 'FR_s_CFCList_16'
       } 
     },
     'Consent Order Payment':{

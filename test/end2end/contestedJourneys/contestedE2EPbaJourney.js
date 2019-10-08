@@ -54,10 +54,10 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedAddNote();
-  if(pbaValue===true) {
-    I.contestedPbaCase();
-  }else {
-    I.contestedHwfCase();
+  if (pbaValue === true) {
+    I.contestedNextStep('Case Submission|PBA');
+  } else {
+    I.contestedNextStep('Case Submission|HWF');
   }
   TabsPage.validateTabs();
 
@@ -67,11 +67,11 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
 Scenario('Verify Contested PBA Court judge application for Scheduling and Listing case', async (I, TabsPage) => {
 
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Gate Keeping & Allocations', scenarioSolRef);
+  await getContestedScenarioState('Gate Keeping And Allocations', scenarioSolRef);
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-  I.giveAllocationDirections();
+  I.contestedNextStep('Give Allocation Directions');
   TabsPage.validateTabs();
 
 });
@@ -84,7 +84,7 @@ Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', asy
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-  I.listForHearing();
+  I.contestedNextStep('List for Hearing');
   TabsPage.validateTabs();
 
 });
@@ -99,23 +99,8 @@ Scenario('Verify Contested PBA Solicitors upload case files Scenario', async (I,
 
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-  I.uploadCaseFiles();
+  I.contestedNextStep('Upload Case Files');
   //I.solResponseTabs();
-
-});
-
-
-Scenario('Verify Contested PBA Court judge approve case', async (I, TabsPage) => {
-
-  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Submit for Hearing', scenarioSolRef);
-
-
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.searchCase(scenarioSolRef, searchCaseType);
-  I.waitForPage('.tabs-list');
-  I.see('Submit Uploaded Case Files');
-  TabsPage.validateTabs();
 
 });
 
