@@ -41,8 +41,6 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPag
 
 });
 
-
-
 Scenario('Verify Contested HWF Payment', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Application Drafted', scenarioSolRef);
@@ -90,9 +88,9 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, Tabs
 
   I.addNote();
   if(pbaValue===true) {
-    I.contestedPbaCase();
+    I.contestedNextStep('Case Submission|PBA');
   }else {
-    I.contestedHwfCase();
+    I.contestedNextStep('Case Submission|HWF');
   }
   TabsPage.validateTabs(caseType);
 
@@ -105,24 +103,10 @@ Scenario('Verify Contested HWF Solicitors upload case files Scenario', async (I,
 
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-  I.uploadCaseFiles();
+  I.contestedNextStep('Submit Uploaded Case Files');
   TabsPage.validateTabs(caseType);
 
 });
-
-
-Scenario('Verify Contested HWF Court judge approve case', async (I, TabsPage) => {
-  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Prepare for Hearing', scenarioSolRef);
-
-  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  I.searchCase(scenarioSolRef, searchCaseType);
-  I.waitForPage('.tabs-list');
-  I.see('Submit Uploaded Case Files');
-  TabsPage.validateTabs(caseType);
-
-});
-
 
 
 Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all Universal events', async (I, TabsPage) => {

@@ -27,7 +27,9 @@ function contestedHwfCase() {
 
   I.waitForPage('#field-trigger-summary');
   I.click('Submit');
- 
+
+  
+
   I.waitForPage('select[id="next-step"]'); 
   I.selectOption('select[id="next-step"]', 'List for Hearing');
   I.click('Go');
