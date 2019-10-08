@@ -35,7 +35,7 @@ exports.config = {
     debugReporter(done);
   },
   tests: getTests(),
-  // tests: './../consentedJourneys/consentedE2E*.js',
+  // tests: './**/contestedJourneys/*.js',
 
   // tests: './**/consentedJourneys/*.js',
   output: `${process.cwd()}/functional-output`,
