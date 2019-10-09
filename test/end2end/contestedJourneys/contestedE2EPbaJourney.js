@@ -54,7 +54,6 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
 
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-  I.contestedAddNote();
   if (pbaValue === true) {
     I.contestedNextStep('Case Submission|PBA');
   } else {
@@ -68,7 +67,7 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
 Scenario('Verify Contested PBA Court judge application for Scheduling and Listing case', async (I, TabsPage) => {
 
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Gate Keeping & Allocations', scenarioSolRef);
+  await getContestedScenarioState('Gate Keeping & Allocation', scenarioSolRef);
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
@@ -110,14 +109,14 @@ Scenario('Verify Contested PBA Solicitors upload case files Scenario', async (I,
 
 
 
-Scenario('a[href="mailto:HMCTSFinancialRemedy@justice.gov.uk"]', async (I, TabsPage) => {
+Scenario('Verify Contested Universal events', async (I, TabsPage) => {
 
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Application Issued', scenarioSolRef);
 
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedAmendCase();
   I.waitForPage('.tabs-list');
   I.see('Amend Case');
