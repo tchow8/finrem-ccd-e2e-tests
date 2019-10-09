@@ -6,10 +6,17 @@ var contestedSolicitorSteps = require('../apis/config/contested/solicitor').defa
 var contestedCaseWorkerSteps = require('../apis/config/contested/caseWorker').default;
 var contestedJudgeSteps = require('../apis/config/contested/judge').default;
 
+
+
+var consentedStateConfig = require('../apis/config/consented/consentedStateProvider').default;
+var consentedNextStepConfig = require('../apis/config/consented/consentedNextStepsConfig').default;
+var consentedSolicitorSteps = require('../apis/config/consented/solicitor').default;
+var consentedCaseWorkerSteps = require('../apis/config/consented/caseWorker').default;
+var consentedJudgeSteps = require('../apis/config/consented/judge').default;
+
 const log = require('../apis/common/logger').default;
 
 async function  getContestedScenarioState(state,solRef){
-
   const scenarioConfig = {
     solRef: solRef,
     state: state,
@@ -19,22 +26,25 @@ async function  getContestedScenarioState(state,solRef){
     caseWorkerNextSteps: contestedCaseWorkerSteps,
     judgeNextSteps: contestedJudgeSteps
   };
+ 
 
   return await getScenarioState(scenarioConfig); 
 
 }
 
 async function getConsentedScenarioState(state, solRef) {
+  const scenarioConfig = {
+    solRef: solRef,
+    state: state,
+    stateConfig: consentedStateConfig,
+    nextStepsConfig: consentedNextStepConfig,
+    solicitorNextSteps: consentedSolicitorSteps,
+    caseWorkerNextSteps: consentedCaseWorkerSteps,
+    judgeNextSteps: consentedJudgeSteps
+  };
+ 
+  return await getScenarioState(scenarioConfig); 
 
-  // const scenarioConfig = {
-  //   solRef: solRef,
-  //   state: state,
-  //   stateConfig: contestedStateConfig,
-  //   nextStepsConfig: contestedNextStepConfig,
-  //   solicitorNextSteps: contestedSolicitorSteps,
-  //   caseWorkerNextSteps: contestedCaseWorkerSteps,
-  //   judgeNextSteps: contestedJudgeSteps
-  // };
 }
 
 
@@ -152,4 +162,4 @@ function getStateConfig(state, stateConfigProvider){
   throw Error('CONFIGURATION ERROR : '+state +' : Not found in provided state Conig. Check config'); 
 }
 
-module.exports = { getContestedScenarioState}; 
+module.exports = { getContestedScenarioState, getConsentedScenarioState}; 

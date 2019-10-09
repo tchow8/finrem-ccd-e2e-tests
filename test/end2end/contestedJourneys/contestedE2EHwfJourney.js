@@ -84,7 +84,7 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, Tabs
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Application Drafted', scenarioSolRef);
 
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
 
   I.addNote();
