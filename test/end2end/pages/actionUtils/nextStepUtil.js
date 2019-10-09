@@ -3,6 +3,8 @@
 function initiateNextStep(step){
     const I = this;
     I.waitForPage('select[id="next-step');
+
+
     I.selectOption('select[id="next-step"]', step);
     I.click('.event-trigger button[type = "submit"]');
 }

@@ -222,15 +222,23 @@
             $('li').removeClass('selected');
             $(event.target).addClass('selected');
             let node = jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['steps'][event.target.id];
-            $('.showImage div.screenShotUrl').text('URL | ' + node['url']);
-            $('.showImage img').attr('src', node['image']);
+
+            if(node){
+                $('.showImage div.screenShotUrl').text('URL | ' + node['url']);
+                 $('.showImage img').attr('src', node['image']);
+            }else{
+             $('.showImage div.screenShotUrl').text('');
+             $('.showImage img').attr('src', '');
+
+ 
+            }
 
             if (jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']) {
                 $('.showImage .failureReason').text(jsondata[scrNodes[event.target.getAttribute('scrCtr')]]['FailureReason']);
             } else {
                 $('.showImage .failureReason').text('Scenario Passed');
             }
-            if (node['stepDetails']) {
+            if (node && node['stepDetails']) {
                 $('.stepDetails').addClass('show');
                 $('.stepDetails .method').text(node['stepDetails']['method']);
                 $('.stepDetails .methodArgs').text(node['stepDetails']['methodArgs']);
