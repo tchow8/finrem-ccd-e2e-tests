@@ -167,7 +167,8 @@
             let stepsKeys = Object.keys(jsondata[nodes[i]]['steps']);
 
             for (var step = 0; step < stepsKeys.length; step++) {
-                $('.sideBar div#' + (i + 1) + ' ul').append('<li id=' + stepsKeys[step] + '  scrCtr =' + i + ' class="scenarioStep" >' + stepsKeys[step] + ' </li>');
+                let stepId = stepsKeys[step].replace('>', '').replace('*', ''); 
+                $('.sideBar div#' + (i + 1) + ' ul').append('<li id=' + stepId + '  scrCtr =' + i + ' class="scenarioStep" >' + stepsKeys[step] + ' </li>');
             }
         }
     }

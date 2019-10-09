@@ -5,9 +5,10 @@ var {uploadFile} = require('../../common/common');
 var path = require('path');
 var getStepId = require('../../common/getStepId').default;
 
+const log = require('../../common/logger').default;
 
 async function solicitorSubmitNextStep(caseId,step){
-  console.log(new Date() + ' : Solicitor ->  ' + step);
+  log('Solicitor ->  ' + step);
 
   let stepConfig = {}; 
   switch (step){

@@ -6,16 +6,16 @@ var jsonPath  = require('jsonpath');
 var consentedCaseRequest = require('./caseRequests/consentedRequest').default;
 var contestedCaseRequest = require('./caseRequests/contestedRequest').default;
 
-
+const log = require('./common/logger').default;
 
 
 async function createContestedCase(solRef){
-  console.log(new Date()+' : Create  Contested Case ');
+  log('Create  Contested Case ');
   try{
     return await createCase(solRef, 'FinancialRemedyContested', contestedCaseRequest);
   }
   catch(err){
-    console.error(err);
+    log(err);
     throw err;
   }
 
@@ -24,7 +24,7 @@ async function createContestedCase(solRef){
 }
 
 async function createConsentedCase(solRef) {
-  console.log(new Date() + ' : Create  Sonsented Case ');
+  log('Create  Sonsented Case ');
 
   var caseId =  await createCase(solRef, 'FinancialRemedyMVP2', consentedCaseRequest);
   return caseId;
@@ -46,8 +46,8 @@ async function createCase(solRef,caseType,requestData){
     data: requestData,
     headers : {'Content-Type' : 'application/json'}
   });
-  console.log('*******   solref : ' + solRef);
-  console.log('*******   CaseId : ' + res.data.id);
+  log('*******   solref : ' + solRef);
+  log('*******   CaseId : ' + res.data.id);
 
   return res.data.id;
 }

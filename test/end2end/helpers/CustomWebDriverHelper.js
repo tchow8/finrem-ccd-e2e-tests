@@ -7,6 +7,7 @@ let screenShotCtr = 1;
 const fs = require('fs');
 const reportDirPath = './functional-output/debugReport-' + new Date().getTime();
 
+var {createConsentedCase,createContestedCase} = require('../dataSetup/apis/createConsentedCase');
 
 class CustomHelper extends Helper{
 
@@ -29,6 +30,7 @@ class CustomHelper extends Helper{
 
 
   async _beforeStep(step) {
+    // console.log(step.name);
     if (step.name === 'click'){ 
       let stepDetails = {};
       stepDetails['method'] = step.helperMethod;
@@ -51,7 +53,7 @@ class CustomHelper extends Helper{
     await this.takeScreenShot('testFailed');
     debugReportJson[currentScenario]['status'] = 'failed';
 
-    debugReportJson[currentScenario]['FailureReason']=test.err.stack;
+    debugReportJson[currentScenario]['FailureReason']=test.err.stack+' \n\n '+JSON.stringify(test.err,null,4);
   }
 
   async takeScreenShot(status,stepdetails){
@@ -127,6 +129,16 @@ class CustomHelper extends Helper{
     return   this.helpers['WebDriverIO'].browser;
 
   }
+
+  async getContestedCaseWithState(state,solRef){
+    return await createContestedCase(state, solRef);
+  }
+
+  async getConsentedCaseWithState(state, solRef) {
+    return await createConsentedCase(state, solRef);
+  }
+
+
 }
 
 module.exports = CustomHelper;

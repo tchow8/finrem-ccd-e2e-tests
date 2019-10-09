@@ -65,7 +65,7 @@ Scenario('Verify Contested PBA Payment', async (I, TabsPage) => {
 
 Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Scheduling and Hearing', scenarioSolRef);
+  await I.getContestedCaseWithState('Scheduling and Hearing', scenarioSolRef);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
