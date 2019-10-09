@@ -2,10 +2,11 @@ var submitNextStep = require('../../common/nextStepsUtil').default;
 var nextStepsConfig = require('./contestedNextStepsConfig').default;
 
 var getStepId = require('../../common/getStepId').default;
+const log = require('../../common/logger').default;
 
 
 async function judgeSubmitNextStep(caseId, step) {
-    console.log(new Date() + ' : Judge -> ' + step);
+    log('Judge -> ' + step);
 
     let stepConfig = nextStepsConfig.judge[step];
     switch (step) {

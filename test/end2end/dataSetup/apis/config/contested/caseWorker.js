@@ -4,11 +4,12 @@ var nextStepsConfig = require('./contestedNextStepsConfig').default;
 var getStepId = require('../../common/getStepId').default;
 
 var {isCaseFastTrack,uploadFile} = require('../../common/common');
+const log = require('../../common/logger').default;
 
 
 
 async function caseWorkerNextStep(caseId, step) {
-    console.log(new Date()+' : Caseworker -> '+step);
+    log(' Caseworker -> '+step);
   let stepConfig = nextStepsConfig.caseWorker[step];
   switch (step) {
   case 'Issue Application':

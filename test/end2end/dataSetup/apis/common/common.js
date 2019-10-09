@@ -8,23 +8,25 @@ const config = require('../../../../config');
 const fs = require('fs');
 const FormData = require('form-data');
 
+const log = require('./logger').default;
 
 async function solicitorLogin(){
-  console.log(new Date()+' : Solicitor Login');
+  log('Solicitor Login');
+  // console.log(new Date()+' : Solicitor Login');
   await loginWithCredentials(config.TestSolicitorUserName,config.TestSolicitorPassword);
 }
 
 async function caseWorkerLogin(){
-  console.log(new Date() + ' : Case worker Login');
-
+  // console.log(new Date() + ' : Case worker Login');
+  log('Case worker Login');
   await loginWithCredentials(config.TestCaseWorkerUserName,config.TestCaseWorkerPassword);
 
 }
 
 async function judgeLogin(){
-  console.log(new Date() + ' : Judge Login');
-
-  await loginWithCredentials(config.TestJudgeUserName,config.TestJudgePassword);
+  // console.log(new Date() + ' : Judge Login');
+  log('Judge login');
+    await loginWithCredentials(config.TestJudgeUserName,config.TestJudgePassword);
 
 }
 
@@ -70,6 +72,7 @@ async function uploadFile(filePath){
     
     return uploadDetails;
   }catch(err){
+    log(err);
     console.log(err);
   }
    

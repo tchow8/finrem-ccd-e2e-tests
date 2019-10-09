@@ -6,6 +6,8 @@ var contestedSolicitorSteps = require('../apis/config/contested/solicitor').defa
 var contestedCaseWorkerSteps = require('../apis/config/contested/caseWorker').default;
 var contestedJudgeSteps = require('../apis/config/contested/judge').default;
 
+const log = require('../apis/common/logger').default;
+
 async function  getContestedScenarioState(state,solRef){
 
   const scenarioConfig = {
@@ -59,7 +61,7 @@ async function getScenarioState(scenarioConfig){
     const stepConfig = prevStateConfig.nextSteps.filter(nextStep => nextStep.endState === state);
 
     if (stepConfig.length === 0) {
-      console.log('CONFIGURATION ERROR : '+stateConfig.prevStates[0] + ' State Configuration ' + JSON.stringify(prevStateConfig));
+      log('CONFIGURATION ERROR : '+stateConfig.prevStates[0] + ' State Configuration ' + JSON.stringify(prevStateConfig));
       throw Error('State Config error : ' + stateConfig.prevStates[0] + ' state has no nextStep to reach ' + state + '\n' + stateConfig.prevStates[0] + ' State Configuration ' + JSON.stringify(prevStateConfig));
     }
 
@@ -103,7 +105,7 @@ async function switchUserForAction(state, stateConfigProvider){
   const currentStateUser = getUserForState(state,stateConfigProvider); 
 
   if (prevStateUser !== currentStateUser) {
-    console.log(new Date()+': ---------------------->');
+    log(' ---------------------->');
     switch (currentStateUser) {
     case 'solicitor':
       await solicitorLogin();

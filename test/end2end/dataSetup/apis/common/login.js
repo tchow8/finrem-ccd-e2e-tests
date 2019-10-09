@@ -4,6 +4,8 @@ var querystring = require('querystring');
 var http = require('../httpAxios').default;
 const tough = require('tough-cookie');
 
+const log = require('./logger').default;
+
 async function loginWithCredentials(username, password){
   http.defaults.jar = new tough.CookieJar();
   try {
@@ -11,7 +13,8 @@ async function loginWithCredentials(username, password){
 
   }
   catch(err){
-    console.log('Login Error : '+err);
+    log('Login Error : ' + err);
+    // console.log('Login Error : '+err);
     throw err;
   }
 }

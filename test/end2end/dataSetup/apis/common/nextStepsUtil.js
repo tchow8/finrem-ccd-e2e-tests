@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 var http = require('../httpAxios').default;
 
+var log = require('./logger').default;
+
 var eventDataRequest = {
   'data': {},
   'event': {
@@ -20,12 +22,15 @@ async function submitNextStep(caseId, stepConfig) {
     // console.log('Error occured Submiting  step is ' + stepConfig.id,err.response.data  );
 
     try{
-      console.log(new Date()+' : Retry on faulure '+err);
+      log(new Date() + ' : Retry on faulure ' + err);
+      // console.log(new Date()+' : Retry on faulure '+err);
       return await httpSubmit(caseId, stepConfig); 
     }
     catch(err1){
-      console.error('Event Data : ', eventDataRequest);
-      console.trace(err);
+      log('Event Data : ', eventDataRequest);
+      log(err);
+      // console.error('Event Data : ', eventDataRequest);
+      // console.trace(err);
       throw err1;
     } 
   }
