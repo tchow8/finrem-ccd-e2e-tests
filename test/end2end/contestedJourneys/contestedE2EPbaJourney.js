@@ -21,6 +21,7 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPag
   I.childrenQuestion();
   I.fastTrack();
   I.complexityListQuestion();
+  I.applyingToCourt();
   I.chooseCourt();
   I.mediationQuestion();
   I.mediationExemptions();
@@ -51,7 +52,7 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
   await getContestedScenarioState('Application Drafted', scenarioSolRef);
 
 
-  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedAddNote();
   if (pbaValue === true) {
@@ -67,7 +68,7 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
 Scenario('Verify Contested PBA Court judge application for Scheduling and Listing case', async (I, TabsPage) => {
 
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Gate Keeping And Allocations', scenarioSolRef);
+  await getContestedScenarioState('Gate Keeping & Allocations', scenarioSolRef);
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
@@ -84,7 +85,10 @@ Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', asy
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-  I.contestedNextStep('List for Hearing');
+
+  const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
+  console.log('Case is Fats Tract : ' + isFastTrack + ' - '); 
+  I.contestedNextStep('List for Hearing|' + isFastTrack);
   TabsPage.validateTabs();
 
 });
@@ -106,7 +110,7 @@ Scenario('Verify Contested PBA Solicitors upload case files Scenario', async (I,
 
 
 
-Scenario('Verify Contested PBA Court Admin upload Consent order Scenario and all Universal events', async (I, TabsPage) => {
+Scenario('a[href="mailto:HMCTSFinancialRemedy@justice.gov.uk"]', async (I, TabsPage) => {
 
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Application Issued', scenarioSolRef);

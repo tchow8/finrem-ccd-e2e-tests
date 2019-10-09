@@ -20,6 +20,7 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPag
   I.hwfChildrenQuestion();
   I.hwfFastTrack();
   I.hwfComplexityList();
+  I.applyingToCourt();
   I.hwfChooseCourt();
   I.hwfMediationQuestion();
   I.miamCertification();
@@ -63,9 +64,9 @@ Scenario('Verify Contested PBA Payment', async (I, TabsPage) => {
 
 });
 
-Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
+Scenario.only('Verify Contested List for Hearing', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await I.getContestedCaseWithState('Scheduling and Hearing', scenarioSolRef);
+  await getContestedScenarioState('Scheduling and Hearing', scenarioSolRef);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
@@ -81,7 +82,7 @@ Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
 
 Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Awaiting Payment Response', scenarioSolRef);
+  await getContestedScenarioState('Application Drafted', scenarioSolRef);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
