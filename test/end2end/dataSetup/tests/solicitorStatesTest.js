@@ -8,7 +8,9 @@ const {getContestedScenarioState,getConsentedScenarioState} = require('../scenar
 describe('FR Cases Creation ', function () {
 
   it.only('Scenario Runner Test', async function () { 
-    await getConsentedScenarioState('Consent Order Approved', getSolRef());
+    await getContestedScenarioState('Application Drafted', getSolRef());
+
+    // await getConsentedScenarioState('Consent Order Approved', getSolRef());
   });
 
 });
