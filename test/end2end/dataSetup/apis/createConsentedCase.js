@@ -24,7 +24,7 @@ async function createContestedCase(solRef){
 }
 
 async function createConsentedCase(solRef) {
-  log('Create  Sonsented Case ');
+  log('Create  Consented Case ');
 
   var caseId =  await createCase(solRef, 'FinancialRemedyMVP2', consentedCaseRequest);
   return caseId;
