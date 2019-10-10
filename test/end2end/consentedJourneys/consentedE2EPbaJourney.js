@@ -47,7 +47,7 @@ Scenario('Verify Consented PBA Court Admin update case Scenario', async (I, Tabs
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
-  I.searchCase(scenarioSolref);
+  I.searchCase(scenarioSolref, searchCaseType);
   I.addNote();
   if(pbaValue===true) {
     I.pbaUpdateCase();
@@ -84,13 +84,17 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I, Tab
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.updateOrder();
+  // I.updateOrder();
+  I.consentedNextStep('Upload Order');
+
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update Order');
-  I.uploadOrder();
+  // I.uploadOrder(); 
+   I.consentedNextStep('Upload Order');
+
+
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload Order');
-  I.adminOrderTabs();
 
 });
 
@@ -142,7 +146,6 @@ Scenario('Verify Consented PBA Court judge approve case', async (I, TabsPage)  =
   I.consentedNextStep('Approve Application');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
-  I.judgeApproveTabs();
 
 });
 
@@ -157,7 +160,7 @@ Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.uploadConsentOrder();
+  I.consentedNextStep('Upload Consent Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload Consent Order');
   // I.wait(5);

@@ -68,7 +68,7 @@ function contestedNextStep(step) {
     I.selectOption('#allocatedCourtListGA_londonList', 'London FRC');
     I.wait(1);
 
-    I.selectOption('##allocatedCourtListGA_cfcCourtList', 'CENTRAL FAMILY COURT');
+    I.selectOption('#allocatedCourtListGA_cfcCourtList', 'CENTRAL FAMILY COURT');
     I.waitForContinueButtonEnabled();
     I.click('Continue');
 

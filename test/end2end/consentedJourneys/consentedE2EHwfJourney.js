@@ -186,14 +186,16 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
 
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.uploadConsentOrder();
+  I.consentedNextStep('Upload Consent Order');
+  // I.uploadConsentOrder();
+
   I.waitForPage('.EventLogTable h2', 'History'); 
   I.see('Upload Consent Order');
-  I.wait(5);
+
   I.amendCase();
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Amend Case');
-  I.wait(5);
+
   I.amendedConsentOrder();
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Amended Consent Order');

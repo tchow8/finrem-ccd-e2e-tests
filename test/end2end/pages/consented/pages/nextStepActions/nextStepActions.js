@@ -16,6 +16,41 @@ function consentedNextStep(step) {
   case 'Case Submission':
     break;
 
+  case 'Upload Consent Order':
+    I.waitForPage('#uploadConsentOrderDocuments');
+    I.click('Add new');
+    I.waitForPage('#uploadConsentOrderDocuments_0_DocumentType');
+
+    I.selectOption('#uploadConsentOrderDocuments_0_DocumentType','Other');
+    I.fillField('#uploadConsentOrderDocuments_0_DocumentEmailContent','Email content');
+    I.attachFile('#uploadConsentOrderDocuments_0_DocumentLink', 'data / dummy.pdf');
+
+    I.fillField('#uploadConsentOrderDocuments_0_DocumentDateAdded-day', today.getDate());
+    I.fillField('#uploadConsentOrderDocuments_0_DocumentDateAdded-month', today.getMonth() + 1);
+    I.fillField('#uploadConsentOrderDocuments_0_DocumentDateAdded-year', today.getFullYear());
+
+    I.fillField('#uploadConsentOrderDocuments_0_DocumentComment','test comment');
+    I.fillField('#uploadConsentOrderDocuments_0_DocumentFileName', 'file name');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    fillAndSubmitEventDetails(I);
+    break;
+    
+  case 'Assign To Judge':
+    I.waitForPage('select#assignedToJudgeReason');
+    I.selectOption('select#assignedToJudgeReason','Draft consent order');
+    I.selectOption('select#assignedToJudge', 'Nasim FR Judge');
+
+    I.fillField('#referToJudgeDate-day', today.getDate());
+    I.fillField('#referToJudgeDate-month', today.getMonth() + 1);
+    I.fillField('#referToJudgeDate-year', today.getFullYear());
+
+    I.fillField('#referToJudgeText', 'Test');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    fillAndSubmitEventDetails(I);
+    break;
+
   case 'Upload Order':
     I.waitForPage('#uploadOrder');
     I.click('Add new');
@@ -65,7 +100,7 @@ function consentedNextStep(step) {
     I.waitForPage('#respondToOrderInfoText');
     I.waitForContinueButtonEnabled();
     I.click('Continue');
-    I.waitForPageWithText('Respond To Order');
+    I.waitForPage('//button[text()="Submit"]');
     I.click('Submit');
     break;
   case 'Application Not Approved':
