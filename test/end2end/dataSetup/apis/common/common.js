@@ -42,13 +42,25 @@ async function getCaseDetails(caseId) {
 }
 
 async function isCaseFastTrack(caseId) {
-  var jsonPath = require('jsonPath');
-  var res = await getCaseDetails(caseId);
-
-  let isastTractk = jsonPath.query(res.data, '$..tabs[?(@.id == "hiddenTab")].fields[?(@.id == "fastTrackDecision")].value')[0];
-
-  return isastTractk;
+  let hiddenTab = getCaseTabWithLabel(caseId,'Hidden Tab');
+  let isFastTract = getFieldWithId(hiddenTab[0].fields,'fastTrackDecision'); 
+  return isFastTract[0];
 }
+
+function getFieldWithId(array, value){
+  return array.filter(function (field) {
+    return field.id === value;
+  });
+}
+
+async function getCaseTabWithLabel(caseId,tabLabel) {
+  var res = await getCaseDetails(caseId);
+  const tabs = res.data.tabs;
+  return tabs.filter(function(tab){
+    return tab.label === tabLabel;
+  });
+}
+
 
 async function uploadFile(filePath){
   let uploadDetails = {};
