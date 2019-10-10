@@ -39,7 +39,7 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
 });
 
 
-Scenario('Verify Consented PBA Court Admin update case Scenario', async (I)  => {
+Scenario('Verify Consented PBA Court Admin update case Scenario', async (I, TabsPage)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Application Drafted', scenarioSolref);
@@ -60,7 +60,7 @@ Scenario('Verify Consented PBA Court Admin update case Scenario', async (I)  => 
 
 
 
-Scenario('Verify Consented PBA Court judge application not approved case', async (I)  => {
+Scenario('Verify Consented PBA Court judge application not approved case', async (I, TabsPage)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Awaiting Judicial Response', scenarioSolref);
 
@@ -68,7 +68,7 @@ Scenario('Verify Consented PBA Court judge application not approved case', async
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.applicationNotApproved();
+  I.consentedNextStep('Application Not Approved');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
   I.judgeTabs();
@@ -77,7 +77,7 @@ Scenario('Verify Consented PBA Court judge application not approved case', async
 
 
 
-Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I)  => {
+Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I, TabsPage)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Consent Order Not Approved', scenarioSolref);
 
@@ -96,7 +96,7 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I)  =>
 
 
 
-Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I)  => {
+Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I, TabsPage)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Awaiting Response', scenarioSolref);
 
@@ -104,7 +104,7 @@ Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I) 
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.respondOrder();
+  I.consentedNextStep('Respond To Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
   I.solResponseTabs();
@@ -113,7 +113,7 @@ Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I) 
 
 
 
-Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response Received', async (I)  => {
+Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response Received', async (I, TabsPage)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Response Received', scenarioSolref);
@@ -122,7 +122,7 @@ Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.assignToJudge();
+  I.consentedNextStep('Assign To Judge');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
   I.adminResponseTabs();
@@ -131,7 +131,7 @@ Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response
 
 
 
-Scenario('Verify Consented PBA Court judge approve case', async (I)  => {
+Scenario('Verify Consented PBA Court judge approve case', async (I, TabsPage)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Awaiting Judicial Response', scenarioSolref);
 
@@ -139,7 +139,7 @@ Scenario('Verify Consented PBA Court judge approve case', async (I)  => {
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.approveApplication();
+  I.consentedNextStep('Approve Application');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
   I.judgeApproveTabs();
@@ -148,7 +148,7 @@ Scenario('Verify Consented PBA Court judge approve case', async (I)  => {
 
 
 
-Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all Universal events', async (I)  => {
+Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all Universal events', async (I, TabsPage)  => {
 
 
     const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();

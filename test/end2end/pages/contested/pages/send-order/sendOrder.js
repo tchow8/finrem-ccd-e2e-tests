@@ -1,12 +1,13 @@
 function sendOrder(){
   const I = this;
-  I.wait(10);
+  I.waitForPage('select[id="next-step"]');
   I.selectOption('select[id="next-step"]', 'Send Order');
-  I.wait(10);
   I.click('Go');
-  I.wait(5);
+  I.waitForElement('#field-trigger-summary', 30);
+
   I.click('Submit');
-  I.wait(10);
+  I.waitForPage('.tabs-list');
+
 }
 
 

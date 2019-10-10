@@ -9,7 +9,15 @@ var consentedtate = {
         { nextStep: 'Case Submission|PBA', endState: 'Application Submitted' }
       ],
       method: (solRef) => createConsentedCase(solRef) 
-    }
+    },
+  'Awaiting Response': {
+    prevStates: ['Consent Order Not Approved'],
+    nextSteps: [
+      { nextStep: 'Assign To Judge', endState: 'Awaiting Judicial Response' },
+      { nextStep: 'Respond To Order', endState: 'Response Received' }
+
+    ]
+  }  
   },
   caseWorker: {
     'Application Submitted': {
@@ -62,7 +70,7 @@ var consentedtate = {
       nextSteps: [
         { nextStep: 'Assign To Judge', endState: 'Awaiting Judicial Response' }
       ]
-    }    
+    }   
   },
   judge:{
     'Awaiting Judicial Response': {
@@ -71,13 +79,6 @@ var consentedtate = {
         { nextStep: 'General Order', endState: 'Consent Order Not Approved' },
         { nextStep: 'Application Not Approved', endState: 'Consent Order Not Approved' },  
         { nextStep: 'Approve Application', endState: 'Consent Order Approved' }
-      ]
-    },
-    'Awaiting Response': {
-      prevStates: ['Consent Order Not Approved'],
-      nextSteps: [
-        { nextStep: 'Respond To Order', endState: 'Consent Order Not Approved' },
-        { nextStep: 'Assign To Judge', endState: 'Response Received' }
       ]
     }
   }
