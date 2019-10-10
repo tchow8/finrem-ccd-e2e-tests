@@ -42,9 +42,9 @@ async function getCaseDetails(caseId) {
 }
 
 async function isCaseFastTrack(caseId) {
-  let hiddenTab = getCaseTabWithLabel(caseId,'Hidden Tab');
+  let hiddenTab = await getCaseTabWithLabel(caseId,'Hidden Tab');
   let isFastTract = getFieldWithId(hiddenTab[0].fields,'fastTrackDecision'); 
-  return isFastTract[0];
+  return isFastTract[0].value;
 }
 
 function getFieldWithId(array, value){

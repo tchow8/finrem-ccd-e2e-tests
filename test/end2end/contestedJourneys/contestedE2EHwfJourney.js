@@ -87,7 +87,6 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, Tabs
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
 
-  I.addNote();
   if(pbaValue===true) {
     I.contestedNextStep('Case Submission|PBA');
   }else {

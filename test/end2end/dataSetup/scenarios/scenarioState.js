@@ -27,9 +27,11 @@ async function  getContestedScenarioState(state,solRef){
     judgeNextSteps: contestedJudgeSteps
   };
  
-  log('Case Data Setup started.');
-  return await getScenarioState(scenarioConfig); 
+  log('*********************************************');
+  var res =  await getScenarioState(scenarioConfig); 
+  log('*********************************************');
 
+  return res;
 }
 
 async function getConsentedScenarioState(state, solRef) {
@@ -42,9 +44,12 @@ async function getConsentedScenarioState(state, solRef) {
     caseWorkerNextSteps: consentedCaseWorkerSteps,
     judgeNextSteps: consentedJudgeSteps
   };
-  
-  log('Case Data Setup started.'); 
-  return await getScenarioState(scenarioConfig); 
+
+  log('*********************************************');
+  var res = await getScenarioState(scenarioConfig);
+  log('*********************************************');
+
+  return res;
 
 }
 
