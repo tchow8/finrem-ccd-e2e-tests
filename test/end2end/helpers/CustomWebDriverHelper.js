@@ -53,7 +53,8 @@ class CustomHelper extends Helper{
     await this.takeScreenShot('testFailed');
     debugReportJson[currentScenario]['status'] = 'failed';
 
-    debugReportJson[currentScenario]['FailureReason']=test.err.stack+' \n\n '+JSON.stringify(test.err,null,4);
+    var httpResponse = test.err.response ? test.err.response.data: '';
+    debugReportJson[currentScenario]['FailureReason'] = test.err.stack + ' \n\n ' + JSON.stringify(httpResponse, null, 4) + ' \n\n ' + JSON.stringify(test.err, null, 4);
   }
 
   async takeScreenShot(status,stepdetails){

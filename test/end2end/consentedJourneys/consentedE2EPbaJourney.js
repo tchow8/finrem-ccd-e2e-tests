@@ -1,4 +1,4 @@
-var { getContestedScenarioState } = require('../dataSetup/scenarios/scenarioState');
+var { getConsentedScenarioState } = require('../dataSetup/scenarios/scenarioState');
 
 
 Feature('finrem consented e2e PBA Journey');
@@ -42,7 +42,7 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
 Scenario('Verify Consented PBA Court Admin update case Scenario', async (I)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Application Drafted', scenarioSolref);
+  await getConsentedScenarioState('Application Drafted', scenarioSolref);
 
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
@@ -62,7 +62,7 @@ Scenario('Verify Consented PBA Court Admin update case Scenario', async (I)  => 
 
 Scenario('Verify Consented PBA Court judge application not approved case', async (I)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Awaiting Judicial Response', scenarioSolref);
+  await getConsentedScenarioState('Awaiting Judicial Response', scenarioSolref);
 
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
@@ -79,7 +79,7 @@ Scenario('Verify Consented PBA Court judge application not approved case', async
 
 Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Consent Order Not Approved', scenarioSolref);
+  await getConsentedScenarioState('Consent Order Not Approved', scenarioSolref);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
@@ -98,7 +98,7 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I)  =>
 
 Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Awaiting Response', scenarioSolref);
+  await getConsentedScenarioState('Awaiting Response', scenarioSolref);
 
 
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
@@ -116,7 +116,7 @@ Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I) 
 Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response Received', async (I)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Response Received', scenarioSolref);
+  await getConsentedScenarioState('Response Received', scenarioSolref);
 
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
@@ -133,7 +133,7 @@ Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response
 
 Scenario('Verify Consented PBA Court judge approve case', async (I)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Awaiting Judicial Response', scenarioSolref);
+  await getConsentedScenarioState('Awaiting Judicial Response', scenarioSolref);
 
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
@@ -152,7 +152,7 @@ Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all
 
 
     const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getContestedScenarioState('Consent Order Approved', scenarioSolref);
+  await getConsentedScenarioState('Consent Order Approved', scenarioSolref);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
