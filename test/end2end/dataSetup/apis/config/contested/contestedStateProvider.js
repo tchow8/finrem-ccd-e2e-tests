@@ -18,7 +18,6 @@ var contestedState = {
       ]
     },
         
-
     'Solicitor Draft Order': {
       prevStates: ['Ready for Hearing'],
       nextSteps: [

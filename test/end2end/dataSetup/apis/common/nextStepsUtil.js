@@ -3,6 +3,8 @@ var http = require('../httpAxios').default;
 
 var log = require('./logger').default;
 
+var { getEventToken} = require('./common');
+
 var eventDataRequest = {
   'data': {},
   'event': {
@@ -53,31 +55,6 @@ async function httpSubmit(caseId, stepConfig) {
   });
   return res.data.id;
 }
-
-
-
-
-
-
-async function getEventToken(caseId, event) {
-  try{
-    let res = await http({
-      method: 'get',
-      url: 'https://gateway-ccd.aat.platform.hmcts.net/data/internal/cases/' + caseId + '/event-triggers/' + event + '?ignore-warning=false',
-      headers: { experimental: true }
-    });
-
-    return res.data.event_token;
-  }
-  catch(err){
-    console.log(err);
-    throw err;
-  }
-
-
-}
-
-
 
 
 

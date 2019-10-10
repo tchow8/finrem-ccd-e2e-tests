@@ -1,3 +1,6 @@
+var { getContestedScenarioState } = require('../dataSetup/scenarios/scenarioState');
+
+
 Feature('finrem consented e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
@@ -40,11 +43,14 @@ Scenario('Verify Consented HWF Solicitors Happypath Scenario',async ( I) =>   {
 });
 
 
-Scenario('Verify Consented HWF Court Admin update case Scenario', I => {
+Scenario('Verify Consented HWF Court Admin update case Scenario',async  (I) => {
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Drafted', scenarioSolref);
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolref, searchCaseType);
   I.addNote();
   // I.wait(10);
   if(pbaValue===true) {
@@ -59,12 +65,15 @@ Scenario('Verify Consented HWF Court Admin update case Scenario', I => {
 
 
 
-Scenario('Verify Consented HWF Court judge application not approved case', I => {
+Scenario('Verify Consented HWF Court judge application not approved case', async (I)  => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Awaiting Judicial Response', scenarioSolref);
 
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
 
   // I.wait(10);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolref, searchCaseType);
   I.applicationNotApproved();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
@@ -74,12 +83,32 @@ Scenario('Verify Consented HWF Court judge application not approved case', I => 
 
 
 
-Scenario('Verify Consented HWF Court Admin upload order Scenario', I => {
+Scenario('Verify Consented HWF Court Send Order (Consent order Not Approved)', async (I)  => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Consent Order Not Approved', scenarioSolref);
+
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
-  I.wait(10);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolref, searchCaseType);
+  I.sendOrder();
+  I.waitForPage('.EventLogTable h2', 'History');
+  I.see('Send Order');
+  I.adminOrderTabs();
+
+});
+
+
+Scenario('Verify Consented HWF Court Send Order (Consent order Approved)', async (I) => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Consent Order Approved', scenarioSolref);
+
+
+  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+
+  I.searchCase(scenarioSolref, searchCaseType);
   I.sendOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Send Order');
@@ -89,11 +118,16 @@ Scenario('Verify Consented HWF Court Admin upload order Scenario', I => {
 
 
 
-Scenario('Verify Consented HWF Solicitors Respond to order Scenario', I => {
+Scenario('Verify Consented HWF Solicitors Respond to order Scenario', async (I)  => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Awaiting Response', scenarioSolref);
+
+
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
 
   // I.wait(10);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolref, searchCaseType);
   I.respondOrder();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
@@ -103,11 +137,16 @@ Scenario('Verify Consented HWF Solicitors Respond to order Scenario', I => {
 
 
 
-Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response Received', I => {
+Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response Received', async (I)  => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Response Received', scenarioSolref);
+
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolref, searchCaseType);
   I.assignToJudge();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
@@ -117,10 +156,15 @@ Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response
 
 
 
-Scenario('Verify Consented HWF Court judge approve case', I => {
+Scenario('Verify Consented HWF Court judge approve case', async (I)  => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Awaiting Judicial Response', scenarioSolref);
+
+
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
 
-  I.searchCase(solRef, searchCaseType);
+  I.searchCase(scenarioSolref, searchCaseType);
   I.approveApplication();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
@@ -130,7 +174,11 @@ Scenario('Verify Consented HWF Court judge approve case', I => {
 
 
 
-Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all Universal events', I => {
+Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all Universal events', async (I)  => {
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Consent Order Approved', scenarioSolref);
+
+
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   // I.wait(10);

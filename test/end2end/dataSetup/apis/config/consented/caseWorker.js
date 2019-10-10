@@ -15,13 +15,9 @@ async function caseWorkerNextStep(caseId, step) {
   case 'Issue Application':
     stepConfig.data.issueDate = todaysDate();
     break;
-      case 'List for Hearing':
-    stepConfig.data.hearingDate = await getHearingDate(caseId);
-    break;
-
-    case 'Consent Order Payment':
-      stepConfig.data.uploadConsentedOrder = await uploadFile('test/end2end/data/dummy.pdf');
-
+ 
+    case 'Assign To Judge':
+      stepConfig.data.referToJudgeDate = todaysDate(); 
     break;
   default:
     stepConfig = nextStepsConfig.caseWorker[step];
