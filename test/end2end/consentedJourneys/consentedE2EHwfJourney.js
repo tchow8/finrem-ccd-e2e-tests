@@ -40,7 +40,7 @@ Scenario('Verify Consented HWF Solicitors Happypath Scenario', async (I, TabsPag
   I.finalPaymentSubmissionPage();
   I.finalInformationPage();
   I.see('Case Submission');
-  TabsPage.validateTabs(caseType);
+  // TabsPage.validateTabs(caseType);
 });
 
 

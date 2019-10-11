@@ -23,7 +23,7 @@ function consentedNextStep(step) {
 
     I.selectOption('#uploadConsentOrderDocuments_0_DocumentType','Other');
     I.fillField('#uploadConsentOrderDocuments_0_DocumentEmailContent','Email content');
-    I.attachFile('#uploadConsentOrderDocuments_0_DocumentLink', 'data / dummy.pdf');
+    I.attachFile('#uploadConsentOrderDocuments_0_DocumentLink', 'data/dummy.pdf');
 
     I.fillField('#uploadConsentOrderDocuments_0_DocumentDateAdded-day', today.getDate());
     I.fillField('#uploadConsentOrderDocuments_0_DocumentDateAdded-month', today.getMonth() + 1);
@@ -35,17 +35,17 @@ function consentedNextStep(step) {
     I.click('Continue');
     fillAndSubmitEventDetails(I);
     break;
-    
+
   case 'Assign To Judge':
     I.waitForPage('select#assignedToJudgeReason');
     I.selectOption('select#assignedToJudgeReason','Draft consent order');
     I.selectOption('select#assignedToJudge', 'Nasim FR Judge');
 
-    I.fillField('#referToJudgeDate-day', today.getDate());
-    I.fillField('#referToJudgeDate-month', today.getMonth() + 1);
-    I.fillField('#referToJudgeDate-year', today.getFullYear());
+    I.fillField('#referToJudgeDateFromRespondToOrder-day', today.getDate());
+    I.fillField('#referToJudgeDateFromRespondToOrder-month', today.getMonth() + 1);
+    I.fillField('#referToJudgeDateFromRespondToOrder-year', today.getFullYear());
 
-    I.fillField('#referToJudgeText', 'Test');
+    I.fillField('#referToJudgeTextFromRespondToOrder', 'Test');
     I.waitForContinueButtonEnabled();
     I.click('Continue');
     fillAndSubmitEventDetails(I);
