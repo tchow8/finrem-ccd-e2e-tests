@@ -192,36 +192,38 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
   I.waitForPage('.EventLogTable h2', 'History'); 
   I.see('Upload Consent Order');
 
-  I.amendCase();
+  I.consentedNextStep('Amend Case');
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Amend Case');
 
   I.amendedConsentOrder();
+  I.consentedNextStep('Amended Consent Order');
+
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Amended Consent Order');
   I.wait(5);
   // pause ();
-  I.updateContactDetails();
+  I.consentedNextStep('Update contact details');
 
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Update contact details');
   // I.wait(5);
-  I.updateDueDate();
+  I.consentedNextStep('Update Due Date');
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Update Due Date');
   // I.wait(5);
 
-  I.uploadDocument();
+  I.consentedNextStep('Upload document');
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Upload document');
 
   // I.wait(5);
-  I.refund();
+  I.consentedNextStep('Refund');
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Refund');
 
   // I.wait(5);
-  I.closeCase();
+  I.consentedNextStep('Close Case');
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Close Case');
   // I.wait(2);

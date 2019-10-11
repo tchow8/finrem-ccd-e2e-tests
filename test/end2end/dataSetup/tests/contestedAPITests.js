@@ -7,7 +7,7 @@ const { getContestedScenarioState } = require('../scenarios/scenarioState');
 
 describe('FR Cases Creation ', function () {
 
-  it('Application Drafted', async function () {
+  it.only('Application Drafted', async function () {
     await getContestedScenarioState('Application Drafted', getSolRef());
   });
 

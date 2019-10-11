@@ -16,6 +16,66 @@ function consentedNextStep(step) {
   case 'Case Submission':
     break;
 
+      case 'dueDate':
+          I.waitForPage('#dueDate');
+          I.fillField('#dueDate-day', today.getDate());
+          I.fillField('#dueDate-month', today.getMonth() + 1);
+          I.fillField('#dueDate-year', today.getFullYear());
+          I.waitForContinueButtonEnabled();
+          I.click('Continue');
+          fillAndSubmitEventDetails(I);
+
+      break;
+    case 'Upload document':
+          I.waitForPage('#uploadDocuments');
+          I.click('Add new');
+          I.waitForPage('select[id=uploadDocuments_0_DocumentType]');
+
+          I.selectOption('select[id=uploadDocuments_0_DocumentType]', 'Notice of Acting');
+          I.fillField('#uploadDocuments_0_DocumentEmailContent', 'Uploading the document for testing');
+          I.attachFile('input[type="file"]', 'data/dummy.pdf');
+          I.wait(1);
+          I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-day"]', today.getDate());
+          I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-month"]', today.getMonth() + 1);
+          I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-year"]', today.getFullYear());
+          I.waitForContinueButtonEnabled();
+          I.click('Continue');
+          fillAndSubmitEventDetails(I);
+
+    break;
+  case 'Update contact details':
+    I.waitForPage('h1', 'Update contact details');
+    I.fillField('input[id="solicitorAddress_AddressLine1"]', '26 Riverside Gardens');
+    I.fillField('input[id="solicitorAddress_PostTown"]', 'Wembley');
+    I.fillField('input[id="solicitorAddress_PostCode"]', 'HA0 1JF');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    I.waitForPage('.check-your-answers h2', 'Check your answers');
+    I.click('Submit');
+    break;
+
+  case 'Amended Consent Order':
+    I.waitForPage('#amendedConsentOrderCollection');
+    I.click('Add new');
+    I.waitForPage('');
+    I.attachFile('input[type="file"]', 'data/dummy.pdf');
+          I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-day"]', today.getDate());
+          I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-month"]', today.getMonth() + 1);
+          I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-year"]', today.getFullYear());
+    // I.wait(10);
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+          fillAndSubmitEventDetails(I);
+
+    break;
+
+  case 'Amend Case':
+    I.waitForPage('#divorceCaseNumber');
+    I.fillField('#divorceCaseNumber','LV18D84322');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    fillAndSubmitEventDetails(I);
+    break;
   case 'Upload Consent Order':
     I.waitForPage('#uploadConsentOrderDocuments');
     I.click('Add new');
