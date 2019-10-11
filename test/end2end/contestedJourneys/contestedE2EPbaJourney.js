@@ -10,7 +10,7 @@ const pbaValue = true;
 const searchCaseType = 'Contested Financial Remedy';
 
 
-Scenario.only('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPage) => {
+Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyContested', 'Form A Application');
   I.contestedSolicitorCreate(solRef);
