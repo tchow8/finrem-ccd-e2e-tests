@@ -41,7 +41,7 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
 Scenario('Verify Consented PBA Court Admin update case Scenario', async (I, TabsPage)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  await getConsentedScenarioState('Application Drafted', scenarioSolref);
+  await getConsentedScenarioState('Application Submitted', scenarioSolref);
 
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
@@ -124,7 +124,6 @@ Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response
   I.consentedNextStep('Assign To Judge');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
-  I.adminResponseTabs();
 
 });
 
@@ -159,35 +158,34 @@ Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload Consent Order');
   // I.wait(5);
-  I.amendCase();
+  I.consentedNextStep('Amend Case');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Amend Case');
   // I.wait(5);
-  I.amendedConsentOrder();
+  I.consentedNextStep('Amended Consent Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Amended Consent Order');
   // I.wait(5);
-  I.updateContactDetails();
+  I.consentedNextStep('Update contact details');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update contact details');
   // I.wait(5);
-  I.updateDueDate();
+  I.consentedNextStep('Upload Due Date');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update Due Date');
   // I.wait(5);
-  I.uploadDocument();
+  I.consentedNextStep('Upload document');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload document');
   // I.wait(5);
-  I.refund();
+  I.consentedNextStep('Refund');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Refund');
   // I.wait(5);
-  I.closeCase();
+  I.consentedNextStep('Close Case');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Close Case');
   // I.wait(2);
-  I.finalTabs();
 
 
 });
