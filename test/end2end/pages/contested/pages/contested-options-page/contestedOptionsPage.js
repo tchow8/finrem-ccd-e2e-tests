@@ -40,9 +40,6 @@ async function contestedOptionsPage(){
   I.click('Continue') ;
 
 
-
-
-
   I.waitForPage('#propertyAdjutmentOrderDetailLabel');
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
@@ -83,7 +80,7 @@ async function contestedOptionsPage(){
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
 
-  I.waitForPage('#allocatedCourtList');
+  I.waitForPage('#allocatedCourtList_allocatedCourtList');
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
 

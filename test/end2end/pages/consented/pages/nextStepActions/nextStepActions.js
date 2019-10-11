@@ -16,31 +16,31 @@ function consentedNextStep(step) {
   case 'Case Submission':
     break;
 
-      case 'dueDate':
-          I.waitForPage('#dueDate');
-          I.fillField('#dueDate-day', today.getDate());
-          I.fillField('#dueDate-month', today.getMonth() + 1);
-          I.fillField('#dueDate-year', today.getFullYear());
-          I.waitForContinueButtonEnabled();
-          I.click('Continue');
-          fillAndSubmitEventDetails(I);
+  case 'dueDate':
+    I.waitForPage('#dueDate');
+    I.fillField('#dueDate-day', today.getDate());
+    I.fillField('#dueDate-month', today.getMonth() + 1);
+    I.fillField('#dueDate-year', today.getFullYear());
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    fillAndSubmitEventDetails(I);
 
-      break;
-    case 'Upload document':
-          I.waitForPage('#uploadDocuments');
-          I.click('Add new');
-          I.waitForPage('select[id=uploadDocuments_0_DocumentType]');
+    break;
+  case 'Upload document':
+    I.waitForPage('#uploadDocuments');
+    I.click('Add new');
+    I.waitForPage('select[id=uploadDocuments_0_DocumentType]');
 
-          I.selectOption('select[id=uploadDocuments_0_DocumentType]', 'Notice of Acting');
-          I.fillField('#uploadDocuments_0_DocumentEmailContent', 'Uploading the document for testing');
-          I.attachFile('input[type="file"]', 'data/dummy.pdf');
-          I.wait(1);
-          I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-day"]', today.getDate());
-          I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-month"]', today.getMonth() + 1);
-          I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-year"]', today.getFullYear());
-          I.waitForContinueButtonEnabled();
-          I.click('Continue');
-          fillAndSubmitEventDetails(I);
+    I.selectOption('select[id=uploadDocuments_0_DocumentType]', 'Notice of Acting');
+    I.fillField('#uploadDocuments_0_DocumentEmailContent', 'Uploading the document for testing');
+    I.attachFile('input[type="file"]', 'data/dummy.pdf');
+    I.wait(1);
+    I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-day"]', today.getDate());
+    I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-month"]', today.getMonth() + 1);
+    I.fillField('input[id="uploadDocuments_0_DocumentDateAdded-year"]', today.getFullYear());
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    fillAndSubmitEventDetails(I);
 
     break;
   case 'Update contact details':
@@ -57,15 +57,15 @@ function consentedNextStep(step) {
   case 'Amended Consent Order':
     I.waitForPage('#amendedConsentOrderCollection');
     I.click('Add new');
-    I.waitForPage('');
+    I.waitForPage('input[type="file"]');
     I.attachFile('input[type="file"]', 'data/dummy.pdf');
-          I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-day"]', today.getDate());
-          I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-month"]', today.getMonth() + 1);
-          I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-year"]', today.getFullYear());
+    I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-day"]', today.getDate());
+    I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-month"]', today.getMonth() + 1);
+    I.fillField('input[id="amendedConsentOrderCollection_0_amendedConsentOrderDate-year"]', today.getFullYear());
     // I.wait(10);
     I.waitForContinueButtonEnabled();
     I.click('Continue');
-          fillAndSubmitEventDetails(I);
+    fillAndSubmitEventDetails(I);
 
     break;
 

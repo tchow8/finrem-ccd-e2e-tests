@@ -196,7 +196,7 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Amend Case');
 
-  I.amendedConsentOrder();
+  // I.amendedConsentOrder();
   I.consentedNextStep('Amended Consent Order');
 
   I.waitForPage('.EventLogTable h2', 'History');  

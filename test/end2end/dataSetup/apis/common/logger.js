@@ -13,6 +13,7 @@ function log(message,err){
 
   }else{
     const { I } = inject();
+    
     I.say(' Data Setup : ' + message);
 
     let scenarioSteps = debugReportJson[currentScenario]['steps'];

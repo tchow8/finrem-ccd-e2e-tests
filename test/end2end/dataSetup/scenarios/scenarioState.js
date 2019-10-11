@@ -27,9 +27,9 @@ async function  getContestedScenarioState(state,solRef){
     judgeNextSteps: contestedJudgeSteps
   };
  
-  log('*********************************************');
+  log('start*********************************************');
   var res =  await getScenarioState(scenarioConfig); 
-  log('*********************************************');
+  log('end*********************************************');
 
   return res;
 }
@@ -45,9 +45,9 @@ async function getConsentedScenarioState(state, solRef) {
     judgeNextSteps: consentedJudgeSteps
   };
 
-  log('*********************************************');
+  log('start*********************************************');
   var res = await getScenarioState(scenarioConfig);
-  log('*********************************************');
+  log('end*********************************************');
 
   return res;
 
