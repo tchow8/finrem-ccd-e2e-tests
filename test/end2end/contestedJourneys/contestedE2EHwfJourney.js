@@ -21,7 +21,7 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPag
   I.hwfFastTrack();
   I.hwfComplexityList();
   I.applyingToCourt();
-  I.hwfChooseCourt();
+  // I.hwfChooseCourt();
   I.hwfMediationQuestion();
   I.miamCertification();
   I.hwfOtherDocuments();
