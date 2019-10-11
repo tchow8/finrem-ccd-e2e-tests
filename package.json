@@ -10,10 +10,10 @@
     "consentedE2EPbaJourney": "JOURNEYTYPE=consented JOURNEY=Pba NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
     "contestedE2EHwfJourney": "JOURNEYTYPE=contested JOURNEY=Hwf NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
     "contestedE2EPbaJourney": "JOURNEYTYPE=contested JOURNEY=Pba NODE_PATH=. codeceptjs run  -c test/end2end/codecept.consented.conf.js  --steps --reporter mocha-multi",
-    "Testtest": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.test.conf.js --steps --reporter mochawesome",
+    "Testtest1": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.test.conf.js --steps --reporter mochawesome",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "lint": "eslint .",
-    "apiTest": "APITEST=yes ./node_modules/mocha/bin/mocha --timeout 0  test/end2end/dataSetup/tests/**Tests.js --reporter mocha"
+    "Testtest": "APITEST=yes ./node_modules/mocha/bin/mocha --timeout 0  test/end2end/dataSetup/tests/**Tests.js --reporter mocha"
   },
   "dependencies": {
     "axios-cookiejar-support": "^0.5.0",
