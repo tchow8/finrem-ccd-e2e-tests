@@ -12,7 +12,7 @@ describe('FR Cases Creation ', function () {
   });
 
 
-  it.only('Prepare for Hearing', async function () {
+  it('Prepare for Hearing', async function () {
     await getContestedScenarioState('Prepare for Hearing', getSolRef());
   });
 

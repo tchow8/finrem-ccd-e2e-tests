@@ -18,7 +18,7 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.natureOfApplication();
   I.orderForChildren();
   I.consentOrder();
-  I.d81();
+  I.deightyone();
   I.optionalDocuments();
   I.otherDocuments();
   I.informationPage();
@@ -35,7 +35,6 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.finalPaymentSubmissionPage();
   I.finalInformationPage();
   I.see('Case Submission');
-  I.solicitorTabs();
 });
 
 
@@ -48,13 +47,11 @@ Scenario('Verify Consented PBA Court Admin update case Scenario', async (I, Tabs
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
   // I.wait(10);
   I.searchCase(scenarioSolref, searchCaseType);
-  I.addNote();
   if(pbaValue===true) {
     I.pbaUpdateCase();
   }else {
     I.hwfUpdateCase();
   }
-  I.adminTabs();
 
 });
 
@@ -71,7 +68,6 @@ Scenario('Verify Consented PBA Court judge application not approved case', async
   I.consentedNextStep('Application Not Approved');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
-  I.judgeTabs();
 
 });
 
@@ -111,7 +107,6 @@ Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I, 
   I.consentedNextStep('Respond To Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
-  I.solResponseTabs();
 
 });
 

@@ -46,7 +46,8 @@ function contestedNextStep(step) {
     I.click('Continue');
     I.waitForPageWithText('Check your answers');
     I.click('Submit');
-
+    I.waitForPageWithText('Ignore Warning and Go');
+    I.click('Ignore Warning and Go');
 
     break;
   case 'Consent Order Payment':
@@ -84,7 +85,7 @@ function contestedNextStep(step) {
 
     break; 
   case 'Upload Case Files':
-    I.waitForPage('#uploadCaseDocumentLabel');
+    I.waitForPage('h1','Upload Case Files');
     I.click('Add new');
     I.wait(1);
     I.attachFile('#uploadCaseDocument_0_caseDocuments', 'data/dummy.pdf');
