@@ -7,7 +7,7 @@ let screenShotCtr = 1;
 const fs = require('fs');
 const reportDirPath = './functional-output/debugReport-' + new Date().getTime();
 
-var {createConsentedCase,createContestedCase} = require('../dataSetup/apis/createConsentedCase');
+// var {createConsentedCase,createContestedCase} = require('../dataSetup/apis/createCase');
 
 class CustomHelper extends Helper{
 
@@ -131,13 +131,13 @@ class CustomHelper extends Helper{
 
   }
 
-  async getContestedCaseWithState(state,solRef){
-    return await createContestedCase(state, solRef);
-  }
+  // async getContestedCaseWithState(state,solRef){
+  //   return await createContestedCase(state, solRef);
+  // }
 
-  async getConsentedCaseWithState(state, solRef) {
-    return await createConsentedCase(state, solRef);
-  }
+  // async getConsentedCaseWithState(state, solRef) {
+  //   return await createConsentedCase(state, solRef);
+  // }
 
 
 }
