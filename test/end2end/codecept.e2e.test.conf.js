@@ -46,35 +46,12 @@ exports.config = {
     }
   },
   helpers: {
-    // 'Mochawesome': {
-    //   uniqueScreenshotNames: true
-    // },
-    // Puppeteer: {
-    //   url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
-    //   waitForTimeout: 5000,
-    //   // waitForAction: 2000,
-    //   getPageTimeout: 30000,
-    //   show: true,
-    //   waitForNavigation: 'networkidle0',
-    //   ignoreHTTPSErrors: true,
-    //   headless: false,
-    //   chrome: {
-    //     ignoreHTTPSErrors: true,
-    //     args: [
-    //       '--no-sandbox',
-    //       '--proxy-server=proxyout.reform.hmcts.net:8080',
-    //       '--disable-dev-shm-usage'
-    //     ]
-    //   }
-
-    // }
-    // ,
+   
     WebDriverIO:{
       url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
       smartWait:5000,
       browser: 'chrome',
       restart: true,
-      // windowSize:'maximize',
       ignoreHTTPSErrors: true,
       remoteFileUpload:false,
       fullPageScreenshots:true,
@@ -112,9 +89,6 @@ exports.config = {
 
     reporterOptions: {
 
-      // reportDir:  './functional-output',
-      // reportName: 'FinremSolTests',
-      // inlineAssets: true,
       'codeceptjs-cli-reporter': {
         stdout: '-',
         options: {
