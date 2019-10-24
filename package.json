@@ -6,14 +6,10 @@
     "consentedtest-e2e": "JOURNEYTYPE=consented JOURNEY=all NODE_PATH=. codeceptjs  run  -c test/end2end/codecept.e2e.test.conf.js  --steps --reporter mocha-multi",
     "contestedtest-e2e": "JOURNEYTYPE=contested JOURNEY=all NODE_PATH=. codeceptjs run  -c test/end2end/codecept.e2e.test.conf.js --steps --reporter mocha-multi",
       
-    "consentedE2EHwfJourney": "JOURNEYTYPE=consented JOURNEY=Hwf NODE_PATH=. codeceptjs run  -c test/end2end/codecept.e2e.test.conf.js  --steps --reporter mocha-multi",
-    "consentedE2EPbaJourney": "JOURNEYTYPE=consented JOURNEY=Pba NODE_PATH=. codeceptjs run  -c test/end2end/codecept.e2e.test.conf.js  --steps --reporter mocha-multi",
-    "contestedE2EHwfJourney": "JOURNEYTYPE=contested JOURNEY=Hwf NODE_PATH=. codeceptjs run  -c test/end2end/codecept.e2e.test.conf.js  --steps --reporter mocha-multi",
-    "contestedE2EPbaJourney": "JOURNEYTYPE=contested JOURNEY=Pba NODE_PATH=. codeceptjs run  -c test/end2end/codecept.e2e.test.conf.js  --steps --reporter mocha-multi",
-    "Testtest1": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.test.conf.js --steps --reporter mochawesome",
+    "Testtest": "NODE_PATH=. codeceptjs run  -c test/end2end/codecept.test.conf.js --steps --reporter mochawesome",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "lint": "eslint .",
-    "Testtest": "APITEST=yes ./node_modules/mocha/bin/mocha --timeout 0  test/end2end/dataSetup/tests/**Tests.js --reporter mochawesome --reporter-options reportDir=functional-output,reportFilename=apiTestReportMochaAwesome"
+    "Apitest": "APITEST=yes ./node_modules/mocha/bin/mocha --timeout 0  test/end2end/dataSetup/tests/**Tests.js --reporter mochawesome --reporter-options reportDir=functional-output,reportFilename=apiTestReportMochaAwesome"
   },
   "dependencies": {
     "axios-cookiejar-support": "^0.5.0",

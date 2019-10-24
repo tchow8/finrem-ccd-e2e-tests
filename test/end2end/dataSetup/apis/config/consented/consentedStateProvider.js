@@ -1,4 +1,4 @@
-var {createConsentedCase} = require('../../createConsentedCase');
+var {createConsentedCase} = require('../../createCase');
 
 var consentedtate = {
   solicitor : {
