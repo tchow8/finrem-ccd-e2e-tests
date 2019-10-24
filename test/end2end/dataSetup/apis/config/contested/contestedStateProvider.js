@@ -1,4 +1,4 @@
-var {createContestedCase} = require('../../createConsentedCase');
+var {createContestedCase} = require('../../createCase');
 
 var contestedState = {
   solicitor : {
