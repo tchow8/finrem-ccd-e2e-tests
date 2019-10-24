@@ -5,7 +5,7 @@ const dateUtil = require('../../helpers/dateUtil.js');
 
 const { getContestedScenarioState } = require('../scenarios/scenarioState');
 
-describe('FR Cases Creation ', function () {
+describe('FR Contested Cases states ', function () {
 
   it('Application Drafted', async function () {
     await getContestedScenarioState('Application Drafted', getSolRef());
