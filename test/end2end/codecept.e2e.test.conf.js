@@ -18,8 +18,8 @@ function getTests() {
   }
 
   if(journey === 'all'){
-    // tests = tests + journeyType+'E2E*.js';
-    tests = tests + journeyType + 'E2EJourney.js';
+    tests = tests + journeyType+'E2E*.js';
+    // tests = tests + journeyType + 'E2EJourney.js';
 
   }else{
     tests = tests + journeyType + 'E2E'+journey+'Journey.js';
