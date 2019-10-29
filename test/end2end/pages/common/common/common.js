@@ -44,8 +44,8 @@ async function getElementsCount(locator,count){
 async function waitForContinueButtonEnabled(){
   const I = this;
 
-
   I.waitForElement('button[type = "submit"]:not(:disabled)',30);
+  I.scrollTo('button[type = "submit"]:not(:disabled)');
   // I.takeScreenShot();
 
 }

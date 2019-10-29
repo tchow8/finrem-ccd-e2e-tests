@@ -13,6 +13,15 @@ const pbaValue = false;
 
 const searchCaseType = 'Financial Remedy Consented';
 
+
+// Scenario.only('Tab data Validation config', async (I) => {
+//   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+
+//   I.getStateTabsConfig(I,'Financial Remedy Consented'); 
+
+// });
+
+
 Scenario('Verify Consented HWF Solicitors Happypath Scenario', async (I, TabsPage) =>   {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.createCase('FinancialRemedyMVP2','Consent Order Application');
@@ -40,7 +49,7 @@ Scenario('Verify Consented HWF Solicitors Happypath Scenario', async (I, TabsPag
   I.finalPaymentSubmissionPage();
   I.finalInformationPage();
   I.see('Case Submission');
-  // TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 });
 
 
@@ -55,15 +64,32 @@ Scenario('Verify Consented HWF Court Admin update case Scenario', async(I, TabsP
   I.addNote();
   // I.wait(10);
   if(pbaValue===true) {
-    I.pbaUpdateCase();
+    I.pbaUpdateCase() ;
   }else {
     I.hwfUpdateCase();
   }
   //pause ();
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
+
+
+Scenario('Verify Consented Manual Payment', async (I, TabsPage) => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getConsentedScenarioState('Application Drafted', scenarioSolref);
+
+  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+
+  I.searchCase(scenarioSolref, searchCaseType);
+  I.consentedNextStep('Manual Payment');
+  I.waitForPage('.EventLogTable h2', 'History');
+  I.see('Manual Payment');
+
+  await TabsPage.validateTabs(caseType);
+
+});
 
 
 Scenario('Verify Consented HWF Court judge application not approved case', async (I, TabsPage)  => {
@@ -79,7 +105,7 @@ Scenario('Verify Consented HWF Court judge application not approved case', async
   // I.applicationNotApproved();
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
@@ -97,7 +123,7 @@ Scenario('Verify Consented HWF Court Send Order (Consent order Not Approved)', a
   I.consentedNextStep('Send Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Send Order');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
@@ -114,7 +140,7 @@ Scenario('Verify Consented HWF Court Send Order (Consent order Approved)', async
   I.consentedNextStep('Send Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Send Order');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
@@ -133,7 +159,7 @@ Scenario('Verify Consented HWF Solicitors Respond to order Scenario', async (I, 
   I.consentedNextStep('Respond To Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
@@ -153,7 +179,7 @@ Scenario('Verify Consented HWF Court Admin Assign to Judge Scenario for Response
 
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
@@ -171,7 +197,7 @@ Scenario('Verify Consented HWF Court judge approve case', async (I, TabsPage)  =
   I.consentedNextStep('Approve Application');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 });
 
@@ -227,7 +253,7 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
   I.waitForPage('.EventLogTable h2', 'History');  
   I.see('Close Case');
   // I.wait(2);
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(caseType);
 
 
 });

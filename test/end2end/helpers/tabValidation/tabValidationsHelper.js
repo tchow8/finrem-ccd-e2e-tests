@@ -11,19 +11,24 @@ module.exports = {
     //   const endstateValueLocator = locate('td').inside(locate('.EventLogDetails tr').withText('End state')); 
     let endState = await I.grabTextFrom('//*[@class = "EventLogDetails"]//tr/th//*[text() = "End state"]/../../td/span');
 
-    const thisStateValidationsConfig = tabValidationConfig[endState];
+    let thisStateValidationsConfig = tabValidationConfig[endState];
     if (!thisStateValidationsConfig){
-      throw Error('Tab validation Config error: missing ' + endState);
+      thisStateValidationsConfig = {tabs:[]};
     }
-    thisStateValidationsConfig.tabs.concat(tabValidationConfig['Any State']);
 
-    for (var tabCounter = 0; tabCounter < thisStateValidationsConfig.tabs.length; tabCounter++ ){
-      const tabLocator = '//*[@class = "tabs-list-item"]/a[text() = "' + thisStateValidationsConfig.tabs[tabCounter].name + '"]'; 
+    let tabsTovalidate = thisStateValidationsConfig.tabs.concat(tabValidationConfig['*'].tabs); 
+
+  //  console.log('Validating tabs : '+JSON.stringify(tabsTovalidate)); 
+
+    for (var tabCounter = 0; tabCounter < tabsTovalidate.length; tabCounter++ ){
+      const tabLocator = '//*[@class = "tabs-list-item"]/a[text() = "' + tabsTovalidate[tabCounter].name + '"]'; 
       I.seeElement(tabLocator);
       I.click(tabLocator);
+      // I.wait(1);
+      I.waitForPage('//*[@class = "tabs-list-item"]/a[ contains(@class, "tabs-toggle-selected") and  text() = "' + tabsTovalidate[tabCounter].name + '"]');
      
-      const textsTobePresent = thisStateValidationsConfig.tabs[tabCounter].seeText;
-      console.log('Validate text coiunt : ' + textsTobePresent.length);
+      const textsTobePresent = tabsTovalidate[tabCounter].seeText;
+      // console.log(tabsTovalidate[tabCounter].name+ '  : Validate text count : ' + textsTobePresent);
       for (var textValidationCounter = 0; textValidationCounter < textsTobePresent.length; textValidationCounter++){
         I.see(textsTobePresent[textValidationCounter]);
       }
@@ -33,6 +38,5 @@ module.exports = {
  
   }
 
-
-
 };
+
