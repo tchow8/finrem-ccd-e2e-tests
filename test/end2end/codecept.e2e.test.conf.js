@@ -18,9 +18,12 @@ function getTests() {
   }
 
   if(journey === 'all'){
-    tests = tests + journeyType+'E2E*.js';
+    // tests = tests + journeyType+'E2E*.js';
+    tests = tests + journeyType + 'E2EJourney.js';
+
   }else{
-    tests = tests + journeyType + 'E2E'+journey+'Journey.js'; 
+    tests = tests + journeyType + 'E2E'+journey+'Journey.js';
+ 
   }
   // eslint-disable-next-line no-console
   console.log('tests : ' + tests);
@@ -77,7 +80,11 @@ exports.config = {
     
   
   },
-  include: { I: './pages/steps.js',TabsPage: './helpers/tabValidation/tabValidationsHelper.js' },
+  include: { 
+    I: './pages/steps.js',
+    TabsPage: './helpers/tabValidation/tabValidationsHelper.js',
+    InSession: './helpers/insessionNextSteps.js' 
+  },
   plugins: {
     wdio: {
       enabled: true,

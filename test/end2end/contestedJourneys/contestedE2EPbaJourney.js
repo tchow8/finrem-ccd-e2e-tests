@@ -42,7 +42,7 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPag
   I.contestedFinalPaymentPage();
   I.contestedFinalInformation();
   I.see('Case Submission');
-  TabsPage.validateTabs();
+  await TabsPage.validateTabs(searchCaseType);
 });
 
 
@@ -59,7 +59,7 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
   } else {
     I.contestedNextStep('Case Submission|HWF');
   }
-  TabsPage.validateTabs();
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -72,7 +72,7 @@ Scenario('Verify Contested PBA Court judge application for Scheduling and Listin
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Give Allocation Directions');
-  TabsPage.validateTabs();
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -87,8 +87,8 @@ Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', asy
 
   const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
   console.log('Case is Fats Tract : ' + isFastTrack + ' - '); 
-  I.contestedNextStep('List for Hearing|' + isFastTrack);
-  TabsPage.validateTabs();
+  I.contestedNextStep('List for Hearing' );
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -103,6 +103,8 @@ Scenario('Verify Contested PBA Solicitors upload case files Scenario', async (I,
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Upload Case Files');
+  await TabsPage.validateTabs(searchCaseType);
+
   //I.solResponseTabs();
 
 });
@@ -133,7 +135,7 @@ Scenario('Verify Contested Universal events', async (I, TabsPage) => {
   I.waitForPage('.tabs-list');
   I.see('Close Case');
 
-  TabsPage.validateTabs();
+  await TabsPage.validateTabs(searchCaseType);
 
 
 });

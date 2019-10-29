@@ -104,6 +104,55 @@ class CustomHelper extends Helper{
   }
 
 
+  async getStateTabsConfig(I,caseType) {
+
+    const ignoreStates = ['Any','Solicitor - Awaiting Payment'];
+
+    let browser = this.getBrowser();
+    const stateElements = await browser.$$('#wb-case-state option');
+    var states = [];
+    var statetabConfig = {};
+    for (var count = 0; count < stateElements.length;count++){
+      states.push(await stateElements[count].getText());
+    }
+
+ 
+    for (var statesCount = 0; statesCount < states.length; statesCount++){
+      
+      if (ignoreStates.includes(states[statesCount])){
+        continue;
+      }
+      I.click('Case List');
+      I.openCaseWithState(caseType, states[statesCount]);
+      statetabConfig[states[statesCount]] = {tabs:[]};
+     
+      const tabs = await browser.$$('.tabs-list-item a');
+
+
+      for (var tabCount = 0; tabCount < tabs.length; tabCount++){
+        tabs[tabCount].click();
+      
+        var tabConfig = { name: tabs[tabCount].getText(), seeText: [] }; 
+
+
+        const seeTextValues = await browser.$$('.tabs-list-item a');
+
+        for (var textCount = 0; textCount < seeTextValues.length; textCount++){
+          tabConfig.seeText.push(seeTextValues[textCount]);
+        }
+
+        statetabConfig[states[statesCount]].tabs.push(tabConfig);
+
+      }
+
+    }
+
+    console.log('************  '+JSON.stringify(statetabConfig));
+
+    return statetabConfig;
+
+  }
+
   async getBrowserCookies(){
     let browser = this.getBrowser();
     let cookies = await browser.getCookies();
@@ -116,7 +165,7 @@ class CustomHelper extends Helper{
     let res = null;
 
     try{
-         res = await axios.get('https://idam-web-public.aat.platform.hmcts.net/login?response_type=code&client_id=ccd_gateway&redirect_uri=https%3A%2F%2Fwww-ccd.aat.platform.hmcts.net%2Foauth2redirect');
+      res = await axios.get('https://idam-web-public.aat.platform.hmcts.net/login?response_type=code&client_id=ccd_gateway&redirect_uri=https%3A%2F%2Fwww-ccd.aat.platform.hmcts.net%2Foauth2redirect');
 
     }catch(err){
       console.log(err);

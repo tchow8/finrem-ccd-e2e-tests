@@ -35,6 +35,7 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.finalPaymentSubmissionPage();
   I.finalInformationPage();
   I.see('Case Submission');
+  
 });
 
 
@@ -53,6 +54,9 @@ Scenario('Verify Consented PBA Court Admin update case Scenario', async (I, Tabs
     I.hwfUpdateCase();
   }
 
+  await TabsPage.validateTabs(searchCaseType);
+
+
 });
 
 
@@ -68,6 +72,8 @@ Scenario('Verify Consented PBA Court judge application not approved case', async
   I.consentedNextStep('Application Not Approved');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Application Not Approved');
+  await TabsPage.validateTabs(searchCaseType);
+
 
 });
 
@@ -91,6 +97,8 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I, Tab
 
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload Order');
+  await TabsPage.validateTabs(searchCaseType);
+
 
 });
 
@@ -107,6 +115,8 @@ Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I, 
   I.consentedNextStep('Respond To Order');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Respond To Order');
+  await TabsPage.validateTabs(searchCaseType);
+
 
 });
 
@@ -124,6 +134,8 @@ Scenario('Verify Consented PBA Court Admin Assign to Judge Scenario for Response
   I.consentedNextStep('Assign To Judge');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Assign To Judge');
+  await TabsPage.validateTabs(searchCaseType);
+
 
 });
 
@@ -140,6 +152,8 @@ Scenario('Verify Consented PBA Court judge approve case', async (I, TabsPage)  =
   I.consentedNextStep('Approve Application');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Approve Application');
+  await TabsPage.validateTabs(searchCaseType);
+
 
 });
 
@@ -185,6 +199,8 @@ Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all
   I.consentedNextStep('Close Case');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Close Case');
+  await TabsPage.validateTabs(searchCaseType);
+
   // I.wait(2);
 
 

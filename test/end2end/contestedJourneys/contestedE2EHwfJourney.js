@@ -38,9 +38,23 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPag
   I.finalInformationPage();
   I.see('Case Submission');
   //I.solicitorTabs();
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(searchCaseType);
 
 });
+
+
+Scenario('Verify Contested, Judge Give Allocation Directions', async (I, TabsPage) => {
+  const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Gate Keeping & Allocation', scenarioSolRef);
+
+  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+  I.searchCase(scenarioSolRef, searchCaseType);
+
+  I.contestedNextStep('Give Allocation Directions');
+  await TabsPage.validateTabs(searchCaseType);
+
+});
+
 
 Scenario('Verify Contested HWF Payment', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
@@ -49,7 +63,23 @@ Scenario('Verify Contested HWF Payment', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Case Submission|HWF');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(searchCaseType);
+
+});
+
+Scenario('Verify Contestd Manual Payment', async (I, TabsPage) => {
+
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  await getContestedScenarioState('Application Drafted', scenarioSolref);
+
+  I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
+
+  I.searchCase(scenarioSolref, searchCaseType);
+  I.consentedNextStep('Manual Payment');
+  I.waitForPage('.EventLogTable h2', 'History');
+  I.see('Manual Payment');
+
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -60,7 +90,7 @@ Scenario('Verify Contested PBA Payment', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Case Submission|PBA');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -75,7 +105,7 @@ Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
   const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
   console.log('Case is Fats Tract : ' + isFastTrack + ' - '); 
   I.contestedNextStep('List for Hearing|' + isFastTrack.split(':')[1].trim());
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -92,7 +122,7 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, Tabs
   }else {
     I.contestedNextStep('Case Submission|HWF');
   }
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -104,7 +134,7 @@ Scenario('Verify Contested HWF Solicitors upload case files Scenario', async (I,
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Submit Uploaded Case Files');
-  TabsPage.validateTabs(caseType);
+  await TabsPage.validateTabs(searchCaseType);
 
 });
 
@@ -140,7 +170,7 @@ Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all
 
   I.waitForPage('.tabs-list');
   I.see('Close Case');
-  TabsPage.validateTabs();
+  await TabsPage.validateTabs(searchCaseType);
 
 
 });

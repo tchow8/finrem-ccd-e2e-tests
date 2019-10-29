@@ -15,7 +15,15 @@ function consentedNextStep(step) {
   switch (stepArr[0]) {
   case 'Case Submission':
     break;
-
+  case 'Manual Payment':
+    I.waitForPage('#copyOfPaperFormA');
+    I.click('Add new');
+    I.waitForPage('#copyOfPaperFormA_0_typeOfDocument');
+    I.selectOption('#copyOfPaperFormA_0_typeOfDocument', 'Copy of paper form A');
+    I.continueNext();
+    I.attachFile('input[type="file"]', 'data/dummy.pdf');
+    fillAndSubmitEventDetails(I);
+    break;
   case 'dueDate':
     I.waitForPage('#dueDate');
     I.fillField('#dueDate-day', today.getDate());

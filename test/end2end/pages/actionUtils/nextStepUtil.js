@@ -2,7 +2,7 @@
 
 function initiateNextStep(step){
     const I = this;
-    I.waitForPage('select[id="next-step');
+    I.waitForPage('select[id="next-step"]');
 
 
     I.selectOption('select[id="next-step"]', step);
@@ -19,7 +19,7 @@ function continueNext()
 {
     const I = this;
 
-    I.waitForContinueButtonEnabled();;
+    I.waitForContinueButtonEnabled();
     I.click('button[type="submit"]');
 }
 

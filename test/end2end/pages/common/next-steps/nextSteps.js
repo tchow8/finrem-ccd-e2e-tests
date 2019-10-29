@@ -3,7 +3,7 @@
 function searchCase(reference,caseType) {
   const I = this;
   // I.wait(5);
-  I.waitForPage('#search-result h2', 'Case List');
+  I.waitForPage('select[id="wb-case-type"]');
 
   I.selectOption('select[id="wb-case-type"]', caseType);
   I.wait(1);
@@ -27,6 +27,33 @@ function searchCase(reference,caseType) {
 
 }
 
+
+function openCaseWithState (caseType,state) {
+  const I = this;
+  // I.wait(5);
+  I.waitForPage('#search-result h2', 'Case List');
+
+  I.selectOption('select[id="wb-case-type"]', caseType);
+  I.wait(1);
+  I.selectOption('select[id="wb-case-state"]', state);
+  I.waitForElement('input[id="solicitorReference"]', 30);
+  I.fillField('input[id="solicitorReference"]', '');
+  I.waitForPage('.display-left button:not(.button-secondary)');
+  I.waitForVisible('.display-left button:not(.button-secondary)', 30);
+
+  I.scrollTo('.display-left button:not(.button-secondary)');
+  I.click('.display-left button:not(.button-secondary)');
+  // I.click('.display-left button:not(.button-secondary)');
+  // I.wait(20);
+  I.waitForPage('.search-result-column-cell:nth-of-type(7) span', state);
+  I.scrollTo('.search-result-column-cell:nth-of-type(7) span');
+
+  I.click('.search-result-column-cell:nth-of-type(1) a');
+  I.waitForPage('.tabs-list');
+
+  // I.wait(10);
+
+}
 
 function approveApplication() {
   const I = this;
@@ -56,4 +83,4 @@ function approveApplication() {
   // I.wait(5);
 }
 
-module.exports = { searchCase, approveApplication};
+module.exports = { searchCase, approveApplication, openCaseWithState};
