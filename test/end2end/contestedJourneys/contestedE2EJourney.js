@@ -1,13 +1,11 @@
 var { getContestedScenarioState } = require('../dataSetup/scenarios/scenarioState');
 
-var caseType = 'contested';
-
 Feature('finrem contested e2e Journeys');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
-const solRef = 'AUTO-' + dateUtil.createSolicitorReference();
-const pbaValue = false;
-const searchCaseType = 'Contested Financial Remedy';
+// const solRef = 'AUTO-' + dateUtil.createSolicitorReference();
+// const pbaValue = false;
+const searchCaseType = 'contested';
 
 var scenarioSolref = '';
 Scenario('Verify Contestd E2E Path 1', async (I) => {
@@ -204,7 +202,7 @@ async function asSolicitor(I){
 }
 
 async function asCaseWorker(I) {
-  I.click('//a[text() = "Sign Out"]'); 
+  I.click('//a[text() = "Sign Out"]');
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
   await I.searchCase(scenarioSolref, searchCaseType);
@@ -215,7 +213,7 @@ async function asCaseWorker(I) {
 
 async function asJudge(I) {
   I.click('//a[text() = "Sign Out"]');
- 
+
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
 
   await I.searchCase(scenarioSolref, searchCaseType);

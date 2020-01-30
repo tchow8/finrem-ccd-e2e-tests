@@ -5,9 +5,8 @@ Feature('finrem contested e2e PBA Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
-// const solRef = '1567504044468';
 const pbaValue = true;
-const searchCaseType = 'Contested Financial Remedy';
+const searchCaseType = 'contested';
 
 
 Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPage) => {
@@ -86,7 +85,7 @@ Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', asy
   I.searchCase(scenarioSolRef, searchCaseType);
 
   const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
-  console.log('Case is Fats Tract : ' + isFastTrack + ' - '); 
+  console.log('Case is Fats Tract : ' + isFastTrack + ' - ');
   I.contestedNextStep('List for Hearing' );
   await TabsPage.validateTabs(searchCaseType);
 

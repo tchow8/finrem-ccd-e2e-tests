@@ -1,13 +1,11 @@
 var {getContestedScenarioState} = require('../dataSetup/scenarios/scenarioState');
 
-var caseType = 'contested';
-
 Feature('finrem contested e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 const pbaValue = false;
-const searchCaseType = 'Contested Financial Remedy';
+const searchCaseType = 'contested';
 
 Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
@@ -103,7 +101,7 @@ Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
 
   I.click('Gatekeeping and allocation');
   const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
-  console.log('Case is Fats Tract : ' + isFastTrack + ' - '); 
+  console.log('Case is Fats Tract : ' + isFastTrack + ' - ');
   I.contestedNextStep('List for Hearing|' + isFastTrack.split(':')[1].trim());
   await TabsPage.validateTabs(searchCaseType);
 
@@ -157,7 +155,7 @@ Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all
 
   I.waitForPage('.tabs-list');
   I.see('Update contact details');
-  
+
   I.contestedUploadDocument();
 
   I.waitForPage('.tabs-list');
