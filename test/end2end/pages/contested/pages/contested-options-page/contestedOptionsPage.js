@@ -35,7 +35,7 @@ async function contestedOptionsPage(){
 
 
   I.waitForPage('#natureOfApplicationChecklist');
-  I.checkOption('//input[contains(@id,"natureOfApplicationChecklist-Maintenance")]');
+  // I.checkOption('//input[contains(@id,"natureOfApplicationChecklist-Maintenance")]');
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
 
@@ -50,7 +50,7 @@ async function contestedOptionsPage(){
 
   I.waitForPage('#benefitForChildrenLabel');
   I.waitForContinueButtonEnabled();
-  I.click('Continue'); 
+  I.click('Continue');
 
 
 
@@ -71,8 +71,8 @@ async function contestedOptionsPage(){
   // I.checkOption('input[id="fastTrackDecisionReason-reason_3"]');
   // I.checkOption('input[id="fastTrackDecisionReason-reason_2"]');
   I.waitForContinueButtonEnabled();
-  I.click('Continue'); 
-  
+  I.click('Continue');
+
   I.waitForPage('#addToComplexityListOfCourts');
 
   I.checkOption('input[id="otherReasonForComplexity-Yes"]');

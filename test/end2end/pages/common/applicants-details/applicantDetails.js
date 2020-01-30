@@ -1,12 +1,15 @@
-// const testConfig = require('test/config.js');
+const journeyType = process.env.JOURNEYTYPE ;
+
 function applicantDetails(I) {
   I.waitForElement('input[id="applicantFMName"]');
   I.fillField('input[id="applicantFMName"]', 'viv');
   I.fillField('input[id="applicantLName"]', 'div');
   I.wait(5);
-  I.selectOption('select[id="regionList"]', 'Wales');
-  I.selectOption('select[id="walesFRCList"]','Swansea FRC');
-  I.selectOption('select[id="swanseaCourtList"]','PORT TALBOT JUSTICE CENTRE');
+  if(journeyType==='consented') {
+    I.selectOption('select[id="regionList"]', 'Wales');
+    I.selectOption('select[id="walesFRCList"]', 'Swansea FRC');
+    I.selectOption('select[id="swanseaCourtList"]', 'PORT TALBOT JUSTICE CENTRE');
+  }
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
   // I.wait(10);
