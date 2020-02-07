@@ -13,8 +13,7 @@ function contestedUploadDocument() {
   I.fillField('input[id="uploadGeneralDocuments_0_DocumentDateAdded-day"]', '10');
   I.fillField('input[id="uploadGeneralDocuments_0_DocumentDateAdded-month"]', '3');
   I.fillField('input[id="uploadGeneralDocuments_0_DocumentDateAdded-year"]', '2019');
-  I.waitForContinueButtonEnabled();
-  I.click('Continue') ;
+  I.continueNext();
   I.wait(2);
   I.waitForPage('#field-trigger-summary');
   I.click('Submit');
