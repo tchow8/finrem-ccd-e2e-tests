@@ -3,7 +3,7 @@
 
 
 const today = new Date();
-var {getFastTrackHearingDate,getStandardHearingDate} = require('../../../../helpers/dateUtil');
+var {getStandardHearingDate} = require('../../../../helpers/dateUtil');
 function contestedNextStep(step) {
   const I = this;
 
@@ -155,11 +155,11 @@ function contestedNextStep(step) {
     I.waitForPage('#draftDirectionDetailsCollection');
     I.click('Add new');
     I.waitForPage('#draftDirectionDetailsCollection_0_0');
-    I.click('#draftDirectionDetailsCollection_0_isThisFinalYN-Yes');
+    I.checkOption('#draftDirectionDetailsCollection_0_isThisFinalYN-Yes');
 
     I.waitForPage('#draftDirectionDetailsCollection_0_isAnotherHearingYN-Yes');
 
-    I.click('#draftDirectionDetailsCollection_0_isAnotherHearingYN-Yes');
+    I.checkOption('#draftDirectionDetailsCollection_0_isAnotherHearingYN-Yes');
 
     I.waitForPage('#draftDirectionDetailsCollection_0_typeOfHearing');
     I.selectOption('#draftDirectionDetailsCollection_0_typeOfHearing','Final Hearing (FH)');
@@ -186,7 +186,7 @@ function contestedNextStep(step) {
     I.click('Add new');
 
     I.waitForPage('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
-    I.click('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
+    I.checkOption('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
 
     I.waitForPage('#directionDetailsCollection_0_timeEstimate');
 
@@ -200,7 +200,7 @@ function contestedNextStep(step) {
     I.fillField('#directionDetailsCollection_0_dateOfHearing-year', heardingDate[2]);
 
 
-    I.click('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
+    I.checkOption('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
     I.waitForPage('#directionDetailsCollection_0_localCourt_region');
     I.selectOption('#directionDetailsCollection_0_localCourt_region','London');
     I.waitForPage('#directionDetailsCollection_0_localCourt_londonList');
