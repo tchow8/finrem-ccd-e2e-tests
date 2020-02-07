@@ -1,10 +1,10 @@
 function contestedUploadDocument() {
 
   const I = this;
-  I.waitForPage('.tabs-list')
+  I.waitForPage('.tabs-list');
   I.selectOption('select[id="next-step"]', 'Upload document');
   I.click('Go');
-  
+
   I.waitForPage('#uploadGeneralDocuments');
   I.click('Add new');
   I.selectOption('select[id=uploadGeneralDocuments_0_DocumentType]', 'Letter/Email from Applicant');
@@ -15,7 +15,7 @@ function contestedUploadDocument() {
   I.fillField('input[id="uploadGeneralDocuments_0_DocumentDateAdded-year"]', '2019');
   I.waitForContinueButtonEnabled();
   I.click('Continue') ;
-
+  I.wait(2);
   I.waitForPage('#field-trigger-summary');
   I.click('Submit');
 

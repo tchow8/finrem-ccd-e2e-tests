@@ -156,11 +156,10 @@ function contestedNextStep(step) {
     I.click('Add new');
     I.waitForPage('#draftDirectionDetailsCollection_0_0');
     I.checkOption('#draftDirectionDetailsCollection_0_isThisFinalYN-Yes');
-
+    I.wait(2);
     I.waitForPage('#draftDirectionDetailsCollection_0_isAnotherHearingYN-Yes');
-
     I.checkOption('#draftDirectionDetailsCollection_0_isAnotherHearingYN-Yes');
-
+    I.wait(1);
     I.waitForPage('#draftDirectionDetailsCollection_0_typeOfHearing');
     I.selectOption('#draftDirectionDetailsCollection_0_typeOfHearing','Final Hearing (FH)');
     I.click('#draftDirectionDetailsCollection_0_timeEstimate-standardTime');
