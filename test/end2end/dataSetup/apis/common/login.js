@@ -49,8 +49,6 @@ async function login(username,password) {
       'ARRAffinity': ARRAffinityVal
     };
 
-    log('username--> : ' + username);
-
     const data = {
       username: username,
       password: password,
@@ -69,7 +67,6 @@ async function login(username,password) {
       withCredentials: true
     }).catch(function (error){
       if (error.request) {
-        console.log(error.request.path);
         redirectPath= error.request.path;
       }
     });

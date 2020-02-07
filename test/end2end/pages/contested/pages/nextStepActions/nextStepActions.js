@@ -33,15 +33,13 @@ function contestedNextStep(step) {
     // eslint-disable-next-line no-case-declarations
   case 'Upload Draft Order':
     I.waitForPage('#draftDirectionOrderCollection');
-    let solUserName =  I.grabTextFrom('span[id="user-name"]');
     I.click('Add new');
     I.waitForPage('#draftDirectionOrderCollection_0_purposeOfDocument');
     I.selectOption('#draftDirectionOrderCollection_0_purposeOfDocument','Draft order');
     I.attachFile('input[type="file"]', 'data/dummy.pdf');
     I.continueNext();
     I.wait(2);
-
-    if(solUserName==='Mahesh Fr_judge') {
+    if(stepArr[1] === 'Judge') {
       I.click('Add new');
       I.waitForPage('#draftDirectionDetailsCollection_0_0');
       I.checkOption('input[id="draftDirectionDetailsCollection_0_isThisFinalYN-No"]');
@@ -198,7 +196,7 @@ function contestedNextStep(step) {
     heardingDate = getStandardHearingDate().split('-');
     I.fillField('#directionDetailsCollection_0_dateOfHearing-day', heardingDate[0]);
     I.fillField('#directionDetailsCollection_0_dateOfHearing-month', heardingDate[1]);
-
+    I.wait(1);
     I.fillField('#directionDetailsCollection_0_dateOfHearing-year', heardingDate[2]);
 
 

@@ -35,7 +35,7 @@ Scenario('Verify Contestd E2E Path 1', async (I) => {
 
   asJudge(I);
   await I.contestedNextStep('Judge To Draft Order');
-  await I.contestedNextStep('Upload Draft Order');
+  await I.contestedNextStep('Upload Draft Order|Judge');
 
   asCaseWorker(I);
   await I.contestedNextStep('Upload Order');
@@ -91,7 +91,7 @@ Scenario('Verify Contested E2E Path 2', async (I) => {
 
 
 
-Scenario('Verify Contested HWF E2E Path 2', async (I) => {
+Scenario('Verify Contested HWF E2E Path 2 ', async (I) => {
 
   scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   // const scenarioSolref = 'AUTO-1567757724725';
@@ -140,10 +140,9 @@ Scenario('Verify Contested HWF E2E Path 2', async (I) => {
 
 
 
-Scenario('Verify Contested PBA E2E Path 2', async (I) => {
+Scenario('Verify Contested PBA E2E Path 2 ', async (I) => {
 
   scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
-  // const scenarioSolref = 'AUTO-1567757724725';
 
   await getContestedScenarioState('Application Drafted', scenarioSolref);
 
@@ -196,7 +195,9 @@ async function asSolicitor(I){
   I.click('//a[text() = "Sign Out"]');
   I.wait(2);
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-  await I.searchCase(scenarioSolref, searchCaseType);
+  I.wait(2);
+  I.searchCase(scenarioSolref, searchCaseType);
+  I.wait(2);
 
 }
 
@@ -204,9 +205,10 @@ async function asCaseWorker(I) {
   I.wait(2);
   I.click('//a[text() = "Sign Out"]');
   I.wait(2);
-
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
-  await I.searchCase(scenarioSolref, searchCaseType);
+  I.wait(2);
+  I.searchCase(scenarioSolref, searchCaseType);
+  I.wait(2);
 }
 
 
@@ -214,6 +216,8 @@ async function asJudge(I) {
   I.wait(2);
   I.click('//a[text() = "Sign Out"]');
   I.wait(2);
-  await I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
-  await I.searchCase(scenarioSolref, searchCaseType);
+  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
+  I.wait(2);
+  I.searchCase(scenarioSolref, searchCaseType);
+  I.wait(2);
 }
