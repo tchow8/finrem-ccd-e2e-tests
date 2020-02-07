@@ -15,9 +15,9 @@ var contestedTabValidations = {
   },
   'Prepare For Hearing':{
     tabs: [
-      { name: 'Payment Details', seeText: ['Special Measures',
-        'This would usually be the applicants local Court', 'Time Estimate', 'Hearing Date', 'Hearing Time','Hearing Court'] }
-    ] 
+      { name: 'Scheduling and Listing', seeText: ['Special Measures',
+        'This should be the FRC local to the applicant', 'Time Estimate', 'Hearing Date', 'Hearing Time','Hearing Court'] }
+    ]
   },
   'Application Issued': {
     tabs: [
@@ -26,4 +26,4 @@ var contestedTabValidations = {
   }
 };
 
-exports.default = contestedTabValidations; 
+exports.default = contestedTabValidations;

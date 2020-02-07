@@ -35,11 +35,11 @@ Scenario('Verify Consented PBA Solicitors Happypath Scenario', I => {
   I.finalPaymentSubmissionPage();
   I.finalInformationPage();
   I.see('Case Submission');
-  
+
 });
 
 
-Scenario('Verify Consented PBA Court Admin update case Scenario', async (I, TabsPage)  => {
+Scenario('Verify Consented PBA Court Admin update case Scenario ', async (I, TabsPage)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Application Submitted', scenarioSolref);
@@ -91,8 +91,8 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I, Tab
 
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update Order');
-  // I.uploadOrder(); 
-   I.consentedNextStep('Upload Order');
+  // I.uploadOrder();
+  I.consentedNextStep('Upload Order');
 
 
   I.waitForPage('.EventLogTable h2', 'History');
@@ -104,7 +104,7 @@ Scenario('Verify Consented PBA Court Admin upload order Scenario', async (I, Tab
 
 
 
-Scenario('Verify Consented PBA Solicitors Respond to order Scenario', async (I, TabsPage)  => {
+Scenario('Verify Consented PBA Solicitors Respond to order Scenario ', async (I, TabsPage)  => {
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Awaiting Response', scenarioSolref);
 
@@ -161,8 +161,7 @@ Scenario('Verify Consented PBA Court judge approve case', async (I, TabsPage)  =
 
 Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all Universal events', async (I, TabsPage)  => {
 
-
-    const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
+  const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Consent Order Approved', scenarioSolref);
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
@@ -184,7 +183,7 @@ Scenario('Verify Consented PBA Court Admin upload Consent order Scenario and all
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update contact details');
   // I.wait(5);
-  I.consentedNextStep('Upload Due Date');
+  I.consentedNextStep('Update Due Date');
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update Due Date');
   // I.wait(5);

@@ -20,8 +20,8 @@ function consentedNextStep(step) {
     I.click('Add new');
     I.waitForPage('#copyOfPaperFormA_0_typeOfDocument');
     I.selectOption('#copyOfPaperFormA_0_typeOfDocument', 'Copy of paper form A');
-    I.continueNext();
     I.attachFile('input[type="file"]', 'data/dummy.pdf');
+    I.continueNext();
     fillAndSubmitEventDetails(I);
     break;
   case 'dueDate':
@@ -32,6 +32,15 @@ function consentedNextStep(step) {
     I.waitForContinueButtonEnabled();
     I.click('Continue');
     fillAndSubmitEventDetails(I);
+
+    break;
+  case 'Update Due Date':
+    I.waitForPage('#fieldset-case-data');
+    I.waitForContinueButtonEnabled();
+    I.click('Continue');
+    I.waitForContinueButtonEnabled();
+    I.wait(1);
+    I.click('Submit');
 
     break;
   case 'Upload document':
@@ -154,6 +163,8 @@ function consentedNextStep(step) {
 
     break;
   case 'Respond To Order':
+    I.wait(2);
+    I.click('Continue');
     I.waitForPage('#respondToOrderDocuments');
     I.click('Add new');
     I.waitForPage('//select[contains(@id,"respondToOrderDocuments_")]');
@@ -165,9 +176,9 @@ function consentedNextStep(step) {
     I.fillField('#respondToOrderDocuments_0_DocumentFileName','Test Other file');
     I.waitForContinueButtonEnabled();
     I.click('Continue');
-    I.waitForPage('#respondToOrderInfoText');
-    I.waitForContinueButtonEnabled();
-    I.click('Continue');
+    //I.waitForPage('#respondToOrderInfoText');
+    //I.waitForContinueButtonEnabled();
+    //I.click('Continue');
     I.waitForPage('//button[text()="Submit"]');
     I.click('Submit');
     break;
@@ -219,4 +230,4 @@ function fillAndSubmitEventDetails(I) {
   I.click('Submit');
 }
 
-module.exports = { consentedNextStep }; 
+module.exports = { consentedNextStep };

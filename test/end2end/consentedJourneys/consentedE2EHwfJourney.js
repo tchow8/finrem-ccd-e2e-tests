@@ -1,7 +1,6 @@
 var { getConsentedScenarioState } = require('../dataSetup/scenarios/scenarioState');
 var caseType = 'consented';
 
-
 Feature('finrem consented e2e HWF Journey');
 const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
@@ -12,15 +11,6 @@ const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 const pbaValue = false;
 
 const searchCaseType = 'Financial Remedy Consented';
-
-
-// Scenario.only('Tab data Validation config', async (I) => {
-//   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
-
-//   I.getStateTabsConfig(I,'Financial Remedy Consented'); 
-
-// });
-
 
 Scenario('Verify Consented HWF Solicitors Happypath Scenario', async (I, TabsPage) =>   {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
@@ -59,7 +49,7 @@ Scenario('Verify Consented HWF Court Admin update case Scenario', async(I, TabsP
 
   I.signinIdam(testConfig.TestCaseWorkerUserName, testConfig.TestCaseWorkerPassword);
 
-  // I.wait(10);
+
   I.searchCase(scenarioSolref, searchCaseType);
   I.addNote();
   // I.wait(10);
@@ -146,7 +136,7 @@ Scenario('Verify Consented HWF Court Send Order (Consent order Approved)', async
 
 
 
-Scenario('Verify Consented HWF Solicitors Respond to order Scenario', async (I, TabsPage)  => {
+Scenario('Verify Consented HWF Solicitors Respond to order Scenario ', async (I, TabsPage)  => {
 
   const scenarioSolref = 'AUTO-' + dateUtil.createSolicitorReference();
   await getConsentedScenarioState('Awaiting Response', scenarioSolref);
@@ -215,42 +205,42 @@ Scenario('Verify Consented HWF Court Admin upload Consent order Scenario and all
   I.consentedNextStep('Upload Consent Order');
   // I.uploadConsentOrder();
 
-  I.waitForPage('.EventLogTable h2', 'History'); 
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload Consent Order');
 
   I.consentedNextStep('Amend Case');
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Amend Case');
 
   // I.amendedConsentOrder();
   I.consentedNextStep('Amended Consent Order');
 
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Amended Consent Order');
   I.wait(5);
   // pause ();
   I.consentedNextStep('Update contact details');
 
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update contact details');
   // I.wait(5);
   I.consentedNextStep('Update Due Date');
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Update Due Date');
   // I.wait(5);
 
   I.consentedNextStep('Upload document');
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Upload document');
 
   // I.wait(5);
   I.consentedNextStep('Refund');
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Refund');
 
   // I.wait(5);
   I.consentedNextStep('Close Case');
-  I.waitForPage('.EventLogTable h2', 'History');  
+  I.waitForPage('.EventLogTable h2', 'History');
   I.see('Close Case');
   // I.wait(2);
   await TabsPage.validateTabs(caseType);

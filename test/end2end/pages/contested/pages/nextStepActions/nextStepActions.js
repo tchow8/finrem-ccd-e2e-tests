@@ -10,7 +10,7 @@ function contestedNextStep(step) {
 
   const stepArr = step.split('|');
   let heardingDate = '';
- 
+
   I.initiateNextStep(stepArr[0]);
   I.say('********** Next Step : ' + step);
   switch (stepArr[0]) {
@@ -23,22 +23,44 @@ function contestedNextStep(step) {
     I.click('Add new');
     I.waitForPage('#copyOfPaperFormA_0_typeOfDocument');
     I.selectOption('#copyOfPaperFormA_0_typeOfDocument', 'Copy of paper form A');
-    I.continueNext();
+    // I.continueNext();
     I.attachFile('input[type="file"]', 'data/dummy.pdf');
     I.continueNext();
 
     fillAndSubmitEventDetails(I);
     break;
 
+    // eslint-disable-next-line no-case-declarations
   case 'Upload Draft Order':
     I.waitForPage('#draftDirectionOrderCollection');
+    let solUserName =  I.grabTextFrom('span[id="user-name"]');
     I.click('Add new');
     I.waitForPage('#draftDirectionOrderCollection_0_purposeOfDocument');
     I.selectOption('#draftDirectionOrderCollection_0_purposeOfDocument','Draft order');
     I.attachFile('input[type="file"]', 'data/dummy.pdf');
     I.continueNext();
-    I.waitForPage('.check-your-answers');
+    I.wait(2);
+
+    if(solUserName==='Mahesh Fr_judge') {
+      I.click('Add new');
+      I.waitForPage('#draftDirectionDetailsCollection_0_0');
+      I.checkOption('input[id="draftDirectionDetailsCollection_0_isThisFinalYN-No"]');
+      I.checkOption('input[id="draftDirectionDetailsCollection_0_isAnotherHearingYN-No"]');
+      I.continueNext();
+      I.wait(2);
+
+    }
+    I.click('button[type="submit"]');
+    //I.waitForPage('.check-your-answers');
+    //I.continueNext();
+    break;
+
+  case 'Judge To Draft Order':
+    I.waitForPage('#attendingCourtWithAssistanceLabel');
+    I.fillField('#attendingCourtWithAssistance','Assistance None required');
+    I.fillField('#attendingCourtWithArrangement', 'Arrangement None required');
     I.continueNext();
+    fillAndSubmitEventDetails(I);
     break;
 
   case 'Issue Application':
@@ -67,7 +89,7 @@ function contestedNextStep(step) {
     I.wait(2);
     I.selectOption('#londonFRCListSL','London FRC');
     I.wait(2);
-    I.selectOption('#cfcCourtListSL', 'FR_s_CFCList_16');
+    I.selectOption('#cfcCourtListSL', 'WILLESDEN COUNTY COURT AND FAMILY COURT');
     I.click('Continue');
     I.waitForPageWithText('Check your answers');
     // I.click('Submit');
@@ -77,11 +99,11 @@ function contestedNextStep(step) {
 
     break;
   case 'Consent Order Payment':
-    I.waitForPage('#uploadConsentedOrder');  
+    I.waitForPage('#uploadConsentedOrder');
     I.attachFile('input[type="file"]', 'data/dummy.pdf');
     I.waitForContinueButtonEnabled();
     I.click('Continue');
-    fillAndSubmitEventDetails(I); 
+    fillAndSubmitEventDetails(I);
     break;
   case 'Submit Uploaded Case Files':
     I.waitForPage('h1','Submit Uploaded Case Files');
@@ -104,12 +126,12 @@ function contestedNextStep(step) {
     I.click('#judgeAllocated-FR_judgeAllocatedList_3');
     I.click('#judgeTimeEstimate-standardTime');
 
-    
+
     I.waitForContinueButtonEnabled();
     I.click('Continue');
     fillAndSubmitEventDetails(I);
 
-    break; 
+    break;
   case 'Upload Case Files':
     I.waitForPage('h1','Upload Case Files');
     I.click('Add new');
@@ -164,7 +186,7 @@ function contestedNextStep(step) {
     I.continueNext();
     I.waitForPage('#directionDetailsCollection');
     I.click('Add new');
-    
+
     I.waitForPage('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
     I.click('#directionDetailsCollection_0_isAnotherHearingYN-Yes');
 
@@ -194,7 +216,7 @@ function contestedNextStep(step) {
 
   default:
     fillAndSubmitEventDetails(I);
-    
+
   }
   I.validateStep(stepArr[0]);
 
@@ -245,4 +267,4 @@ function caseSubmission(paymentType,I) {
   I.validateStep('Case Submission');
 }
 
-module.exports= {contestedNextStep}; 
+module.exports= {contestedNextStep};

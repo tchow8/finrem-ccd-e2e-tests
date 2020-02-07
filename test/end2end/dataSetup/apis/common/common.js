@@ -12,7 +12,6 @@ const log = require('./logger').default;
 
 async function solicitorLogin(){
   log('Solicitor Login');
-  // console.log(new Date()+' : Solicitor Login');
   await loginWithCredentials(config.TestSolicitorUserName,config.TestSolicitorPassword);
 }
 
@@ -26,7 +25,7 @@ async function caseWorkerLogin(){
 async function judgeLogin(){
   // console.log(new Date() + ' : Judge Login');
   log('Judge login');
-    await loginWithCredentials(config.TestJudgeUserName,config.TestJudgePassword);
+  await loginWithCredentials(config.TestJudgeUserName,config.TestJudgePassword);
 
 }
 
@@ -43,7 +42,7 @@ async function getCaseDetails(caseId) {
 
 async function isCaseFastTrack(caseId) {
   let hiddenTab = await getCaseTabWithLabel(caseId,'Hidden Tab');
-  let isFastTract = getFieldWithId(hiddenTab[0].fields,'fastTrackDecision'); 
+  let isFastTract = getFieldWithId(hiddenTab[0].fields,'fastTrackDecision');
   return isFastTract[0].value;
 }
 
@@ -75,13 +74,13 @@ async function uploadFile(filePath){
       method: 'post',
       url: 'https://gateway-ccd.aat.platform.hmcts.net/documents',
       data: formData,
-      headers: formData.getHeaders() 
+      headers: formData.getHeaders()
     });
     uploadDetails.document_url = uploadres.data._embedded.documents[0]._links.self.href;
     uploadDetails.document_binary_url = uploadres.data._embedded.documents[0]._links.self.href+'/binary';
     uploadDetails.document_filename = uploadres.data._embedded.documents[0].originalDocumentName;
-    
-    
+
+
     return uploadDetails;
   }catch(err){
     log(err);
@@ -90,23 +89,21 @@ async function uploadFile(filePath){
 }
 
 
-  async function getEventToken(caseId, event) {
-    try {
-      let res = await http({
-        method: 'get',
-        url: 'https://gateway-ccd.aat.platform.hmcts.net/data/internal/cases/' + caseId + '/event-triggers/' + event + '?ignore-warning=false',
-        headers: { experimental: true }
-      });
+async function getEventToken(caseId, event) {
+  try {
+    let res = await http({
+      method: 'get',
+      url: 'https://gateway-ccd.aat.platform.hmcts.net/data/internal/cases/' + caseId + '/event-triggers/' + event + '?ignore-warning=false',
+      headers: { experimental: true }
+    });
 
-      return res.data.event_token;
-    }
-    catch (err) {
-      console.log(err);
-      throw err;
-    }
-
+    return res.data.event_token;
   }
-   
+  catch (err) {
+    console.log(err);
+    throw err;
+  }
 
+}
 
-module.exports = { getCaseDetails, isCaseFastTrack, solicitorLogin, caseWorkerLogin, judgeLogin, uploadFile, getEventToken };
+module.exports = { isCaseFastTrack, solicitorLogin, caseWorkerLogin, judgeLogin, uploadFile, getEventToken };

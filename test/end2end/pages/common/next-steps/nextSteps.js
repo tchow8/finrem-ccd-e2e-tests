@@ -12,19 +12,13 @@ function searchCase(reference,caseType) {
   I.fillField('input[id="solicitorReference"]', reference);
   I.waitForPage('.display-left button:not(.button-secondary)');
   I.waitForVisible('.display-left button:not(.button-secondary)',30);
-
   I.scrollTo('.display-left button:not(.button-secondary)');
-  I.click('.display-left button:not(.button-secondary)'); 
-  // I.click('.display-left button:not(.button-secondary)');
-  // I.wait(20);
+  I.click('.display-left button:not(.button-secondary)');
   I.waitForPage('.search-result-column-cell:nth-of-type(2) span', reference);
   I.scrollTo('.search-result-column-cell:nth-of-type(2) span');
 
   I.click('.search-result-column-cell:nth-of-type(1) a');
   I.waitForPage('.tabs-list');
- 
-  // I.wait(10);
-
 }
 
 

@@ -1,10 +1,10 @@
 
 
-var contestedTabValidations = {
+var consentedTabValidations = {
   '*': {
     tabs: [
       { name: 'History', seeText: ['Event', 'End state'] },
-      { name: 'Applicant', seeText: ['APPLICANT DETAILS', 'Is the Applicant represented ?', 'SOLICITOR DETAILS'] },
+      { name: 'Applicant', seeText: ['APPLICANT DETAILS'] },
       { name: 'Divorce', seeText: ['DIVORCE DETAILS', 'Divorce Case Number', 'What stage has the divorce reached ?'] },
       { name: 'Respondent', seeText: ['RESPONDENT DETAILS', 'Is the respondent represented ?'] },
       { name: 'Nature of Application', seeText: ['NATURE OF THE APPLICATION', 'ORDER FOR CHILDREN'] },
@@ -20,4 +20,4 @@ var contestedTabValidations = {
   }
 };
 
-exports.default = contestedTabValidations; 
+exports.default = consentedTabValidations;

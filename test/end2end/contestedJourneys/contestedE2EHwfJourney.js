@@ -5,7 +5,9 @@ const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 const pbaValue = false;
-const searchCaseType = 'contested';
+const searchCaseType = 'Contested Financial Remedy';
+const journeyType ='contested';
+
 
 Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
@@ -36,7 +38,7 @@ Scenario('Verify Contested HWF Solicitors Happypath Scenario', async (I, TabsPag
   I.finalInformationPage();
   I.see('Case Submission');
   //I.solicitorTabs();
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -45,11 +47,10 @@ Scenario('Verify Contested, Judge Give Allocation Directions', async (I, TabsPag
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Gate Keeping & Allocation', scenarioSolRef);
 
-  I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
+  I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
-
   I.contestedNextStep('Give Allocation Directions');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -61,7 +62,7 @@ Scenario('Verify Contested HWF Payment', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Case Submission|HWF');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -77,7 +78,7 @@ Scenario('Verify Contestd Manual Payment', async (I, TabsPage) => {
   I.waitForPage('.EventLogTable h2', 'History');
   I.see('Manual Payment');
 
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -88,11 +89,11 @@ Scenario('Verify Contested PBA Payment', async (I, TabsPage) => {
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Case Submission|PBA');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
-Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
+Scenario('Verify Contested List for Hearing ', async (I, TabsPage) => {
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Scheduling and Hearing', scenarioSolRef);
 
@@ -101,9 +102,8 @@ Scenario('Verify Contested List for Hearing', async (I, TabsPage) => {
 
   I.click('Gatekeeping and allocation');
   const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
-  console.log('Case is Fats Tract : ' + isFastTrack + ' - ');
   I.contestedNextStep('List for Hearing|' + isFastTrack.split(':')[1].trim());
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -120,7 +120,7 @@ Scenario('Verify Contested HWF Court Admin update case Scenario', async (I, Tabs
   }else {
     I.contestedNextStep('Case Submission|HWF');
   }
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -132,7 +132,7 @@ Scenario('Verify Contested HWF Solicitors upload case files Scenario', async (I,
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Submit Uploaded Case Files');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -168,7 +168,7 @@ Scenario('Verify Contested HWF Court Admin upload Consent order Scenario and all
 
   I.waitForPage('.tabs-list');
   I.see('Close Case');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 
 });

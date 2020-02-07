@@ -6,7 +6,8 @@ const testConfig = require('test/config.js');
 const dateUtil = require('test/end2end/helpers/dateUtil.js');
 const solRef = 'AUTO-'+dateUtil.createSolicitorReference();
 const pbaValue = true;
-const searchCaseType = 'contested';
+const searchCaseType = 'Contested Financial Remedy';
+const journeyType='contested';
 
 
 Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPage) => {
@@ -41,7 +42,7 @@ Scenario('Verify Contested PBA Solicitors Happypath Scenario', async (I, TabsPag
   I.contestedFinalPaymentPage();
   I.contestedFinalInformation();
   I.see('Case Submission');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 });
 
 
@@ -58,7 +59,7 @@ Scenario('Verify Contested PBA Court Admin update case Scenario', async (I, Tabs
   } else {
     I.contestedNextStep('Case Submission|HWF');
   }
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -71,7 +72,7 @@ Scenario('Verify Contested PBA Court judge application for Scheduling and Listin
   I.signinIdam(testConfig.TestJudgeUserName, testConfig.TestJudgePassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Give Allocation Directions');
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -85,9 +86,9 @@ Scenario('Verify Contested PBA Court Admin Scheduling and Hearing Scenario', asy
   I.searchCase(scenarioSolRef, searchCaseType);
 
   const isFastTrack = await I.grabTextFrom('#tabFastTrackDecision');
-  console.log('Case is Fats Tract : ' + isFastTrack + ' - ');
+  // console.log('Case is Fats Tract : ' + isFastTrack + ' - ');
   I.contestedNextStep('List for Hearing' );
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -98,13 +99,11 @@ Scenario('Verify Contested PBA Solicitors upload case files Scenario', async (I,
   const scenarioSolRef = 'AUTO-' + dateUtil.createSolicitorReference();
   await getContestedScenarioState('Prepare for Hearing', scenarioSolRef);
 
-
   I.signinIdam(testConfig.TestSolicitorUserName, testConfig.TestSolicitorPassword);
   I.searchCase(scenarioSolRef, searchCaseType);
   I.contestedNextStep('Upload Case Files');
-  await TabsPage.validateTabs(searchCaseType);
-
-  //I.solResponseTabs();
+  I.contestedNextStep('Submit Uploaded Case Files');
+  await TabsPage.validateTabs(journeyType);
 
 });
 
@@ -134,7 +133,7 @@ Scenario('Verify Contested Universal events', async (I, TabsPage) => {
   I.waitForPage('.tabs-list');
   I.see('Close Case');
 
-  await TabsPage.validateTabs(searchCaseType);
+  await TabsPage.validateTabs(journeyType);
 
 
 });
