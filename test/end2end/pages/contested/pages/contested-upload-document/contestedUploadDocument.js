@@ -8,6 +8,7 @@ function contestedUploadDocument() {
   I.waitForPage('#uploadGeneralDocuments');
   I.click('Add new');
   I.selectOption('select[id=uploadGeneralDocuments_0_DocumentType]', 'Letter/Email from Applicant');
+  I.wait(1);
   I.fillField('#uploadGeneralDocuments_0_DocumentEmailContent', 'Uploading the document for testing');
   I.attachFile('input[type="file"]', 'data/fileupload.txt');
   I.fillField('input[id="uploadGeneralDocuments_0_DocumentDateAdded-day"]', '10');
