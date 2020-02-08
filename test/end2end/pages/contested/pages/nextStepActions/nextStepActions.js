@@ -45,8 +45,7 @@ function contestedNextStep(step) {
       I.checkOption('input[id="draftDirectionDetailsCollection_0_isThisFinalYN-No"]');
       I.checkOption('input[id="draftDirectionDetailsCollection_0_isAnotherHearingYN-No"]');
       I.continueNext();
-      I.wait(2);
-
+      I.wait(5);
     }
     I.click('button[type="submit"]');
     //I.waitForPage('.check-your-answers');
