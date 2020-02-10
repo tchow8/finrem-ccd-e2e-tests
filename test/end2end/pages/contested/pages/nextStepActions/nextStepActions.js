@@ -178,7 +178,6 @@ function contestedNextStep(step) {
     I.click('Add new');
     I.attachFile('#uploadHearingOrder_0_uploadDraftDocument', 'data/dummy.pdf');
 
-
     I.continueNext();
     I.waitForPage('#directionDetailsCollection');
     I.click('Add new');

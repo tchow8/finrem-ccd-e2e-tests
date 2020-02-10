@@ -23,7 +23,7 @@ function getTests() {
 
   }else{
     tests = tests + journeyType + 'E2E'+journey+'Journey.js';
- 
+
   }
   // eslint-disable-next-line no-console
   console.log('tests : ' + tests);
@@ -49,7 +49,7 @@ exports.config = {
     }
   },
   helpers: {
-   
+
     WebDriverIO:{
       url: testConfig.TestFrontendUrl || 'https://www-ccd.aat.platform.hmcts.net/',
       smartWait:5000,
@@ -61,7 +61,7 @@ exports.config = {
       timeouts:{
         script: 60000,
         'page load': 10000
-      }, 
+      },
       desiredCapabilities:{
         chromeOptions: {
           args: [
@@ -71,24 +71,30 @@ exports.config = {
             '--headless'
           ]
         }
-  
+
       }
     },
     CustomHelpers: {
       require : './helpers/CustomWebDriverHelper.js'
     }
-    
-  
+
+
   },
-  include: { 
+  include: {
     I: './pages/steps.js',
     TabsPage: './helpers/tabValidation/tabValidationsHelper.js',
-    InSession: './helpers/insessionNextSteps.js' 
+    InSession: './helpers/insessionNextSteps.js'
   },
   plugins: {
     wdio: {
       enabled: true,
       services: ['selenium-standalone']
+    },
+    retryFailedStep: {
+      enabled: true
+    },
+    autoDelay: {
+      enabled: true
     }
   },
   mocha: {
@@ -116,7 +122,7 @@ exports.config = {
         }
       },
       'mocha-junit-reporter': {
-        
+
         stdout: './functional-output/mocha-junit-reporter/console.log',
         options: {
           mochaFile: './functional-output/mocha-junit-reporter/report2result.xml'

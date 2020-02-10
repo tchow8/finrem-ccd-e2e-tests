@@ -20,7 +20,7 @@ function continueNext()
   const I = this;
 
   I.waitForContinueButtonEnabled();
-  I.click('button[type="submit"]');
+  I.retry().click('button[type="submit"]');
 }
 
 function waitForPageWithText(text){
