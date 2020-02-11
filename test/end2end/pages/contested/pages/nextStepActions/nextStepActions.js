@@ -42,7 +42,8 @@ function contestedNextStep(step) {
     if(stepArr[1] === 'Judge') {
       I.click('Add new');
       I.waitForPage('#draftDirectionDetailsCollection_0_0');
-      I.checkOption('input[id="draftDirectionDetailsCollection_0_isThisFinalYN-No"]');
+      I.wait(2);
+      I.checkOption('input[id="draftDirectionDetailsCollection_0_isThisFinalYN-Yes"]');
       I.checkOption('input[id="draftDirectionDetailsCollection_0_isAnotherHearingYN-No"]');
       I.continueNext();
       I.wait(5);
